@@ -916,11 +916,11 @@ export default {
       });
     },
     saleRecordsBtn() {
-      this.$router.push("/sale_management/sale_records/list");
+      this.$router.push("/sale/saleRecordsList");
     },
     exchangePointProductsRecordsBtn() {
       this.$router.push(
-          "/sale_management/exchange_point_products_records/list"
+          "/sale//sale/pointRedemptionHistory"
       );
     },
     submitNewForm(formName) {
