@@ -234,23 +234,23 @@
     <el-dialog :visible.sync="detailVisable" width="50%">
       <el-descriptions :model="detailForm" column="2" title="员工信息">
         <el-descriptions-item label="用户名">{{
-          detailForm.username
+            detailForm.username
           }}
         </el-descriptions-item>
         <el-descriptions-item label="性别">{{
-          detailForm.sex == "1" ? "男" : "女"
+            detailForm.sex == "1" ? "男" : "女"
           }}
         </el-descriptions-item>
         <el-descriptions-item label="年龄">{{
-          detailForm.age
+            detailForm.age
           }}
         </el-descriptions-item>
         <el-descriptions-item label="住址">{{
-          detailForm.address
+            detailForm.address
           }}
         </el-descriptions-item>
         <el-descriptions-item label="昵称">{{
-          detailForm.nickName
+            detailForm.nickName
           }}
         </el-descriptions-item>
         <el-descriptions-item label="头像"
@@ -272,21 +272,21 @@
         </el-descriptions-item>
         <el-descriptions-item label="描述"></el-descriptions-item>
         <el-descriptions-item label="录入者">{{
-          detailForm.createby
+            detailForm.createby
           }}
         </el-descriptions-item>
         <el-descriptions-item label="所属部门">
           <el-tag v-if="detailForm.deptName" type="warning">{{
-            detailForm.deptName
+              detailForm.deptName
             }}
           </el-tag>
         </el-descriptions-item>
         <el-descriptions-item label="身份证号">{{
-          detailForm.idCard
+            detailForm.idCard
           }}
         </el-descriptions-item>
         <el-descriptions-item label="入职时间">{{
-          detailForm.createTime
+            detailForm.createTime
           }}
         </el-descriptions-item>
         <el-descriptions-item

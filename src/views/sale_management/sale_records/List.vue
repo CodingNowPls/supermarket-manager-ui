@@ -331,36 +331,36 @@
             <div v-if="saleRecordForm.detailSaleRecords.length > 0">
               订单号：{{ saleRecordForm.cn }}&nbsp;&nbsp;
               商品总数：{{
-              saleRecordForm.sellTotal
-              ? saleRecordForm.sellTotal
-              : 0
+                saleRecordForm.sellTotal
+                    ? saleRecordForm.sellTotal
+                    : 0
               }}&nbsp;&nbsp; 消费：{{
-              saleRecordForm.sellTotalmoney
-              ? parseFloat(
-              saleRecordForm.sellTotalmoney
-              ).toFixed(2)
-              : 0
+                saleRecordForm.sellTotalmoney
+                    ? parseFloat(
+                        saleRecordForm.sellTotalmoney
+                    ).toFixed(2)
+                    : 0
               }}元&nbsp;&nbsp;
               <span v-if="saleRecordForm.sellway"
               >支付方式：{{
-                                    saleRecordForm.sellway == "0"
-                                        ? "支付宝"
-                                        : saleRecordForm.sellway == "1"
-                                        ? "微信"
-                                        : saleRecordForm.sellway == "2"
-                                        ? "现金"
-                                        : "银行卡"
-                                }}&nbsp;&nbsp;</span
+                  saleRecordForm.sellway == "0"
+                      ? "支付宝"
+                      : saleRecordForm.sellway == "1"
+                          ? "微信"
+                          : saleRecordForm.sellway == "2"
+                              ? "现金"
+                              : "银行卡"
+                }}&nbsp;&nbsp;</span
               ><br>
               <span v-if="saleRecordForm.type == '1'"
               >会员享受9折&nbsp;&nbsp;</span
               >
               <span v-if="saleRecordForm.sellTime"
               >消费时间：{{
-                                    saleRecordForm.sellTime
-                                }}&nbsp;&nbsp; 操作者编号：{{
-                                    saleRecordForm.eid
-                                }}</span
+                  saleRecordForm.sellTime
+                }}&nbsp;&nbsp; 操作者编号：{{
+                  saleRecordForm.eid
+                }}</span
               >
             </div>
           </el-col>

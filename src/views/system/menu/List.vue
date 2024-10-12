@@ -55,7 +55,7 @@
         >
           <template v-slot="scope">
             <el-tag type="info">{{
-              scope.row.flag ? scope.row.flag : "暂定"
+                scope.row.flag ? scope.row.flag : "暂定"
               }}
             </el-tag>
           </template>
@@ -91,7 +91,7 @@
         >
           <template v-slot="scope">
             <el-tag type="info">{{
-              scope.row.info ? scope.row.info : "无"
+                scope.row.info ? scope.row.info : "无"
               }}
             </el-tag>
           </template>
@@ -103,7 +103,7 @@
         >
           <template v-slot="scope">
             <el-tag type="info">{{
-              scope.row.component ? scope.row.component : "暂定"
+                scope.row.component ? scope.row.component : "暂定"
               }}
             </el-tag>
           </template>

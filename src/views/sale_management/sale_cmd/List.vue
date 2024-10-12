@@ -363,36 +363,36 @@
           <el-col :span="24">
             <div v-if="newForm.detailSaleRecords.length > 0">
               订单号：{{ newForm.cn }}&nbsp;&nbsp; 商品总数：{{
-              newForm.sellTotal ? newForm.sellTotal : 0
+                newForm.sellTotal ? newForm.sellTotal : 0
               }}&nbsp;&nbsp; 总共：{{
-              totalMoney ? totalMoney : 0
+                totalMoney ? totalMoney : 0
               }}元&nbsp;&nbsp; 消费：{{
-              newForm.sellTotalmoney
-              ? parseFloat(
-              newForm.sellTotalmoney
-              ).toFixed(2)
-              : 0
+                newForm.sellTotalmoney
+                    ? parseFloat(
+                        newForm.sellTotalmoney
+                    ).toFixed(2)
+                    : 0
               }}元&nbsp;&nbsp;
               <span v-if="newForm.sellway"
               >支付方式：{{
-                                    newForm.sellway == "0"
-                                        ? "支付宝"
-                                        : newForm.sellway == "1"
-                                        ? "微信"
-                                        : newForm.sellway == "2"
-                                        ? "现金"
-                                        : "银行卡"
-                                }}&nbsp;&nbsp;</span
+                  newForm.sellway == "0"
+                      ? "支付宝"
+                      : newForm.sellway == "1"
+                          ? "微信"
+                          : newForm.sellway == "2"
+                              ? "现金"
+                              : "银行卡"
+                }}&nbsp;&nbsp;</span
               >
               <span v-if="newForm.type == '1'"
               >会员享受9折&nbsp;&nbsp;优惠{{
-                                    totalMoney
-                                        ? parseFloat(
-                                              totalMoney -
-                                                  newForm.sellTotalmoney
-                                          ).toFixed(2)
-                                        : 0
-                                }}元&nbsp;&nbsp;</span
+                  totalMoney
+                      ? parseFloat(
+                          totalMoney -
+                          newForm.sellTotalmoney
+                      ).toFixed(2)
+                      : 0
+                }}元&nbsp;&nbsp;</span
               >
               <span v-if="newForm.sellTime"
               >消费时间：{{ newForm.sellTime }}&nbsp;&nbsp;
