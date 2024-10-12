@@ -5,7 +5,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
-        BaseApi: "http://sun.ipyingshe.com:9291"
+        BaseApi: "http://sun.ipyingshe.com"
     },
     getters: {},
     mutations: {},
