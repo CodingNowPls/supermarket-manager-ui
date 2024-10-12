@@ -920,7 +920,7 @@ export default {
     },
     exchangePointProductsRecordsBtn() {
       this.$router.push(
-          "/sale//sale/pointRedemptionHistory"
+          "/sale/pointRedemptionHistory"
       );
     },
     submitNewForm(formName) {
