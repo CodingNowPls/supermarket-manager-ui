@@ -6,7 +6,7 @@ const routes = [
     {
         path: '/',
         name: 'login',
-        component: () => import('../views/Login.vue'),
+        component: () => import('../views/login.vue'),
     },
     {
         path: '/index',
@@ -17,7 +17,7 @@ const routes = [
             {
                 path: '/home',
                 name: '/home',
-                component: () => import('../views/Home.vue')
+                component: () => import('../views/home.vue')
             },
             {
                 path: '/person/editPwd',
@@ -122,9 +122,9 @@ const routes = [
             },
 
             {
-                path: '/sale/saleCmdList',
-                name: 'saleCmdList',
-                component: () => import('@/views/sale/saleCmdList.vue')
+                path: '/sale/saleMainList',
+                name: 'saleMainList',
+                component: () => import('@/views/sale/saleMainList.vue')
             },
 
             {

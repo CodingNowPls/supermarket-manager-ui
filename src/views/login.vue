@@ -4,8 +4,10 @@
       <el-form :model="loginForm" ref="loginForm" class="demo-ruleForm">
         <br/>
         <i class="iconfont icon-r-building" style="font-size: 36px">
-          <b style="font-size: 28px"> 超市管理系统 </b> </i
-        ><br/><br/>
+          <b style="font-size: 28px">超市管理系统</b>
+        </i>
+        <br/>
+        <br/>
         <el-form-item prop="username">
           <el-row>
             <el-col :span="5" style="text-align: right">
