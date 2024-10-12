@@ -11,14 +11,14 @@ body {
 }
 
 .el-header {
-    background-color: #6495ED;
+    background-color: #000000;
     color: #333;
     border-bottom: 1px black solid;
     height: 150px;
 }
 
 .el-aside {
-    background-color: #6495ED;
+    background-color: #000000;
 }
 
 .el-main {

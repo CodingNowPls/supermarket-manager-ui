@@ -73,7 +73,7 @@
     <el-container>
       <el-aside width="200px" style="overflow-y: hidden;min-height: 900px;">
         <el-menu
-            background-color="#6495ED"
+            background-color="#000000"
             text-color="white"
             :router="true"
             :unique-opened="true"
