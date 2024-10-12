@@ -269,7 +269,7 @@ import {
   checkPermissons,
   saveRolePermissons,
 } from "@/api/system/roleApi";
-import {ajaxPost, popup} from "@/assets/js/common";
+import {popup} from "@/assets/js/common";
 
 export default {
   data() {

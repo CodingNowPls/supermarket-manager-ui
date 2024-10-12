@@ -400,11 +400,6 @@ import {
   saveOut,
 } from "@/api/inventory/stockGoodsDetailApi";
 import {popup} from "@/assets/js/common";
-import {
-  queryGoodsById,
-  selected_goodsAll,
-} from "@/api/goods/goodsApi";
-import {storeList} from "@/api/inventory/warehouseApi";
 
 export default {
   data() {

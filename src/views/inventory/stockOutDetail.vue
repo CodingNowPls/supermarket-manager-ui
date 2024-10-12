@@ -366,8 +366,7 @@ import {
 } from "@/api/inventory/noticeApi";
 import {
   changeOutGoods,
-  changeOutStore,
-  initOutOptions, queryOutGoods, saveOut
+  initOutOptions, queryOutGoods
 } from "@/api/inventory/stockGoodsDetailApi";
 
 export default {

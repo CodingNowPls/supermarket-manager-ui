@@ -182,11 +182,6 @@
 </template>
 <script>
 import {popup} from "@/assets/js/common";
-import {
-  queryGoodsStoreById,
-  queryPageByQo,
-  updateInventory
-} from "@/api/goods/goodsStockApi";
 import {queryPageNoticeIn} from "@/api/inventory/noticeApi";
 import {queryGoodsById, selected_goodsAll} from "@/api/goods/goodsApi";
 import {queryOptionsSuppliers, saveIn} from "@/api/inventory/stockGoodsDetailApi";
