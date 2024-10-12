@@ -1,8 +1,3 @@
-<!--
- * @Description:
- * @Author: Rabbiter
- * @Date: 2023-09-12 00:42:31
--->
 <template>
   <div>
     <el-breadcrumb separator="/">
