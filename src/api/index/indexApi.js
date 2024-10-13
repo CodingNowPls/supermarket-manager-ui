@@ -1,11 +1,10 @@
 import request from '@/utils/request'
 
 
-export function empMenu(data) {
+export function empMenu() {
   return request({
     url: "/empMenu",
-    method: 'get',
-    headers: {'token': data}
+    method: 'get'
   })
 }
 

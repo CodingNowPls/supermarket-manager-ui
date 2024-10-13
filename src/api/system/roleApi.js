@@ -1,3 +1,5 @@
+import request from "@/utils/request";
+
 const apiPrefix = '/system/role'
 
 //获取角色全部信息

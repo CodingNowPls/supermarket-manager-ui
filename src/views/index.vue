@@ -76,6 +76,7 @@ import {clearCookie, loginEmp} from "@/assets/js/auth";
 import {ajaxGet, ajaxPost, popup} from "@/assets/js/common";
 import {empMenu, exit} from "@/api/index/indexApi";
 import {logout} from "@/api/login/loginApi";
+import Cookies from "js-cookie";
 
 export default {
   data() {
@@ -102,7 +103,8 @@ export default {
     init() {
       this.isAdmin = loginEmp().isAdmin;
       this.loginName = loginEmp().nickName;
-      empMenu("/empMenu", {}).then((res) => {
+      // Cookies.get("token", res.data.token, {
+      empMenu("/empMenu").then((res) => {
         if (res.code === 200) {
           this.menu_catalogs = res.data;
         }

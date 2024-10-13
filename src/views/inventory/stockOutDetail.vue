@@ -452,7 +452,6 @@ export default {
         return;
       }
       changeOutGoods({gid: this.selectGoods.goodsId}).then(res => {
-        res = res.data
         if (res.code == 200) {
           this.options_store = res.data
         }
@@ -482,7 +481,6 @@ export default {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           resolveOutUntreatedForm(this.outUntreatedForm).then(res => {
-                res = res.data
                 if (res.code == 200) {
                   popup("处理成功")
                   this.visable3 = false
@@ -504,7 +502,7 @@ export default {
     changeGoods() {
       this.$forceUpdate()
       changeOutGoods({gid: this.selectGoods.goodsId}).then(res => {
-        res = res.data
+        res.msg
         if (res.code == 200) {
           this.options_store = res.data
         }
@@ -512,7 +510,7 @@ export default {
     },
     initOptions() {
       initOutOptions().then(res => {
-        res = res.data
+        res.msg
         if (res.code == 200) {
           this.options_goods = res.data.goods
           this.options_store = res.data.stores
@@ -524,7 +522,7 @@ export default {
     },
     init() {
       queryPageNoticeOut_shelves(this.searchForm).then(res => {
-        res = res.data
+        res.msg
         if (res.code == 200) {
           this.tableData = res.data.records
           this.searchForm.total = res.data.total
@@ -552,7 +550,7 @@ export default {
     /*过期、下架分页*/
     init1() {
       queryPageNoticeOut_untreated(this.searchForm1).then(res => {
-        res = res.data
+        res.msg
         if (res.code == 200) {
           this.tableData1 = res.data.records
           this.searchForm1.total = res.data.total
@@ -580,7 +578,6 @@ export default {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           queryOutGoods(this.selectGoods).then(res => {
-            res = res.data
             if (res.code == 200) {
               this.selectGoodsVisable = false
               this.newVisable = true
@@ -607,7 +604,6 @@ export default {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           saveOut_shelves(this.newForm).then(res => {
-            res = res.data
             if (res.code == 200) {
               popup("出库成功")
               this.searchForm.state1 = '0'

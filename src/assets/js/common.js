@@ -22,8 +22,8 @@ function refreshCookies() {
             method: "GET",
             params: {token: token}
         }).then(res => {
-            res = res.data
-            if (res.code == 200) {
+
+          if (res.code == 200) {
                 Cookies.set("token", res.data.token, {expires: 1 / 48})
                 Cookies.set("employee", JSON.stringify(res.data.employee), {expires: 1 / 48})
             }

@@ -245,7 +245,6 @@ export default {
   methods: {
     init() {
       queryPageNoticeIn(this.searchForm).then(res => {
-        res = res.data
         if (res.code == 200) {
           console.log(res.data)
           this.tableData = res.data.records
@@ -274,7 +273,6 @@ export default {
 
     detailStoreGoodsIn_goodsAll() {
       selected_goodsAll().then(res => {
-        res = res.data
         if (res.code == 200) {
           this.options_goods = res.data
         } else {
@@ -284,8 +282,7 @@ export default {
     },
     detailStoreGoodsIn_suppliers() {
       queryOptionsSuppliers().then(res => {
-            res = res.data
-            if (res.code == 200) {
+        if (res.code == 200) {
               this.options_suppliers = res.data
             } else {
               popup(res.msg, "error")
@@ -295,7 +292,6 @@ export default {
     },
     detailStoreGoodsIn_storeAll() {
       storeList({state: '0'}).then(res => {
-        res = res.data
         if (res.code == 200) {
           for (var item of res.data) {
             this.options_store.push({id: item.id, name: item.name})
@@ -309,7 +305,6 @@ export default {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           queryGoodsById({id: this.selectGoods.goodsId}).then(res => {
-            res = res.data
             if (res.code == 200) {
               this.selectGoodsVisable = false
               this.newVisable = true
@@ -337,7 +332,6 @@ export default {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           saveIn(this.newForm).then(res => {
-            res = res.data
             if (res.code == 200) {
               popup("入库成功")
               this.goodsInVisable = false

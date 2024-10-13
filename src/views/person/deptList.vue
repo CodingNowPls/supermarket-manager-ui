@@ -165,17 +165,16 @@ export default {
   methods: {
     init() {
       listByQo(this.searchForm).then(res => {
-        if (res.data.code == 200) {
-          this.tableData = res.data.data
+        if (res.code == 200) {
+          this.tableData = res.data
         } else {
-          popup(res.data.msg, "error")
+          popup(res.msg, "error")
         }
 
       })
     },
     forbidden(id) {
       deactivate(id).then(res => {
-        res = res.data
         if (res.code == 200) {
           popup("操作成功")
         } else {
@@ -197,7 +196,6 @@ export default {
     /*对接后端修改接口*/
     submitEditForm() {
       update(this.editForm).then(res => {
-        res = res.data
         if (res.code == 200) {
           popup("操作成功")
           this.dialogVisible = false
@@ -218,7 +216,6 @@ export default {
         if (valid) {
           console.log(this.newForm)
           save(this.newForm).then(res => {
-            res = res.data
             if (res.code == 200) {
               popup("操作成功")
               this.newVisable = false
