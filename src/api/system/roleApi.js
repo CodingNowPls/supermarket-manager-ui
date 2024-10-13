@@ -39,9 +39,9 @@ export function save_role(data) {
 }
 
 /*授权按钮*/
-export function checkPermissons(rid) {
+export function checkPermissions(rid) {
   return request({
-    url: apiPrefix + "/checkPermissons",
+    url: apiPrefix + "/checkPermissions",
     method: 'get',
     data: {rid: rid}
   })
