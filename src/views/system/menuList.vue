@@ -101,7 +101,7 @@
 </template>
 <script>
 import {queryPageByQo} from "@/api/system/menuApi";
-import {popup} from "@/assets/js/common";
+import {popup} from "@/utils/popup";
 
 export default {
   data() {

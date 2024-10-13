@@ -9,7 +9,6 @@ import {Message} from "element-ui";
 // import Cookies from "js-cookie";
 // import qs from 'qs';
 
-// const prefix_url = "http://sun.ipyingshe.com"
 // const prefix_url = "http://127.0.0.1:9291"
 //
 // /*刷新Cooke的存活时间*/
@@ -108,19 +107,19 @@ import {Message} from "element-ui";
 // }
 
 /*给用户弹出相应的提示*/
-export function popup(msg, type) {
-    switch (type) {
-        case "warning":
-            Message.warning(msg);
-            break;
-        case "error":
-            Message.error({message: msg, duration: 5000, showClose: true});
-            break;
-        case "info":
-            Message.info(msg);
-            break;
-        default:
-            Message.success(msg);
-    }
-
-}
+// export function popup(msg, type) {
+//     switch (type) {
+//         case "warning":
+//             Message.warning(msg);
+//             break;
+//         case "error":
+//             Message.error({message: msg, duration: 5000, showClose: true});
+//             break;
+//         case "info":
+//             Message.info(msg);
+//             break;
+//         default:
+//             Message.success(msg);
+//     }
+//
+// }

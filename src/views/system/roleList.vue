@@ -207,7 +207,7 @@ import {
   checkPermissions,
   saveRolePermissions,
 } from "@/api/system/roleApi";
-import {popup} from "@/assets/js/common";
+import {popup} from "@/utils/popup";
 
 export default {
   data() {

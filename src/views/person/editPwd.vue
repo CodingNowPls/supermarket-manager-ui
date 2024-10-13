@@ -58,7 +58,7 @@
 </template>
 <script>
 import Cookies from "js-cookie";
-import {popup} from "@/assets/js/common";
+import {popup} from "@/utils/popup";
 import {editPwd} from "@/api/person/personApi";
 import {loginEmp, removeToken} from "@/utils/auth";
 

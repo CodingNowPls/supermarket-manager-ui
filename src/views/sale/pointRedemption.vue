@@ -123,12 +123,13 @@
   </div>
 </template>
 <script>
-import {popup} from "@/assets/js/common";
+
 import {
   delExchangePointProducts,
   queryOptionsMemberPhone,
   queryPageByQoExchangePointProducts,
 } from "@/api/sale/pointRedemptionApi";
+import {popup} from "@/utils/popup";
 
 export default {
   data() {
@@ -158,14 +159,11 @@ export default {
         return;
       }
       queryPageByQoExchangePointProducts(this.searchForm).then((res) => {
-
         if (res.code == 200) {
           this.tableData = res.data.records;
           this.searchForm.total = res.data.total;
           this.searchForm.pageSize = res.data.size;
           this.searchForm.currentPage = res.data.current;
-        } else {
-          popup(res.msg, "error");
         }
       });
     },

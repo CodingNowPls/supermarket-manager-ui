@@ -102,7 +102,7 @@ h3 {
 }
 </style>
 <script>
-import {ajaxPost, popup} from "@/assets/js/common";
+import {popup} from "@/utils/popup";
 import Cookies from "js-cookie";
 import {login} from "@/api/login/loginApi";
 
@@ -151,10 +151,7 @@ export default {
                 JSON.stringify(res.data.employee),
                 {expires: 1 / 48}
               );
-              popup("登录成功，请稍等...");
               this.$router.push("/index");
-            } else {
-              popup(res.msg, "warning");
             }
           });
         } else {

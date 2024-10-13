@@ -596,7 +596,7 @@
 </template>
 <script>
 import {listByQo} from "@/api/person/deptApi";
-import {popup} from "@/assets/js/common";
+import {popup} from "@/utils/popup";
 import {
   deactivate,
   detail,

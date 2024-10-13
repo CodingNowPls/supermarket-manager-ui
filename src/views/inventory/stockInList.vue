@@ -303,7 +303,7 @@ import {
   queryGoodsById,
   selected_goodsAll,
 } from "@/api/goods/goodsApi";
-import {popup} from "@/assets/js/common";
+import {popup} from "@/utils/popup";
 import {
   delIn,
   queryOptionsSuppliers,

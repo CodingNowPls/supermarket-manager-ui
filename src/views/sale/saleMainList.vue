@@ -694,7 +694,7 @@
   </div>
 </template>
 <script>
-import {popup} from "@/assets/js/common";
+import {popup} from "@/utils/popup";
 import {
   getCn,
   getOptionSaleRecordsGoods,

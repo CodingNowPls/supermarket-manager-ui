@@ -353,7 +353,7 @@ import {
   saveIn,
   saveOut,
 } from "@/api/inventory/stockGoodsDetailApi";
-import {popup} from "@/assets/js/common";
+import {popup} from "@/utils/popup";
 
 export default {
   data() {

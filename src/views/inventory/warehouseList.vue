@@ -147,7 +147,7 @@
 </template>
 <script>
 import {deactivate, save, storeList, update} from "@/api/inventory/warehouseApi";
-import {popup} from "@/assets/js/common";
+import {popup} from "@/utils/popup";
 
 export default {
   data() {

@@ -72,7 +72,7 @@
   </el-container>
 </template>
 <script>
-import {popup} from "@/assets/js/common";
+import {popup} from "@/utils/popup";
 import {empMenu, exit} from "@/api/index/indexApi";
 import {logout} from "@/api/login/loginApi";
 import {clearCookie, loginEmp} from "@/utils/auth";
@@ -124,7 +124,6 @@ export default {
       }).then(() => {
         exit(this.pwdForm).then((res) => {
           if (res.code == 200) {
-            popup("成功退出系统...");
             clearCookie("employee");
             clearCookie("token");
             this.$router.push("/");

@@ -129,7 +129,7 @@
 </template>
 <script>
 import {listByQo} from "@/api/person/deptApi";
-import {popup} from "@/assets/js/common";
+import {popup} from "@/utils/popup";
 import {queryInformation} from "@/api/person/personApi";
 import {update} from "@/api/person/empApi";
 import {loginEmp} from "@/utils/auth";

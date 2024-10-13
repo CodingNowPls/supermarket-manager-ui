@@ -85,7 +85,7 @@
   </div>
 </template>
 <script>
-import {popup} from "@/assets/js/common";
+import {popup} from "@/utils/popup";
 import {queryPageByQo} from "@/api/goods/saleStatisticApi";
 
 export default {
