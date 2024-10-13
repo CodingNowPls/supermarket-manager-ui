@@ -4,7 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "build:prod": "vue-cli-service build",
+    "build:stage": "vue-cli-service build --mode staging",
+    "preview": "node build/index.js --preview",
+    "lint": "eslint --ext .js,.vue src"
   },
   "dependencies": {
     "@riophae/vue-treeselect": "0.4.0",
