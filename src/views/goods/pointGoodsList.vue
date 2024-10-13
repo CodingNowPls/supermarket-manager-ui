@@ -305,7 +305,7 @@ import {
   queryPointGoodsById,
   savePointGoods,
   updatePointGoods,
-} from "@/api/goods/pointProductApi";
+} from "@/api/goods/pointGoodsApi";
 import {
   queryGoodsById,
   selected_goodsAll,
