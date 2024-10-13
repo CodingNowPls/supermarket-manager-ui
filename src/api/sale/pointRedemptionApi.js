@@ -14,8 +14,8 @@ export function queryPointProductByGoodsId(data) {
     return ajaxGet(apiPrefix + "/queryPointProductByGoodsId", data)
 }
 
-export function saveExchangePointProductRecords(data) {
-    return ajaxPost(apiPrefix + "/saveExchangePointProductRecords", data)
+export function savePointRedemptionRecords(data) {
+    return ajaxPost(apiPrefix + "/savePointRedemptionRecords", data)
 }
 
 

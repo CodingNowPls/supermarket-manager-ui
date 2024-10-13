@@ -371,7 +371,7 @@ import {
 import {
   queryPointProductByGoodsId,
   queryPointProductBymemberId,
-  saveExchangePointProductRecords,
+  savePointRedemptionRecords,
 } from "@/api/sale/pointRedemptionApi";
 
 export default {
@@ -560,7 +560,7 @@ export default {
     submitPointProductsForm(formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          saveExchangePointProductRecords(
+          savePointRedemptionRecords(
               this.pointProductsForm
           ).then((res) => {
             res = res.data;
