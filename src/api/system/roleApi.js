@@ -21,7 +21,7 @@ export function forbiddenRole(id) {
 }
 
 //修改角色信息
-export function edit_role(data) {
+export function editRole(data) {
   return request({
     url: apiPrefix + "/edit_role",
     method: 'post',
@@ -30,7 +30,7 @@ export function edit_role(data) {
 }
 
 //创建角色
-export function save_role(data) {
+export function saveRole(data) {
   return request({
     url: apiPrefix + "/save",
     method: 'post',
@@ -48,7 +48,7 @@ export function checkPermissions(rid) {
 }
 
 /*保存角色-权限关系*/
-export function saveRolePermissons(data) {
+export function saveRolePermissions(data) {
   return request({
     url: apiPrefix + "/saveRolePermissions",
     method: 'post',

@@ -75,7 +75,7 @@
           </el-button>
           <el-button
             type="warning"
-            @click="checkPermissons(scope.row.id)"
+            @click="checkPermissions(scope.row.id)"
             style="font-size: 18px">
             <i class="iconfont icon-r-setting" style="font-size: 18px"></i>
             授权
@@ -202,10 +202,10 @@
 import {
   forbiddenRole,
   roleList,
-  edit_role,
-  save_role,
-  checkPermissons,
-  saveRolePermissons,
+  editRole,
+  saveRole,
+  checkPermissions,
+  saveRolePermissions,
 } from "@/api/system/roleApi";
 import {popup} from "@/assets/js/common";
 
@@ -291,7 +291,7 @@ export default {
         popup("您没有更改内容", "warning");
         return;
       }
-      edit_role(this.editRoleForm).then((res) => {
+      editRole(this.editRoleForm).then((res) => {
         if (res.code == 200) {
           popup("操作成功");
           this.editRoleForm = {};
@@ -311,7 +311,7 @@ export default {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           console.log(this.newRoleForm);
-          save_role(this.newRoleForm).then((res) => {
+          saveRole(this.newRoleForm).then((res) => {
             if (res.code == 200) {
               popup("操作成功");
               this.newRoleForm = {};
@@ -327,10 +327,10 @@ export default {
     },
     /*职能分配*/
     /*授权按钮*/
-    checkPermissons(rid) {
+    checkPermissions(rid) {
       this.distributionFulForm.rid = rid;
       this.default_checked_mid = [];
-      checkPermissons(rid).then((res) => {
+      checkPermissions(rid).then((res) => {
         if (res.code == 200) {
           this.fuloptions = res.data.menus;
           this.default_checked_mid = res.data.menuIds.sort((x, y) => x - y);
@@ -346,7 +346,7 @@ export default {
       var v = JSON.stringify(keys).replace("[", "").replace("]", "");
       this.distributionFulForm.menuIds = v;
       console.log(this.distributionFulForm.menuIds);
-      saveRolePermissons(this.distributionFulForm).then((res) => {
+      saveRolePermissions(this.distributionFulForm).then((res) => {
         if (res.code == 200) {
           popup("操作成功");
           this.distributionFulVisable = false;
