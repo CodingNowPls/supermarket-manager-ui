@@ -4,8 +4,7 @@
       <el-breadcrumb-item>首页</el-breadcrumb-item>
       <el-breadcrumb-item>库存管理</el-breadcrumb-item>
       <el-breadcrumb-item>入库明细</el-breadcrumb-item>
-    </el-breadcrumb
-    >
+    </el-breadcrumb>
     <br/>
 
     <el-row>
@@ -17,25 +16,16 @@
       </el-col>
       <el-col :span="16">
         <span>入库时间：</span>
-        <el-date-picker
-          value-format="yyyy-MM-dd"
-          v-model="searchForm.startCreateTime"
-          type="date"
-          placeholder="起始时间">
+        <el-date-picker value-format="yyyy-MM-dd" v-model="searchForm.startCreateTime" type="date"
+                        placeholder="起始时间">
         </el-date-picker>
         -
-        <el-date-picker
-          v-model="searchForm.endCreateTime"
-          value-format="yyyy-MM-dd"
-          type="date"
-          placeholder="结束时间">
+        <el-date-picker v-model="searchForm.endCreateTime" value-format="yyyy-MM-dd" type="date" placeholder="结束时间">
         </el-date-picker>
       </el-col>
       <el-col :span="2">
         <el-select
-          v-model="searchForm.state1"
-          @change="$forceUpdate()"
-          placeholder="请选择状态" clearable>
+          v-model="searchForm.state1" @change="$forceUpdate()" placeholder="请选择状态" clearable>
           <el-option label="正常" value="0"></el-option>
           <el-option label="删除" value="1"></el-option>
         </el-select>
