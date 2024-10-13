@@ -57,10 +57,10 @@
   </div>
 </template>
 <script>
-import {loginEmp, removeToken} from "@/assets/js/auth";
 import Cookies from "js-cookie";
-import {ajaxPost, popup} from "@/assets/js/common";
+import {popup} from "@/assets/js/common";
 import {editPwd} from "@/api/person/personApi";
+import {loginEmp, removeToken} from "@/utils/auth";
 
 export default {
   data() {

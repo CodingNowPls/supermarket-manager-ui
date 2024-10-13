@@ -12,3 +12,12 @@ export function setToken(token, expireTime) {
 export function removeToken() {
     return Cookies.remove(TokenKey)
 }
+
+export function loginEmp() {
+  let str = Cookies.get("employee")
+  return JSON.parse(str)
+}
+
+export function clearCookie(name) {
+  Cookies.remove(name)
+}

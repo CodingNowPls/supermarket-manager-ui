@@ -72,11 +72,10 @@
   </el-container>
 </template>
 <script>
-import {clearCookie, loginEmp} from "@/assets/js/auth";
-import {ajaxGet, ajaxPost, popup} from "@/assets/js/common";
+import {popup} from "@/assets/js/common";
 import {empMenu, exit} from "@/api/index/indexApi";
 import {logout} from "@/api/login/loginApi";
-import Cookies from "js-cookie";
+import {clearCookie, loginEmp} from "@/utils/auth";
 
 export default {
   data() {

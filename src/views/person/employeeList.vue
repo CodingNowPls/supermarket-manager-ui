@@ -611,7 +611,7 @@ import {
   queryRoleIdsByEid,
   saveRoleEmp,
 } from "@/api/system/roleApi";
-import {clearCookie, loginEmp} from "@/assets/js/auth";
+import {clearCookie, loginEmp} from "@/utils/auth";
 
 export default {
   data() {
@@ -888,7 +888,6 @@ export default {
       })
         .then(() => {
           resetPwd(this.resetPwdForm).then((res) => {
-
             if (res.code == 200) {
               this.resetPwdVisable = false;
               var emp = loginEmp();

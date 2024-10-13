@@ -132,7 +132,7 @@ import {listByQo} from "@/api/person/deptApi";
 import {popup} from "@/assets/js/common";
 import {queryInformation} from "@/api/person/personApi";
 import {update} from "@/api/person/empApi";
-import {loginEmp} from "@/assets/js/auth";
+import {loginEmp} from "@/utils/auth";
 
 export default {
   data() {
