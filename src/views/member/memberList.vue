@@ -372,7 +372,7 @@ import {
   queryPointProductByGoodsId,
   queryPointProductBymemberId,
   saveExchangePointProductRecords,
-} from "@/api/sale/pointRedemptionHistorysApi";
+} from "@/api/sale/pointRedemptionApi";
 
 export default {
   data() {

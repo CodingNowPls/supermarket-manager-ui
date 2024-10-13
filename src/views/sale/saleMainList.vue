@@ -710,7 +710,7 @@ import {
   queryPointProductByGoodsId,
   queryPointProductBymemberId,
   saveExchangePointProductRecords,
-} from "@/api/sale/pointRedemptionHistorysApi";
+} from "@/api/sale/pointRedemptionApi";
 
 export default {
   data() {
@@ -920,7 +920,7 @@ export default {
     },
     exchangePointProductsRecordsBtn() {
       this.$router.push(
-          "/sale/pointRedemptionHistory"
+          "/sale/pointRedemption"
       );
     },
     submitNewForm(formName) {

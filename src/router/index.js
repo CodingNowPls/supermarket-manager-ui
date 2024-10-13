@@ -134,9 +134,9 @@ const routes = [
             },
 
             {
-                path: '/sale/pointRedemptionHistory',
-                name: 'pointRedemptionHistory',
-                component: () => import('@/views/sale/pointRedemptionHistory.vue')
+                path: '/sale/pointRedemption',
+                name: 'pointRedemption',
+                component: () => import('@/views/sale/pointRedemption.vue')
             },
 
         ]

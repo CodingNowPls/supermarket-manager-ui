@@ -128,7 +128,7 @@ import {
   delExchangePointProducts,
   queryOptionsMemberPhone,
   queryPageByQoExchangePointProducts,
-} from "@/api/sale/pointRedemptionHistorysApi";
+} from "@/api/sale/pointRedemptionApi";
 
 export default {
   data() {
