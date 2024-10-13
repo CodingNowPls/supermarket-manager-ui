@@ -50,7 +50,7 @@ export function checkPermissons(rid) {
 /*保存角色-权限关系*/
 export function saveRolePermissons(data) {
   return request({
-    url: apiPrefix + "/checkPermissons",
+    url: apiPrefix + "/saveRolePermissions",
     method: 'post',
     data: data
   })
