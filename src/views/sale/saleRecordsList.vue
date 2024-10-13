@@ -380,7 +380,7 @@ import {popup} from "@/assets/js/common";
 import {
   delSaleRecords,
   queryPageByQoSaleRecords,
-} from "@/api/sale/saleRecordsApi";
+} from "@/api/sale/saleRecordApi";
 
 export default {
   data() {

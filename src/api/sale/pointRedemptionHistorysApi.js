@@ -1,6 +1,6 @@
-import {ajaxGet, ajaxJson, ajaxPost} from "@/assets/js/common";
-
-const apiPrefix = '/sale/exchange_point_products_records'
+import {ajaxGet, ajaxPost} from "@/assets/js/common";
+// 积分兑换历史记录
+const apiPrefix = '/sale/pointRedemptionHistory'
 
 export function queryPointProductBymemberId(data) {
     return ajaxGet(apiPrefix + "/queryPointProductBymemberId", data)

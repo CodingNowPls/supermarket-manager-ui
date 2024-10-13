@@ -699,7 +699,7 @@ import {
   getCn,
   getOptionSaleRecordsGoods,
   saveSaleRecords,
-} from "@/api/sale/saleRecordsApi";
+} from "@/api/sale/saleRecordApi";
 import {queryGoodsById} from "@/api/goods/goodsApi";
 import {queryMemberByPhone} from "@/api/member/memberApi";
 import {
