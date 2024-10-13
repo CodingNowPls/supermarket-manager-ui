@@ -1,43 +1,77 @@
-import {ajaxGet, ajaxPost} from "@/assets/js/common";
+import request from "@/utils/request";
+
 // 积分兑换历史记录
 const apiPrefix = '/sale/pointRedemption'
 
 export function queryPointProductBymemberId(data) {
-    return ajaxGet(apiPrefix + "/queryPointProductBymemberId", data)
+  return request({
+    url: apiPrefix + "/queryPointProductBymemberId",
+    method: 'get',
+    data: data
+  })
 }
 
 export function queryMemberByGoodsId(data) {
-    return ajaxGet(apiPrefix + "/queryMemberByGoodsId", data)
+  return request({
+    url: apiPrefix + "/queryMemberByGoodsId",
+    method: 'get',
+    data: data
+  })
 }
 
 export function queryPointProductByGoodsId(data) {
-    return ajaxGet(apiPrefix + "/queryPointProductByGoodsId", data)
+  return request({
+    url: apiPrefix + "/queryPointProductByGoodsId",
+    method: 'get',
+    data: data
+  })
 }
 
 export function savePointRedemptionRecords(data) {
-    return ajaxPost(apiPrefix + "/savePointRedemptionRecords", data)
+  return request({
+    url: apiPrefix + "/savePointRedemptionRecords",
+    method: 'post',
+    data: data
+  })
 }
 
 
 export function queryOptionsMemberPhone() {
-    return ajaxGet(apiPrefix + "/queryOptionsMemberPhone", {})
+  return request({
+    url: apiPrefix + "/queryOptionsMemberPhone",
+    method: 'get'
+  })
 }
 
 export function queryPageByQoExchangePointProducts(data) {
-    return ajaxPost(apiPrefix + "/queryPageByQoExchangePointProducts", data)
+  return request({
+    url: apiPrefix + "/queryPageByQoExchangePointProducts",
+    method: 'post',
+    data: data
+  })
 }
 
 
 export function delExchangePointProducts(data) {
-    return ajaxGet(apiPrefix + "/delExchangePointProducts", data)
+  return request({
+    url: apiPrefix + "/delExchangePointProducts",
+    method: 'get',
+    data: data
+  })
 }
 
 
 export function queryOptionsPointProducts() {
-    return ajaxGet(apiPrefix + "/queryOptionsPointProducts", {})
+  return request({
+    url: apiPrefix + "/queryOptionsPointProducts",
+    method: 'get'
+  })
 }
 
 export function queryOptionsMember() {
-    return ajaxGet(apiPrefix + "/queryOptionsMember", {})
+  return request({
+    url: apiPrefix + "/queryOptionsMember",
+    method: 'get'
+  })
 }
 

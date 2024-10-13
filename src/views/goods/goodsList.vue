@@ -629,7 +629,6 @@ export default {
   methods: {
     normalCategoryAll() {
       getNormalCategoryAll().then((res) => {
-        res = res.data;
         if (res.code == 200) {
           this.options_category = res.data;
         }
@@ -637,8 +636,7 @@ export default {
     },
     normalStoreAll() {
       selected_storeAll().then((res) => {
-        res = res.data;
-        if (res.code == 200) {
+        if (res.code = 200) {
           this.options_store = res.data;
         }
       });
@@ -655,7 +653,6 @@ export default {
         return;
       }
       queryPageByQo(this.searchForm).then((res) => {
-        res = res.data;
         if (res.code == 200) {
           this.tableData = res.data.records;
           this.searchForm.total = res.data.total;
@@ -707,7 +704,6 @@ export default {
         if (valid) {
           this.newForm.coverUrl = this.imageUrl;
           save(this.newForm).then((res) => {
-            res = res.data;
             if (res.code == 200) {
               popup("操作成功");
               this.newForm = {};
@@ -740,7 +736,6 @@ export default {
       )
           .then(() => {
             upOrdown({gid: gid, state: state}).then((res) => {
-              res = res.data;
               if (res.code == 200) {
                 if (state == "0") {
                   popup("下架成功");
@@ -771,7 +766,6 @@ export default {
         if (valid) {
           this.editForm.coverUrl = this.imageUrl;
           update(this.editForm).then((res) => {
-            res = res.data;
             if (res.code == 200) {
               popup("操作成功");
               this.editForm = {};
@@ -792,7 +786,6 @@ export default {
     },
     editBtn(id) {
       queryGoodsById({id: id}).then((res) => {
-        res = res.data;
         if (res.code == 200) {
           this.editForm = {
             id: res.data.id,
@@ -824,7 +817,6 @@ export default {
         storeId: "",
       };
       queryGoodsById({id: id}).then((res) => {
-        res = res.data;
         if (res.code == 200) {
           this.returnForm.goodsId = res.data.id;
           this.returnForm.goodsName = res.data.name;
@@ -844,7 +836,6 @@ export default {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           returnGoods(this.returnForm).then((res) => {
-            res = res.data;
             if (res.code == 200) {
               popup("退还成功");
               this.returnVisible = false;

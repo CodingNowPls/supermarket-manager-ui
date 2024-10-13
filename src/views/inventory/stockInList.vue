@@ -406,7 +406,7 @@ export default {
         return;
       }
       queryPageByQoIn(this.searchForm).then((res) => {
-        res = res.data;
+
         if (res.code == 200) {
           this.tableData = res.data.records;
           this.searchForm.total = res.data.total;
@@ -455,7 +455,7 @@ export default {
     },
     detailStoreGoodsIn_goodsAll() {
       selected_goodsAll().then((res) => {
-        res = res.data;
+
         if (res.code == 200) {
           this.options_goods = res.data;
         } else {
@@ -465,7 +465,7 @@ export default {
     },
     detailStoreGoodsIn_suppliers() {
       queryOptionsSuppliers().then((res) => {
-        res = res.data;
+
         if (res.code == 200) {
           this.options_suppliers = res.data;
         } else {
@@ -475,7 +475,7 @@ export default {
     },
     detailStoreGoodsIn_storeAll() {
       storeList({state: "0"}).then((res) => {
-        res = res.data;
+
         if (res.code == 200) {
           for (var item of res.data) {
             this.options_store.push({
@@ -493,7 +493,7 @@ export default {
         if (valid) {
           queryGoodsById({id: this.selectGoods.goodsId}).then(
               (res) => {
-                res = res.data;
+
                 if (res.code == 200) {
                   this.selectGoodsVisable = false;
                   this.newVisable = true;
@@ -524,7 +524,7 @@ export default {
             return;
           }
           saveIn(this.newForm).then((res) => {
-            res = res.data;
+
             if (res.code == 200) {
               popup("入库成功");
               this.init();
@@ -548,7 +548,7 @@ export default {
       })
           .then(() => {
             delIn({cn: cn}).then((res) => {
-              res = res.data;
+
               if (res.code == 200) {
                 popup("操作成功");
                 this.searchForm.state1 = "0";

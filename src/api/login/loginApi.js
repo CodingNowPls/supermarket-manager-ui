@@ -2,61 +2,35 @@ import request from '@/utils/request'
 import {encrypt} from '@/utils/jsencrypt'
 
 // 登录方法
-export function login(username, password, code, uuid) {
-    // 集成jsencrypt实现密码加密传输方式
-    password = encrypt(password);
-    const data = {
-        username,
-        password,
-        code,
-        uuid
-    }
-    return request({
-        url: '/login',
-        headers: {
-            isToken: false
-        },
-        method: 'post',
-        data: data
+export function login(data) {
+  // 集成jsencrypt实现密码加密传输方式
+  // password = encrypt(password);
+  return request({
+    url: '/login',
+    method: 'post',
+    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+    data: new URLSearchParams({
+      username: data.username,
+      password: data.password
     })
+  })
 }
 
-// 注册方法
-export function register(data) {
-    return request({
-        url: '/register',
-        headers: {
-            isToken: false
-        },
-        method: 'post',
-        data: data
-    })
-}
 
 // 获取用户详细信息
 export function getInfo() {
-    return request({
-        url: '/getInfo',
-        method: 'get'
-    })
+  return request({
+    url: '/getInfo',
+    method: 'get'
+  })
 }
 
 // 退出方法
-export function logout() {
-    return request({
-        url: '/logout',
-        method: 'post'
-    })
+export function logout(data) {
+  return request({
+    url: '/logout',
+    method: 'post',
+    data: data
+  })
 }
 
-// 获取验证码
-export function getCodeImg() {
-    return request({
-        url: '/captchaImage',
-        headers: {
-            isToken: false
-        },
-        method: 'get',
-        timeout: 20000
-    })
-}

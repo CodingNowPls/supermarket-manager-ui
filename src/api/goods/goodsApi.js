@@ -1,4 +1,3 @@
-import {ajaxGet, ajaxPost} from "@/assets/js/common";
 import request from '@/utils/request'
 
 const apiPrefix = '/goods/goods'

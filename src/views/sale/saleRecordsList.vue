@@ -408,7 +408,7 @@ export default {
         return;
       }
       queryPageByQoSaleRecords(this.searchForm).then((res) => {
-        res = res.data;
+
         if (res.code == 200) {
           this.tableData = res.data.records;
           this.searchForm.total = res.data.total;
@@ -427,7 +427,7 @@ export default {
       })
           .then(() => {
             delSaleRecords({cn: cn}).then((res) => {
-              res = res.data;
+
               if (res.code == 200) {
                 popup("操作成功");
                 this.init();

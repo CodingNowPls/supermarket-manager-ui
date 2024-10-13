@@ -1,24 +1,43 @@
 import {ajaxGet, ajaxJson, ajaxPost} from "@/assets/js/common";
+import request from "@/utils/request";
 
 const apiPrefix = '/sale/saleRecord'
 // 销售记录
 /*得到订单号*/
 export function getCn() {
-    return ajaxGet(apiPrefix + "/getCn", {})
+  return request({
+    url: apiPrefix + "/getCn",
+    method: 'get'
+  })
 }
 
 export function getOptionSaleRecordsGoods() {
-    return ajaxGet(apiPrefix + "/getOptionSaleRecordsGoods", {})
+  return request({
+    url: apiPrefix + "/getOptionSaleRecordsGoods",
+    method: 'get'
+  })
 }
 
 export function saveSaleRecords(data) {
-    return ajaxJson(apiPrefix + "/saveSaleRecords", data)
+  return request({
+    url: apiPrefix + "/saveSaleRecords",
+    method: 'post',
+    data: data
+  })
 }
 
 export function queryPageByQoSaleRecords(data) {
-    return ajaxPost(apiPrefix + "/queryPageByQoSaleRecords", data)
+  return request({
+    url: apiPrefix + "/queryPageByQoSaleRecords",
+    method: 'post',
+    data: data
+  })
 }
 
 export function delSaleRecords(data) {
-    return ajaxGet(apiPrefix + "/delSaleRecords", data)
+  return request({
+    url: apiPrefix + "/delSaleRecords",
+    method: 'get',
+    data: data
+  })
 }

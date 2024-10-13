@@ -200,7 +200,7 @@ export default {
   methods: {
     init() {
       queryPageByQo(this.searchForm).then((res) => {
-        res = res.data;
+
         if (res.code == 200) {
           console.log(res.data);
           this.tableData = res.data.records;
@@ -228,7 +228,7 @@ export default {
     },
     editBtn(id) {
       queryGoodsStoreById({id: id}).then((res) => {
-        res = res.data;
+
         if (res.code == 200) {
           this.editForm = {...res.data};
           this.editVisible = true;
@@ -241,7 +241,7 @@ export default {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           updateInventory(this.editForm).then((res) => {
-            res = res.data;
+
             if (res.code == 200) {
               popup("更新成功");
               this.editForm = {};

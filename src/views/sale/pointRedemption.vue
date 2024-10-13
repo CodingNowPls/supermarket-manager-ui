@@ -144,7 +144,7 @@ export default {
   methods: {
     queryOptionsMemberPhone() {
       queryOptionsMemberPhone().then((res) => {
-        res = res.data;
+
         if (res.code == 200) {
           this.options_memberPhone = res.data;
         } else {
@@ -158,7 +158,7 @@ export default {
         return;
       }
       queryPageByQoExchangePointProducts(this.searchForm).then((res) => {
-        res = res.data;
+
         if (res.code == 200) {
           this.tableData = res.data.records;
           this.searchForm.total = res.data.total;
@@ -177,7 +177,7 @@ export default {
       })
           .then(() => {
             delExchangePointProducts({cn: cn}).then((res) => {
-              res = res.data;
+
               if (res.code == 200) {
                 popup("操作成功");
                 this.init();

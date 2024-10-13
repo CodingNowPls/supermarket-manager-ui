@@ -304,7 +304,7 @@ export default {
     },
     init() {
       queryPageSupplier(this.searchForm).then((res) => {
-        res = res.data;
+
         if (res.code == 200) {
           this.tableData = res.data.records;
           this.searchForm.total = res.data.total;
@@ -333,7 +333,7 @@ export default {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           saveSupplier(this.newForm).then((res) => {
-            res = res.data;
+
             if (res.code == 200) {
               popup("添加成功");
               this.newVisable = false;
@@ -354,7 +354,7 @@ export default {
       })
           .then(() => {
             delSupplier({cn: cn}).then((res) => {
-              res = res.data;
+
               if (res.code == 200) {
                 popup("删除成功");
                 this.init();
@@ -372,7 +372,7 @@ export default {
     },
     editBtn(cn) {
       queryByCn({cn: cn}).then((res) => {
-        res = res.data;
+
         if (res.code == 200) {
           this.editForm = {...res.data};
           this.editVisable = true;
@@ -385,7 +385,7 @@ export default {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           updateSupplier(this.editForm).then((res) => {
-            res = res.data;
+
             if (res.code == 200) {
               popup("修改成功");
               this.editVisable = false;

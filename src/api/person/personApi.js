@@ -1,7 +1,10 @@
-import {ajaxGet} from "@/assets/js/common";
+import request from "@/utils/request";
 
 const apiPrefix = '/person'
 
 export function queryInformation() {
-    return ajaxGet(apiPrefix + "/information", {})
+  return request({
+    url: apiPrefix + "/information",
+    method: 'get'
+  })
 }

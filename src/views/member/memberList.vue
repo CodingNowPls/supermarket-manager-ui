@@ -428,7 +428,7 @@ export default {
   methods: {
     init() {
       queryPageByQo(this.searchForm).then((res) => {
-        res = res.data;
+
         if (res.code == 200) {
           console.log(res.data);
           this.tableData = res.data.records;
@@ -463,7 +463,7 @@ export default {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           save(this.newForm).then((res) => {
-            res = res.data;
+
             if (res.code == 200) {
               popup("操作成功");
               this.newForm = {};
@@ -478,7 +478,7 @@ export default {
     },
     editBtn(id) {
       queryMemberById({id: id}).then((res) => {
-        res = res.data;
+
         if (res.code == 200) {
           this.editForm = {...res.data};
           this.editVisable = true;
@@ -491,7 +491,7 @@ export default {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           update(this.editForm).then((res) => {
-            res = res.data;
+
             if (res.code == 200) {
               popup("操作成功");
               this.editForm = {};
@@ -517,7 +517,7 @@ export default {
       })
           .then(() => {
             delMember({id: id}).then((res) => {
-              res = res.data;
+
               if (res.code == 200) {
                 popup("操作成功");
                 this.searchForm.state = "0";
@@ -543,7 +543,7 @@ export default {
         integral: "",
       }),
           queryPointProductBymemberId({memberId: id}).then((res) => {
-            res = res.data;
+
             if (res.code == 200) {
               this.options_pointProducts = res.data;
               if (!this.options_pointProducts.length) {
@@ -563,7 +563,7 @@ export default {
           savePointRedemptionRecords(
               this.pointProductsForm
           ).then((res) => {
-            res = res.data;
+
             if (res.code == 200) {
               popup("兑换成功");
               this.pointProductsForm = {};
@@ -583,7 +583,7 @@ export default {
     },
     queryPointProductByGoodsId(goodsId) {
       queryPointProductByGoodsId({goodsId: goodsId}).then((res) => {
-        res = res.data;
+
         if (res.code == 200) {
           if (!res.data) {
             this.pointProductsForm = {

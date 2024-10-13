@@ -263,7 +263,6 @@ export default {
   methods: {
     init() {
       queryPageByQo(this.searchForm).then((res) => {
-        res = res.data;
         if (res.code == 200) {
           console.log(res.data);
           this.tableData = res.data.records;
@@ -293,7 +292,6 @@ export default {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           save(this.newForm).then((res) => {
-            res = res.data;
             if (res.code == 200) {
               popup("操作成功");
               this.newForm = {};
@@ -319,7 +317,6 @@ export default {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           update(this.editForm).then((res) => {
-            res = res.data;
             if (res.code == 200) {
               popup("操作成功");
               this.editForm = {};
@@ -338,7 +335,6 @@ export default {
     /*停用业务*/
     forbidden(sid) {
       deactivate(sid).then((res) => {
-        res = res.data;
         if (res.code == 200) {
           popup("操作成功");
           this.searchForm.currentPage = 1;

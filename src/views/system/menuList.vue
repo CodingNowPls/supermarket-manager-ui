@@ -156,7 +156,7 @@ export default {
   methods: {
     init() {
       queryPageByQo(this.searchForm).then((res) => {
-        res = res.data;
+
         if (res.code == 200) {
           console.log(res.data);
           this.tableData = res.data.records;

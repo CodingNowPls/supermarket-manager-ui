@@ -315,7 +315,7 @@ export default {
     },
     init() {
       roleList(this.roleSearchForm).then((res) => {
-        res = res.data;
+
         if ((res.code = 200)) {
           this.tableData = res.data;
         } else {
@@ -325,7 +325,7 @@ export default {
     },
     forbidden(id) {
       forbiddenRole(id).then((res) => {
-        res = res.data;
+
         if (res.code == 200) {
           this.roleSearchForm.state = "0";
           this.init();
@@ -356,7 +356,7 @@ export default {
         return;
       }
       edit_role(this.editRoleForm).then((res) => {
-        res = res.data;
+
         if (res.code == 200) {
           popup("操作成功");
           this.editRoleForm = {};
@@ -379,7 +379,7 @@ export default {
         if (valid) {
           console.log(this.newRoleForm);
           save_role(this.newRoleForm).then((res) => {
-            res = res.data;
+
             if (res.code == 200) {
               popup("操作成功");
               this.newRoleForm = {};
@@ -401,7 +401,7 @@ export default {
       this.distributionFulForm.rid = rid;
       this.default_checked_mid = [];
       checkPermissons(rid).then((res) => {
-        res = res.data;
+
         if (res.code == 200) {
           this.fuloptions = res.data.menus;
           this.default_checked_mid = res.data.menuIds.sort(
@@ -422,7 +422,7 @@ export default {
       this.distributionFulForm.menuIds = v;
       console.log(this.distributionFulForm.menuIds);
       saveRolePermissons(this.distributionFulForm).then((res) => {
-        res = res.data;
+
         if (res.code == 200) {
           popup("操作成功");
           this.distributionFulVisable = false;

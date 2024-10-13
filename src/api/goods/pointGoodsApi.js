@@ -1,29 +1,52 @@
-import {ajaxGet, ajaxPost} from "@/assets/js/common";
+import request from "@/utils/request";
 
 const apiPrefix = '/goods/pointGoods'
 
 /*列表显示*/
 export function queryPageByQo(data) {
-    return ajaxPost(apiPrefix + "/queryPageByQo", data)
+  return request({
+    url: apiPrefix + "/queryPageByQo",
+    method: 'post',
+    data: data
+  })
 }
 
 export function del(data) {
-    return ajaxGet(apiPrefix + "/del", data)
+  return request({
+    url: apiPrefix + "/del",
+    method: 'get',
+    params: data
+  })
 }
 
 export function queryOptionGoods() {
-    return ajaxGet(apiPrefix + "/queryOptionGoods", {})
+  return request({
+    url: apiPrefix + "/queryOptionGoods",
+    method: 'get'
+  })
 }
 
 export function savePointGoods(data) {
-    return ajaxPost(apiPrefix + "/savePointGoods", data)
+  return request({
+    url: apiPrefix + "/savePointGoods",
+    method: 'post',
+    data: data
+  })
 }
 
 
 export function queryPointGoodsById(data) {
-    return ajaxGet(apiPrefix + "/queryPointGoodsById", data)
+  return request({
+    url: apiPrefix + "/queryPointGoodsById",
+    method: 'get',
+    params: data
+  })
 }
 
 export function updatePointGoods(data) {
-    return ajaxPost(apiPrefix + "/updatePointGoods", data)
+  return request({
+    url: apiPrefix + "/updatePointGoods",
+    method: 'post',
+    data: data
+  })
 }

@@ -788,7 +788,7 @@ export default {
           queryPointProductByGoodsId({
             goodsId: this.pointProductsForm.goodsId,
           }).then((res) => {
-            res = res.data;
+
             if (res.code == 200) {
               if (!res.data) {
                 this.pointProductsForm = {
@@ -823,7 +823,7 @@ export default {
       queryPointProductBymemberId({
         memberId: this.pointProductsForm.memberId,
       }).then((res) => {
-        res = res.data;
+
         if (res.code == 200) {
           this.options_pointProducts = res.data;
           if (!this.options_pointProducts.length) {
@@ -840,7 +840,7 @@ export default {
       queryMemberByGoodsId({
         goodsId: this.pointProductsForm.goodsId,
       }).then((res) => {
-        res = res.data;
+
         if (res.code == 200) {
           this.options_members = res.data;
           if (!this.options_members.length) {
@@ -855,7 +855,7 @@ export default {
     },
     queryOptionsPointProducts() {
       queryOptionsPointProducts().then((res) => {
-        res = res.data;
+
         if (res.code == 200) {
           this.options_pointProducts = res.data;
         } else {
@@ -865,7 +865,7 @@ export default {
     },
     queryOptionsMember() {
       queryOptionsMember().then((res) => {
-        res = res.data;
+
         if (res.code == 200) {
           this.options_members = res.data;
         } else {
@@ -879,7 +879,7 @@ export default {
           savePointRedemptionRecords(
               this.pointProductsForm
           ).then((res) => {
-            res = res.data;
+
             if (res.code == 200) {
               popup("兑换成功");
               this.pointProductsForm = {};
@@ -908,7 +908,7 @@ export default {
     },
     queryMemberByPhone(phone) {
       queryMemberByPhone({phone: phone}).then((res) => {
-        res = res.data;
+
         if (res.code != 200) {
           popup(res.msg, "error");
           this.newForm.memberPhone = "";
@@ -931,7 +931,7 @@ export default {
             return;
           }
           saveSaleRecords(this.newForm).then((res) => {
-            res = res.data;
+
             if (res.code == 200) {
               this.newForm = {...res.data};
               console.log(this.newForm);
@@ -999,7 +999,7 @@ export default {
     },
     addGoodsNum(row) {
       queryGoodsById({id: row.goodsId}).then((res) => {
-        res = res.data;
+
         if (res.code == 200) {
           if (row.goodsNum >= res.data.residueNum) {
             popup(
@@ -1052,7 +1052,7 @@ export default {
     },
     initOptionSaleRecordsAddGoodsAll() {
       getOptionSaleRecordsGoods().then((res) => {
-        res = res.data;
+
         if (res.code == 200) {
           this.options_saleRecordsAddGoods = res.data;
           if (this.options_saleRecordsAddGoods.length > 0) {
@@ -1108,7 +1108,7 @@ export default {
     },
     saleBtn() {
       getCn().then((res) => {
-        res = res.data;
+
         if (res.code == 200) {
           this.newForm.cn = res.data;
           this.newVisable = true;
@@ -1120,7 +1120,7 @@ export default {
     selectedAddGoods() {
       queryGoodsById({id: this.detailSaleRecords.goodsId}).then(
           (res) => {
-            res = res.data;
+
             if (res.code == 200) {
               this.detailSaleRecords.goodsPrice =
                   res.data.purchashPrice;

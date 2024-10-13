@@ -116,7 +116,7 @@ export default {
     init() {
       /*查询商品信息*/
       queryPageByQo(this.searchForm).then((res) => {
-        res = res.data;
+
         if (res.code == 200) {
           this.totalSalesVolume = res.data.total;
           this.tableData = res.data.vos.records;

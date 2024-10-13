@@ -121,7 +121,7 @@ export default {
               .then(() => {
                 ajaxPost("/person/editPwd", this.pwdForm).then(
                     (res) => {
-                      res = res.data;
+
                       if (res.code == 200) {
                         popup("密码修改成功,请重新登录...");
                         this.pwdForm = {

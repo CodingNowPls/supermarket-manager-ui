@@ -1,38 +1,67 @@
-import {ajaxGet, ajaxPost} from "@/assets/js/common";
+import request from "@/utils/request";
+
 
 const apiPrefix = '/person/employee'
 
 //获取仓库信息
 export function pageByQo(data) {
-    return ajaxPost(apiPrefix + "/list", data)
+  return request({
+    url: apiPrefix + "/list",
+    method: 'post',
+    data: data
+  })
 }
 
 /*保存*/
 export function save(data) {
-    return ajaxPost(apiPrefix + "/save", data)
+  return request({
+    url: apiPrefix + "/save",
+    method: 'post',
+    data: data
+  })
 }
 
 /*修改*/
 export function update(data) {
-    return ajaxPost(apiPrefix + "/update", data)
+  return request({
+    url: apiPrefix + "/update",
+    method: 'post',
+    data: data
+  })
 }
 
 /*离职*/
 export function deactivate(id) {
-    return ajaxPost(apiPrefix + "/deactivate", {id: id})
+  return request({
+    url: apiPrefix + "/deactivate",
+    method: 'post',
+    data: {id: id}
+  })
 }
 
 /*详情*/
 export function detail(id) {
-    return ajaxGet(apiPrefix + "/detail", {uid: id})
+  return request({
+    url: apiPrefix + "/detail",
+    method: 'get',
+    data: {uid: id}
+  })
 }
 
 /*修改按钮*/
 export function editBtnClick(id) {
-    return ajaxGet(apiPrefix + "/editbtn", {uid: id})
+  return request({
+    url: apiPrefix + "/editbtn",
+    method: 'get',
+    data: {uid: id}
+  })
 }
 
 /*重置密码*/
 export function resetPwd(data) {
-    return ajaxPost(apiPrefix + "/resetPwd", data)
+  return request({
+    url: apiPrefix + "/resetPwd",
+    method: 'post',
+    data: data
+  })
 }

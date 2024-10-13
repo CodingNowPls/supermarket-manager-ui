@@ -357,7 +357,7 @@ export default {
   methods: {
     queryOptionGoods() {
       queryOptionGoods().then((res) => {
-        res = res.data;
+
         if (res.code == 200) {
           this.options_goods = res.data;
         } else {
@@ -381,7 +381,7 @@ export default {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           queryGoodsById({id: this.newForm.goodsId}).then((res) => {
-            res = res.data;
+
             if (res.code == 200) {
               this.newForm.coverUrl = res.data.coverUrl;
               this.newForm.goodsName = res.data.name;
@@ -397,7 +397,7 @@ export default {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           savePointGoods(this.newForm).then((res) => {
-            res = res.data;
+
             if (res.code == 200) {
               popup("创建成功");
               this.newVisable = false;
@@ -415,7 +415,7 @@ export default {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           updatePointGoods(this.editForm).then((res) => {
-            res = res.data;
+
             if (res.code == 200) {
               popup("创建成功");
               this.editVisable = false;
@@ -449,7 +449,7 @@ export default {
       }),
           this.queryOptionGoods();
       queryPageByQo(this.searchForm).then((res) => {
-        res = res.data;
+
         if (res.code == 200) {
           this.tableData = res.data.records;
           this.searchForm.total = res.data.total;
@@ -483,7 +483,7 @@ export default {
       })
           .then(() => {
             del({id: cn}).then((res) => {
-              res = res.data;
+
               if (res.code == 200) {
                 popup("删除成功");
                 this.init();
@@ -501,7 +501,7 @@ export default {
     },
     editBtn(cn) {
       queryPointGoodsById({goodsId: cn}).then((res) => {
-        res = res.data;
+
         if (res.code == 200) {
           this.editVisable = true;
           this.editForm.goodsId = res.data.goodsId;
@@ -517,7 +517,7 @@ export default {
   mounted() {
     this.init();
     selected_goodsAll().then((res) => {
-      res = res.data;
+
       if (res.code == 200) {
         this.options_goods1 = res.data;
       } else {

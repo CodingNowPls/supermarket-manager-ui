@@ -213,7 +213,7 @@ export default {
   methods: {
     init() {
       queryPageByQo(this.searchForm).then((res) => {
-        res = res.data;
+
         if (res.code == 200) {
           this.totalStoreNum = res.data.totalStoreNum;
           this.tableData = res.data.page.records;
@@ -241,7 +241,7 @@ export default {
     },
     init1() {
       queryStoreGoodsByStoreId(this.searchDetailForm).then((res) => {
-        res = res.data;
+
         if (res.code == 200) {
           this.options_storeGoods = res.data.optionsStoreGoods;
           this.totalStoreNum1 = res.data.totalStoreNum1;

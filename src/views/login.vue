@@ -104,6 +104,7 @@ h3 {
 <script>
 import {ajaxPost, popup} from "@/assets/js/common";
 import Cookies from "js-cookie";
+import {login} from "@/api/login/loginApi";
 
 export default {
   data() {
@@ -140,9 +141,7 @@ export default {
     submitForm(formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          ajaxPost("/login", this.loginForm)
-              .then((res) => {
-                res = res.data;
+          login(this.loginForm).then((res) => {
                 if (res.code == 200) {
                   Cookies.set("token", res.data.token, {
                     expires: 1 / 48,

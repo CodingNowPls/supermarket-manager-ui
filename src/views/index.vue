@@ -74,6 +74,8 @@
 <script>
 import {clearCookie, loginEmp} from "@/assets/js/auth";
 import {ajaxGet, ajaxPost, popup} from "@/assets/js/common";
+import {empMenu, exit} from "@/api/index/indexApi";
+import {logout} from "@/api/login/loginApi";
 
 export default {
   data() {
@@ -100,13 +102,13 @@ export default {
     init() {
       this.isAdmin = loginEmp().isAdmin;
       this.loginName = loginEmp().nickName;
-      ajaxGet("/empMenu", {}).then((res) => {
-        res = res.data;
-        if (res.code == 200) {
+      empMenu("/empMenu", {}).then((res) => {
+        if (res.code === 200) {
           this.menu_catalogs = res.data;
         }
       });
     },
+
     /*个人资料*/
     informationBtn() {
       this.$router.push("/person/information");
@@ -119,8 +121,7 @@ export default {
         cancelButtonText: "取消",
         type: "warning",
       }).then(() => {
-        ajaxGet("/exit", this.pwdForm).then((res) => {
-          res = res.data;
+        exit(this.pwdForm).then((res) => {
           if (res.code == 200) {
             popup("成功退出系统...");
             clearCookie("employee");
@@ -131,12 +132,13 @@ export default {
           }
         });
       })
-          .catch(() => {
-            this.$message({
-              type: "info",
-              message: "已取消操作",
-            });
+        .catch(() => {
+          this.$message({
+            type: "info",
+            message: "已取消操作",
           });
+        });
+
     },
     /*注销账户*/
     logoutCel(formName) {
@@ -147,10 +149,7 @@ export default {
     logoutSubmit(formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          ajaxPost("/logout", {
-            content: this.logoutform.content,
-          }).then((res) => {
-            res = res.data;
+          logout({content: this.logoutform.content}).then((res) => {
             if (res.code == 200) {
               popup("注销成功");
               clearCookie("employee");
