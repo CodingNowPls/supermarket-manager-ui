@@ -20,7 +20,7 @@
             <el-dropdown-menu slot="dropdown">
               <el-dropdown-item @click.native="informationBtn">个人资料完善</el-dropdown-item>
               <el-dropdown-item @click.native="empExit">退出</el-dropdown-item>
-              <el-dropdown-item @click.native="logoutVisable = true">注销</el-dropdown-item>
+              <!--              <el-dropdown-item @click.native="logoutVisable = true">注销</el-dropdown-item>-->
             </el-dropdown-menu>
           </el-dropdown>
         </el-col>
