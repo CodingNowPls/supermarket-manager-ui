@@ -16,7 +16,7 @@ Vue.prototype.$axios = axios
 
 //ElementUI相关
 Vue.use(ElementUI)
-
+Vue.prototype.baseApi = process.env.VUE_APP_BASE_API
 
 Vue.config.productionTip = false
 
