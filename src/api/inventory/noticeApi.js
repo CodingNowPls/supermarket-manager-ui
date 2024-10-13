@@ -1,7 +1,7 @@
 import {ajaxGet, ajaxPost} from "@/assets/js/common";
 
 
-const apiPrefix = '/inventory_management/detail_store_goods/notice'
+const apiPrefix = '/inventory/stockDetail/notice'
 
 export function queryPageNoticeIn(data) {
     return ajaxPost(apiPrefix + "/queryPageNoticeIn", data)

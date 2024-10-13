@@ -1,6 +1,6 @@
 import {ajaxGet, ajaxPost} from "@/assets/js/common";
 
-const apiPrefix = '/personnel_management/employee'
+const apiPrefix = '/person/employee'
 
 //获取仓库信息
 export function pageByQo(data) {

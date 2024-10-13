@@ -1,8 +1,8 @@
 import {ajaxGet, ajaxPost} from "@/assets/js/common";
 
 
-const apiPrefix_in = '/inventory_management/detail_store_goods_in'
-const apiPrefix_out = '/inventory_management/detail_store_goods_out'
+const apiPrefix_in = '/inventory/stockIn'
+const apiPrefix_out = '/inventory/stockOut'
 /**入库模块**/
 
 /*入库保存*/

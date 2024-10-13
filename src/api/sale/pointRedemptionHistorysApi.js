@@ -1,6 +1,6 @@
 import {ajaxGet, ajaxJson, ajaxPost} from "@/assets/js/common";
 
-const apiPrefix = '/sale_management/exchange_point_products_records'
+const apiPrefix = '/sale/exchange_point_products_records'
 
 export function queryPointProductBymemberId(data) {
     return ajaxGet(apiPrefix + "/queryPointProductBymemberId", data)

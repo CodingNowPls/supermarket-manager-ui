@@ -1,6 +1,6 @@
 import {ajaxGet, ajaxPost} from "@/assets/js/common";
 
-const storeApiPrefix = '/inventory_management/store'
+const storeApiPrefix = '/inventory/warehouse'
 
 //获取仓库信息
 export function storeList(data) {

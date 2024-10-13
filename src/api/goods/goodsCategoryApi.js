@@ -1,6 +1,6 @@
 import {ajaxGet, ajaxPost} from "@/assets/js/common";
 
-const apiPrefix = '/goods_management/goods_category'
+const apiPrefix = '/goods/category'
 
 /*保存*/
 export function save(data) {

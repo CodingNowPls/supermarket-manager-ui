@@ -1,6 +1,6 @@
 import {ajaxGet, ajaxPost} from "@/assets/js/common";
 
-const apiPrefix = '/goods_management/goods_store'
+const apiPrefix = '/goods/stock'
 
 /*列表显示*/
 export function queryPageByQo(data) {

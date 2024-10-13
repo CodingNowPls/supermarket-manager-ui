@@ -1,6 +1,6 @@
 import {ajaxGet, ajaxPost} from "@/assets/js/common";
 
-const apiPrefix = '/inventory_management/supplier'
+const apiPrefix = '/inventory/supplier'
 
 //获取供货商信息
 export function queryPageSupplier(data) {

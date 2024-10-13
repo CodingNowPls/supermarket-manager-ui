@@ -1,6 +1,6 @@
 import {ajaxGet, ajaxJson, ajaxPost} from "@/assets/js/common";
 
-const apiPrefix = '/sale_management/sale_record'
+const apiPrefix = '/sale/sale_record'
 
 /*得到订单号*/
 export function getCn() {

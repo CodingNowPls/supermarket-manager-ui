@@ -1,6 +1,6 @@
 import {ajaxGet, ajaxPost} from "@/assets/js/common";
 
-const apiPrefix = '/member_management/member'
+const apiPrefix = '/member/member'
 
 /*列表显示*/
 export function queryPageByQo(data) {
