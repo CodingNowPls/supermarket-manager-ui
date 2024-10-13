@@ -119,7 +119,7 @@ export default {
             type: "warning",
           })
               .then(() => {
-                ajaxPost("/personal/edit_pwd", this.pwdForm).then(
+                ajaxPost("/person/editPwd", this.pwdForm).then(
                     (res) => {
                       res = res.data;
                       if (res.code == 200) {

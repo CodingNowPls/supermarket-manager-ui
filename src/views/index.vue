@@ -109,7 +109,7 @@ export default {
     },
     /*个人资料*/
     informationBtn() {
-      this.$router.push("/personal/information");
+      this.$router.push("/person/information");
       popup("请完善个人的资料");
     },
     /*账户退出*/
