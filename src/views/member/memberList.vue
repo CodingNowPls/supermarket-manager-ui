@@ -4,8 +4,7 @@
       <el-breadcrumb-item>首页</el-breadcrumb-item>
       <el-breadcrumb-item>会员管理</el-breadcrumb-item>
       <el-breadcrumb-item>会员信息</el-breadcrumb-item>
-    </el-breadcrumb
-    >
+    </el-breadcrumb>
     <br/>
 
     <el-row>
@@ -17,11 +16,10 @@
       </el-col>
       <el-col :span="8">
         <el-select
-            v-model="searchForm.state"
-            @change="$forceUpdate()"
-            placeholder="状态"
-            clearable
-        >
+          v-model="searchForm.state"
+          @change="$forceUpdate()"
+          placeholder="状态"
+          clearable>
           <el-option label="正常" value="0"></el-option>
           <el-option label="删除" value="1"></el-option>
         </el-select>
@@ -31,20 +29,17 @@
     <el-row>
       <el-col :span="24" style="text-align: left">
         <el-button
-            type="primary"
-            @click="submitSearchForm"
-            style="font-size: 18px"
-        >
+          type="primary"
+          @click="submitSearchForm"
+          style="font-size: 18px">
           <i class="iconfont icon-r-find" style="font-size: 18px">
           </i>
           搜索
-        </el-button
-        >
+        </el-button>
         <el-button
-            type="success"
-            @click="newVisable = true"
-            style="font-size: 18px"
-        >
+          type="success"
+          @click="newVisable = true"
+          style="font-size: 18px">
           <i class="iconfont icon-r-add" style="font-size: 18px"> </i>
           录入会员
         </el-button>
@@ -57,10 +52,9 @@
         <el-table-column prop="phone" label="手机号"></el-table-column>
         <el-table-column prop="name" label="姓名"></el-table-column>
         <el-table-column
-            prop="email"
-            :show-overflow-tooltip="true"
-            label="邮箱"
-        >
+          prop="email"
+          :show-overflow-tooltip="true"
+          label="邮箱">
         </el-table-column>
         <el-table-column prop="integral" label="积分">
         </el-table-column>
@@ -68,130 +62,121 @@
           <template v-slot="scope">
             <el-tag v-if="scope.row.state == '0'" type="success"
             >正常
-            </el-tag
-            >
+            </el-tag>
             <el-tag v-else type="danger">删除</el-tag>
           </template>
         </el-table-column>
         <el-table-column
-            prop="info"
-            :show-overflow-tooltip="true"
-            label="备注"
-        >
+          prop="info"
+          :show-overflow-tooltip="true"
+          label="备注">
         </el-table-column>
         <el-table-column label="操作" width="420" fixed="right">
           <template v-slot="scope">
             <el-button
-                v-if="scope.row.state == '0'"
-                type="warning"
-                @click="exchangeProductsBtn(scope.row.id)"
-                style="font-size: 18px"
-            >
+              v-if="scope.row.state == '0'"
+              type="warning"
+              @click="exchangeProductsBtn(scope.row.id)"
+              style="font-size: 18px">
               <i
-                  class="iconfont icon-r-refresh"
-                  style="font-size: 18px"
+                class="iconfont icon-r-refresh"
+                style="font-size: 18px"
               ></i>
               积分兑换
             </el-button>
             <el-button
-                type="success"
-                @click="editBtn(scope.row.id)"
-                style="font-size: 18px"
-            >
+              type="success"
+              @click="editBtn(scope.row.id)"
+              style="font-size: 18px">
               <i
-                  class="iconfont icon-r-edit"
-                  style="font-size: 18px"
+                class="iconfont icon-r-edit"
+                style="font-size: 18px"
               ></i>
               修改
             </el-button
             >
             <el-button
-                type="danger"
-                @click="delBtn(scope.row.id)"
-                style="font-size: 18px"
-            >
+              type="danger"
+              @click="delBtn(scope.row.id)"
+              style="font-size: 18px">
               <i
-                  class="iconfont icon-r-delete"
-                  style="font-size: 18px"
+                class="iconfont icon-r-delete"
+                style="font-size: 18px"
               ></i>
               删除
-            </el-button
-            >
+            </el-button>
           </template>
         </el-table-column>
       </el-table>
       <div style="margin: 10px 0 15px 0">
         <el-pagination
-            @size-change="handleSizeChange"
-            @current-change="handleCurrentChange"
-            :current-page.sync="searchForm.currentPage"
-            :page-sizes="[5, 10, 20, 50]"
-            :page-size="searchForm.pageSize"
-            layout="total,sizes, prev, pager, next,jumper"
-            :total="searchForm.total"
-        >
+          @size-change="handleSizeChange"
+          @current-change="handleCurrentChange"
+          :current-page.sync="searchForm.currentPage"
+          :page-sizes="[5, 10, 20, 50]"
+          :page-size="searchForm.pageSize"
+          layout="total,sizes, prev, pager, next,jumper"
+          :total="searchForm.total">
         </el-pagination>
       </div>
     </div>
 
     <!--录入-->
     <el-dialog
-        title="录入会员"
-        :visible.sync="newVisable"
-        label-width="200"
-        width="50%"
+      title="录入会员"
+      :visible.sync="newVisable"
+      label-width="200"
+      width="50%"
     >
       <el-form
-          :model="newForm"
-          :rules="rules"
-          ref="newForm"
-          label-width="100px"
-          class="demo-ruleForm"
+        :model="newForm"
+        :rules="rules"
+        ref="newForm"
+        label-width="100px"
+        class="demo-ruleForm"
       >
         <el-form-item label="号码：" prop="phone">
           <el-input
-              max="11"
-              placeholder="请输入手机号"
-              v-model="newForm.phone"
+            max="11"
+            placeholder="请输入手机号"
+            v-model="newForm.phone"
           ></el-input>
         </el-form-item>
 
         <el-form-item label="姓名：" prop="name">
           <el-input
-              v-model="newForm.name"
-              placeholder="请输入姓名"
+            v-model="newForm.name"
+            placeholder="请输入姓名"
           ></el-input>
         </el-form-item>
         <el-form-item label="邮箱：">
           <el-input
-              v-model="newForm.email"
-              placeholder="如：xxx@qq.com"
+            v-model="newForm.email"
+            placeholder="如：xxx@qq.com"
           ></el-input>
         </el-form-item>
         <el-form-item label="备注：">
           <el-input
-              type="textarea"
-              v-model="newForm.info"
-              placeholder="如：新会员"
+            type="textarea"
+            v-model="newForm.info"
+            placeholder="如：新会员"
           ></el-input>
         </el-form-item>
         <el-form-item>
           <el-button
-              type="primary"
-              @click="submitNewForm('newForm')"
-              style="font-size: 18px"
-          >
+            type="primary"
+            @click="submitNewForm('newForm')"
+            style="font-size: 18px">
             <i
-                class="iconfont icon-r-yes"
-                style="font-size: 18px"
+              class="iconfont icon-r-yes"
+              style="font-size: 18px"
             ></i>
             提交
           </el-button
           >
           <el-button
-              @click="saveCancel('newForm')"
-              style="font-size: 18px"
-          >
+            @click="saveCancel('newForm')"
+            style="font-size: 18px">
             取消
           </el-button
           >
@@ -200,81 +185,76 @@
     </el-dialog>
     <!--修改-->
     <el-dialog
-        title="修改会员"
-        :visible.sync="editVisable"
-        size="mini"
-        label-width="200"
-        width="50%"
-    >
+      title="修改会员"
+      :visible.sync="editVisable"
+      size="mini"
+      label-width="200"
+      width="50%">
       <el-form
-          :model="editForm"
-          :rules="rules"
-          ref="editForm"
-          label-width="100px"
-          class="demo-ruleForm"
-      >
+        :model="editForm"
+        :rules="rules"
+        ref="editForm"
+        label-width="100px"
+        class="demo-ruleForm">
         <el-form-item label="号码：" prop="phone">
           <el-input
-              max="11"
-              placeholder="请输入手机号"
-              v-model="editForm.phone"
+            max="11"
+            placeholder="请输入手机号"
+            v-model="editForm.phone"
           ></el-input>
         </el-form-item>
         <el-form-item label="姓名：" prop="name">
           <el-input
-              v-model="editForm.name"
-              placeholder="请输入姓名"
+            v-model="editForm.name"
+            placeholder="请输入姓名"
           ></el-input>
         </el-form-item>
         <el-form-item label="邮箱：">
           <el-input
-              v-model="editForm.email"
-              placeholder="如：xxx@qq.com"
+            v-model="editForm.email"
+            placeholder="如：xxx@qq.com"
           ></el-input>
         </el-form-item>
         <el-form-item label="积分：">
           <el-input
-              v-model="editForm.integral"
-              placeholder="如：10"
+            v-model="editForm.integral"
+            placeholder="如：10"
           ></el-input>
         </el-form-item>
         <el-form-item label="备注：">
           <el-input
-              type="textarea"
-              v-model="editForm.info"
-              placeholder="如：新会员"
+            type="textarea"
+            v-model="editForm.info"
+            placeholder="如：新会员"
           ></el-input>
         </el-form-item>
         <el-form-item label="状态：" prop="state">
           <el-select
-              v-model="editForm.state"
-              placeholder="请选择状态"
-              filterable
-              @change="$forceUpdate()"
-              clearable
-          >
+            v-model="editForm.state"
+            placeholder="请选择状态"
+            filterable
+            @change="$forceUpdate()"
+            clearable>
             <el-option label="正常" value="0"></el-option>
             <el-option label="删除" value="1"></el-option>
           </el-select>
         </el-form-item>
         <el-form-item>
           <el-button
-              type="primary"
-              @click="submitEditForm('editForm')"
-              style="font-size: 18px"
-          >
+            type="primary"
+            @click="submitEditForm('editForm')"
+            style="font-size: 18px">
             <i
-                class="iconfont icon-r-yes"
-                style="font-size: 18px"
+              class="iconfont icon-r-yes"
+              style="font-size: 18px"
             ></i>
             提交
           </el-button
           >
           <el-button
-              type="info"
-              @click="resetEditForm('editForm')"
-              style="font-size: 18px"
-          >
+            type="info"
+            @click="resetEditForm('editForm')"
+            style="font-size: 18px">
             关闭
           </el-button
           >
@@ -283,77 +263,69 @@
     </el-dialog>
     <!--积分商品-->
     <el-dialog
-        title="兑换积分商品"
-        :visible.sync="pointProductsVisable"
-        label-width="200"
-        width="40%"
-    >
+      title="兑换积分商品"
+      :visible.sync="pointProductsVisable"
+      label-width="200"
+      width="40%">
       <el-form
-          :model="pointProductsForm"
-          :rules="rules"
-          ref="pointProductsForm"
-          class="demo-ruleForm"
-      >
+        :model="pointProductsForm"
+        :rules="rules"
+        ref="pointProductsForm"
+        class="demo-ruleForm">
         <el-form-item v-if="pointProductsForm.goodsId">
           <img
-              width="100px"
-              :src="BaseApi + pointProductsForm.coverUrl"
-              alt="商品图片"
+            width="100px"
+            :src="BaseApi + pointProductsForm.coverUrl"
+            alt="商品图片"
           />
         </el-form-item>
         <el-form-item label="积分商品：" prop="goodsId">
           <el-select
-              @change="
+            @change="
                             queryPointProductByGoodsId(
                                 pointProductsForm.goodsId
                             )
                         "
-              v-model="pointProductsForm.goodsId"
-              placeholder="请选择积分商品"
-              filterable
-              clearable
-          >
+            v-model="pointProductsForm.goodsId"
+            placeholder="请选择积分商品"
+            filterable
+            clearable>
             <el-option
-                v-for="item in options_pointProducts"
-                :key="item.id"
-                :label="item.name"
-                :value="item.id"
-            >
+              v-for="item in options_pointProducts"
+              :key="item.id"
+              :label="item.name"
+              :value="item.id">
             </el-option>
           </el-select>
         </el-form-item>
         <el-form-item
-            v-if="pointProductsForm.goodsId"
-            label="所需积分："
-        >
+          v-if="pointProductsForm.goodsId"
+          label="所需积分：">
           <el-input
-              disabled
-              type="number"
-              v-model="pointProductsForm.integral"
-              placeholder="所需积分"
+            disabled
+            type="number"
+            v-model="pointProductsForm.integral"
+            placeholder="所需积分"
           />
         </el-form-item>
         <el-form-item>
           <el-button
-              v-if="pointProductsForm.goodsId"
-              type="warning"
-              @click="submitPointProductsForm('pointProductsForm')"
-              style="font-size: 18px"
-          >
+            v-if="pointProductsForm.goodsId"
+            type="warning"
+            @click="submitPointProductsForm('pointProductsForm')"
+            style="font-size: 18px">
             <i
-                class="iconfont icon-r-yes"
-                style="font-size: 18px"
+              class="iconfont icon-r-yes"
+              style="font-size: 18px"
             ></i>
             兑换
           </el-button>
           <el-button
-              type="info"
-              @click="closePointProductsForm"
-              style="font-size: 18px"
-          >
+            type="info"
+            @click="closePointProductsForm"
+            style="font-size: 18px">
             关闭
-          </el-button
-          >
+          </el-button>
         </el-form-item>
       </el-form>
     </el-dialog>
@@ -435,8 +407,6 @@ export default {
           this.searchForm.total = res.data.total;
           this.searchForm.pageSize = res.data.size;
           this.searchForm.currentPage = res.data.current;
-        } else {
-          popup(res.msg, "error");
         }
       });
     },
@@ -469,8 +439,6 @@ export default {
               this.newForm = {};
               this.newVisable = false;
               this.init();
-            } else {
-              popup(res.msg, "error");
             }
           });
         }
@@ -482,8 +450,6 @@ export default {
         if (res.code == 200) {
           this.editForm = {...res.data};
           this.editVisable = true;
-        } else {
-          popup(res.msg, "error");
         }
       });
     },
@@ -497,8 +463,6 @@ export default {
               this.editForm = {};
               this.editVisable = false;
               this.init();
-            } else {
-              popup(res.msg, "error");
             }
           });
         }
@@ -515,24 +479,21 @@ export default {
         cancelButtonText: "取消",
         type: "warning",
       })
-          .then(() => {
-            delMember({id: id}).then((res) => {
-
-              if (res.code == 200) {
-                popup("操作成功");
-                this.searchForm.state = "0";
-                this.init();
-              } else {
-                popup(res.msg, "error");
-              }
-            });
-          })
-          .catch(() => {
-            this.$message({
-              type: "info",
-              message: "已取消操作",
-            });
+        .then(() => {
+          delMember({id: id}).then((res) => {
+            if (res.code == 200) {
+              popup("操作成功");
+              this.searchForm.state = "0";
+              this.init();
+            }
           });
+        })
+        .catch(() => {
+          this.$message({
+            type: "info",
+            message: "已取消操作",
+          });
+        });
     },
     /*兑换积分商品*/
     exchangeProductsBtn(id) {
@@ -542,35 +503,29 @@ export default {
         coverUrl: "",
         integral: "",
       }),
-          queryPointProductBymemberId({memberId: id}).then((res) => {
-
-            if (res.code == 200) {
-              this.options_pointProducts = res.data;
-              if (!this.options_pointProducts.length) {
-                popup("该会员积分数无法兑换任何商品", "warning");
-                return;
-              }
-              this.pointProductsForm.memberId = id;
-              this.pointProductsVisable = true;
-            } else {
-              popup(res.msg, "error");
+        queryPointProductBymemberId({memberId: id}).then((res) => {
+          if (res.code == 200) {
+            this.options_pointProducts = res.data;
+            if (!this.options_pointProducts.length) {
+              popup("该会员积分数无法兑换任何商品", "warning");
+              return;
             }
-          });
+            this.pointProductsForm.memberId = id;
+            this.pointProductsVisable = true;
+          }
+        });
     },
     submitPointProductsForm(formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           savePointRedemptionRecords(
-              this.pointProductsForm
+            this.pointProductsForm
           ).then((res) => {
-
             if (res.code == 200) {
               popup("兑换成功");
               this.pointProductsForm = {};
               this.pointProductsVisable = false;
               this.init();
-            } else {
-              popup(res.msg, "error");
             }
           });
         }
@@ -583,7 +538,6 @@ export default {
     },
     queryPointProductByGoodsId(goodsId) {
       queryPointProductByGoodsId({goodsId: goodsId}).then((res) => {
-
         if (res.code == 200) {
           if (!res.data) {
             this.pointProductsForm = {
@@ -597,7 +551,6 @@ export default {
           this.pointProductsForm.integral = res.data.integral;
           this.pointProductsForm.coverUrl = res.data.coverUrl;
         } else {
-          popup(res.msg, "error");
           this.pointProductsForm.goodsId = "";
         }
       });

@@ -4,8 +4,7 @@
       <el-breadcrumb-item>首页</el-breadcrumb-item>
       <el-breadcrumb-item>库存管理</el-breadcrumb-item>
       <el-breadcrumb-item>供货商信息</el-breadcrumb-item>
-    </el-breadcrumb
-    >
+    </el-breadcrumb>
     <br/>
 
     <el-row>
@@ -23,20 +22,17 @@
     <el-row>
       <el-col :span="24" style="text-align: left">
         <el-button
-            type="primary"
-            @click="subSearchForm"
-            style="font-size: 18px"
-        >
+          type="primary"
+          @click="subSearchForm"
+          style="font-size: 18px">
           <i class="iconfont icon-r-find" style="font-size: 18px">
           </i>
           搜索
-        </el-button
-        >
+        </el-button>
         <el-button
-            type="success"
-            @click="newVisable = true"
-            style="font-size: 18px"
-        >
+          type="success"
+          @click="newVisable = true"
+          style="font-size: 18px">
           <i class="iconfont icon-r-add" style="font-size: 18px"> </i>
           创建供货商
         </el-button>
@@ -49,204 +45,172 @@
         <el-table-column type="index" width="200" label="序号">
         </el-table-column>
         <el-table-column
-            prop="name"
-            :show-overflow-tooltip="true"
-            label="名称"
-        >
+          prop="name"
+          :show-overflow-tooltip="true"
+          label="名称">
         </el-table-column>
         <el-table-column
-            prop="address"
-            :show-overflow-tooltip="true"
-            label="地址"
-        >
+          prop="address"
+          :show-overflow-tooltip="true"
+          label="地址">
         </el-table-column>
         <el-table-column
-            prop="tel"
-            :show-overflow-tooltip="true"
-            label="联系电话"
-        >
+          prop="tel"
+          :show-overflow-tooltip="true"
+          label="联系电话">
         </el-table-column>
         <el-table-column
-            prop="info"
-            :show-overflow-tooltip="true"
-            label="备注"
-        >
+          prop="info"
+          :show-overflow-tooltip="true"
+          label="备注">
         </el-table-column>
         <el-table-column width="240" fixed="right" label="操作">
           <template v-slot="scope">
             <el-button
-                type="warning"
-                @click="editBtn(scope.row.cn)"
-                style="font-size: 18px"
-            >
+              type="warning"
+              @click="editBtn(scope.row.cn)"
+              style="font-size: 18px">
               <i
-                  class="iconfont icon-r-edit"
-                  style="font-size: 18px"
-              ></i>
+                class="iconfont icon-r-edit"
+                style="font-size: 18px"></i>
               修改
-            </el-button
-            >
+            </el-button>
             <el-button
-                type="danger"
-                @click="delBtn(scope.row.cn)"
-                style="font-size: 18px"
-            >
-              <i
-                  class="iconfont icon-r-delete"
-                  style="font-size: 18px"
+              type="danger"
+              @click="delBtn(scope.row.cn)"
+              style="font-size: 18px">
+              <i class="iconfont icon-r-delete"
+                 style="font-size: 18px"
               ></i>
               删除
-            </el-button
-            >
+            </el-button>
           </template>
         </el-table-column>
       </el-table>
       <div style="margin: 10px 0 15px 0">
         <el-pagination
-            @size-change="handleSizeChange"
-            @current-change="handleCurrentChange"
-            :current-page.sync="searchForm.currentPage"
-            :page-sizes="[5, 10, 20, 50]"
-            :page-size="searchForm.pageSize"
-            layout="total,sizes, prev, pager, next,jumper"
-            :total="searchForm.total"
-        >
+          @size-change="handleSizeChange"
+          @current-change="handleCurrentChange"
+          :current-page.sync="searchForm.currentPage"
+          :page-sizes="[5, 10, 20, 50]"
+          :page-size="searchForm.pageSize"
+          layout="total,sizes, prev, pager, next,jumper"
+          :total="searchForm.total">
         </el-pagination>
       </div>
     </div>
     <!--创建弹出框-->
     <el-dialog
-        title="创建供货商信息"
-        :visible.sync="newVisable"
-        width="50%"
-    >
+      title="创建供货商信息"
+      :visible.sync="newVisable"
+      width="50%">
       <el-form
-          :model="newForm"
-          :rules="rules"
-          ref="newForm"
-          label-width="100px"
-          class="demo-ruleForm"
-      >
+        :model="newForm"
+        :rules="rules"
+        ref="newForm"
+        label-width="100px"
+        class="demo-ruleForm">
         <el-form-item label="名称：" prop="name">
           <el-input
-              v-model="newForm.name"
-              placeholder="供应商名称"
-          ></el-input>
+            v-model="newForm.name"
+            placeholder="供应商名称"></el-input>
         </el-form-item>
         <el-form-item label="地址：" prop="address">
           <el-input
-              type="text"
-              v-model="newForm.address"
-              placeholder="供应商地址"
-          ></el-input>
+            type="text"
+            v-model="newForm.address"
+            placeholder="供应商地址"></el-input>
         </el-form-item>
         <el-form-item label="电话：" prop="tel">
           <el-input
-              type="text"
-              v-model="newForm.tel"
-              placeholder="联系电话"
-          ></el-input>
+            type="text"
+            v-model="newForm.tel"
+            placeholder="联系电话"></el-input>
         </el-form-item>
         <el-form-item label="描述：">
           <el-input
-              type="textarea"
-              v-model="newForm.info"
-              placeholder="供应商的简单描述"
-          ></el-input>
+            type="textarea"
+            v-model="newForm.info"
+            placeholder="供应商的简单描述"></el-input>
         </el-form-item>
         <el-form-item>
           <el-button
-              type="primary"
-              @click="submitNewForm('newForm')"
-              style="font-size: 18px"
-          >
+            type="primary"
+            @click="submitNewForm('newForm')"
+            style="font-size: 18px">
             <i
-                class="iconfont icon-r-yes"
-                style="font-size: 18px"
-            ></i>
+              class="iconfont icon-r-yes"
+              style="font-size: 18px"></i>
             提交
-          </el-button
-          >
+          </el-button>
           <el-button
-              @click="
-                            () => {
+            @click="  () => {
                                 this.$refs['newForm'].resetFields();
                                 newForm = {};
                                 newVisable = false;
                             }
                         "
-              style="font-size: 18px"
-          >关闭
-          </el-button
-          >
+            style="font-size: 18px">关闭
+          </el-button>
         </el-form-item>
       </el-form>
     </el-dialog>
     <!--修改弹出框-->
     <el-dialog
-        title="修改供货商信息"
-        :visible.sync="editVisable"
-        width="50%"
-    >
+      title="修改供货商信息"
+      :visible.sync="editVisable"
+      width="50%">
       <el-form
-          :model="editForm"
-          :rules="rules"
-          ref="editForm"
-          label-width="100px"
-          class="demo-ruleForm"
-      >
+        :model="editForm"
+        :rules="rules"
+        ref="editForm"
+        label-width="100px"
+        class="demo-ruleForm">
         <el-form-item label="名称：" prop="name">
           <el-input
-              v-model="editForm.name"
-              placeholder="供应商名称"
+            v-model="editForm.name"
+            placeholder="供应商名称"
           ></el-input>
         </el-form-item>
         <el-form-item label="地址：" prop="address">
           <el-input
-              type="text"
-              v-model="editForm.address"
-              placeholder="供应商地址"
+            type="text"
+            v-model="editForm.address"
+            placeholder="供应商地址"
           ></el-input>
         </el-form-item>
         <el-form-item label="电话：" prop="tel">
           <el-input
-              type="text"
-              v-model="editForm.tel"
-              placeholder="联系电话"
+            type="text"
+            v-model="editForm.tel"
+            placeholder="联系电话"
           ></el-input>
         </el-form-item>
         <el-form-item label="描述：">
           <el-input
-              type="textarea"
-              v-model="editForm.info"
-              placeholder="供应商的简单描述"
+            type="textarea"
+            v-model="editForm.info"
+            placeholder="供应商的简单描述"
           ></el-input>
         </el-form-item>
         <el-form-item>
           <el-button
-              type="primary"
-              @click="submitEditForm('editForm')"
-              style="font-size: 18px"
-          >
-            <i
-                class="iconfont icon-r-yes"
-                style="font-size: 18px"
-            ></i>
+            type="primary"
+            @click="submitEditForm('editForm')"
+            style="font-size: 18px">
+            <i class="iconfont icon-r-yes"
+               style="font-size: 18px"></i>
             提交
-          </el-button
-          >
+          </el-button>
           <el-button
-              @click="
-                            () => {
+            @click="      () => {
                                 this.$refs['editForm'].resetFields();
                                 editForm = {};
                                 editVisable = false;
                             }
                         "
-              style="font-size: 18px"
-          >关闭
-          </el-button
-          >
+            style="font-size: 18px">关闭
+          </el-button>
         </el-form-item>
       </el-form>
     </el-dialog>
@@ -333,14 +297,11 @@ export default {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           saveSupplier(this.newForm).then((res) => {
-
             if (res.code == 200) {
               popup("添加成功");
               this.newVisable = false;
               this.newForm = {};
               this.init();
-            } else {
-              popup(res.msg, "error");
             }
           });
         }
@@ -351,33 +312,26 @@ export default {
         confirmButtonText: "确定",
         cancelButtonText: "取消",
         type: "warning",
+      }).then(() => {
+        delSupplier({cn: cn}).then((res) => {
+          if (res.code == 200) {
+            popup("删除成功");
+            this.init();
+          }
+        });
       })
-          .then(() => {
-            delSupplier({cn: cn}).then((res) => {
-
-              if (res.code == 200) {
-                popup("删除成功");
-                this.init();
-              } else {
-                popup(res.msg, "warning");
-              }
-            });
-          })
-          .catch(() => {
-            this.$message({
-              type: "info",
-              message: "已取消操作",
-            });
+        .catch(() => {
+          this.$message({
+            type: "info",
+            message: "已取消操作",
           });
+        });
     },
     editBtn(cn) {
       queryByCn({cn: cn}).then((res) => {
-
         if (res.code == 200) {
           this.editForm = {...res.data};
           this.editVisable = true;
-        } else {
-          popup(res.msg, "error");
         }
       });
     },
@@ -385,14 +339,11 @@ export default {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           updateSupplier(this.editForm).then((res) => {
-
             if (res.code == 200) {
               popup("修改成功");
               this.editVisable = false;
               this.editForm = {};
               this.init();
-            } else {
-              popup(res.msg, "error");
             }
           });
         }

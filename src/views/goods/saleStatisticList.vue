@@ -4,8 +4,7 @@
       <el-breadcrumb-item>首页</el-breadcrumb-item>
       <el-breadcrumb-item>商品管理</el-breadcrumb-item>
       <el-breadcrumb-item>销量统计</el-breadcrumb-item>
-    </el-breadcrumb
-    >
+    </el-breadcrumb>
     <br/>
 
     <el-row>
@@ -14,12 +13,9 @@
       </el-col>
       <el-col :span="16">
         <i class="iconfont icon-r-add" style="font-size: 28px">
-          <b>
-            总销量：<span style="color: #fc4316"
-          >{{
+          <b> 总销量：<span style="color: #fc4316">{{
               totalSalesVolume ? totalSalesVolume : 0
-            }}件</span
-          >
+            }}件</span>
           </b>
         </i>
       </el-col>
@@ -28,15 +24,13 @@
     <el-row>
       <el-col :span="24" style="text-align: left">
         <el-button
-            type="primary"
-            @click="submitSearchForm"
-            style="font-size: 18px"
-        >
+          type="primary"
+          @click="submitSearchForm"
+          style="font-size: 18px">
           <i class="iconfont icon-r-find" style="font-size: 18px">
           </i>
           搜索
-        </el-button
-        >
+        </el-button>
       </el-col>
     </el-row>
     <br/>
@@ -45,51 +39,46 @@
         <el-table-column type="index" width="200" label="序号">
         </el-table-column>
         <el-table-column
-            prop="coverUrl"
-            :show-overflow-tooltip="true"
-            label="封面"
-        >
+          prop="coverUrl"
+          :show-overflow-tooltip="true"
+          label="封面">
           <template v-slot="scope">
             <img width="60px" :src="BaseApi + scope.row.coverUrl"/>
           </template>
         </el-table-column>
         <el-table-column
-            prop="goodsName"
-            :show-overflow-tooltip="true"
-            label="商品名"
-        >
+          prop="goodsName"
+          :show-overflow-tooltip="true"
+          label="商品名">
         </el-table-column>
         <el-table-column
-            prop="salesVolume"
-            :show-overflow-tooltip="true"
-            label="销量"
-        >
+          prop="salesVolume"
+          :show-overflow-tooltip="true"
+          label="销量">
         </el-table-column>
         <el-table-column
-            prop="percentage"
-            :show-overflow-tooltip="true"
-            label="销售量占比"
-        >
+          prop="percentage"
+          :show-overflow-tooltip="true"
+          label="销售量占比">
           <template v-slot="scope">
             <el-progress
-                width="50"
-                type="dashboard"
-                :percentage="scope.row.percentage"
-                :color="customColorMethod"
+              width="50"
+              type="dashboard"
+              :percentage="scope.row.percentage"
+              :color="customColorMethod"
             ></el-progress>
           </template>
         </el-table-column>
       </el-table>
       <div style="margin: 10px 0 15px 0">
         <el-pagination
-            @size-change="handleSizeChange"
-            @current-change="handleCurrentChange"
-            :current-page.sync="searchForm.currentPage"
-            :page-sizes="[5, 10, 20, 50]"
-            :page-size="searchForm.pageSize"
-            layout="total,sizes, prev, pager, next,jumper"
-            :total="searchForm.total"
-        >
+          @size-change="handleSizeChange"
+          @current-change="handleCurrentChange"
+          :current-page.sync="searchForm.currentPage"
+          :page-sizes="[5, 10, 20, 50]"
+          :page-size="searchForm.pageSize"
+          layout="total,sizes, prev, pager, next,jumper"
+          :total="searchForm.total">
         </el-pagination>
       </div>
     </div>

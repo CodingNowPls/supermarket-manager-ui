@@ -18,24 +18,24 @@
       <el-col :span="16">
         <span>入库时间：</span>
         <el-date-picker
-            value-format="yyyy-MM-dd"
-            v-model="searchForm.startCreateTime"
-            type="date"
-            placeholder="起始时间">
+          value-format="yyyy-MM-dd"
+          v-model="searchForm.startCreateTime"
+          type="date"
+          placeholder="起始时间">
         </el-date-picker>
         -
         <el-date-picker
-            v-model="searchForm.endCreateTime"
-            value-format="yyyy-MM-dd"
-            type="date"
-            placeholder="结束时间">
+          v-model="searchForm.endCreateTime"
+          value-format="yyyy-MM-dd"
+          type="date"
+          placeholder="结束时间">
         </el-date-picker>
       </el-col>
       <el-col :span="2">
         <el-select
-            v-model="searchForm.state1"
-            @change="$forceUpdate()"
-            placeholder="请选择状态" clearable>
+          v-model="searchForm.state1"
+          @change="$forceUpdate()"
+          placeholder="请选择状态" clearable>
           <el-option label="正常" value="0"></el-option>
           <el-option label="删除" value="1"></el-option>
         </el-select>
@@ -45,20 +45,17 @@
     <el-row>
       <el-col :span="24" style="text-align: left">
         <el-button
-            type="primary"
-            @click="submitSearchForm"
-            style="font-size: 18px"
-        >
+          type="primary"
+          @click="submitSearchForm"
+          style="font-size: 18px">
           <i class="iconfont icon-r-find" style="font-size: 18px">
           </i>
           搜索
-        </el-button
-        >
+        </el-button>
         <el-button
-            type="warning"
-            @click="goodsInBtn"
-            style="font-size: 18px"
-        >
+          type="warning"
+          @click="goodsInBtn"
+          style="font-size: 18px">
           <i class="iconfont icon-r-right" style="font-size: 18px"> </i>
           商品入库
         </el-button>
@@ -67,66 +64,65 @@
     <br/>
     <div class="table">
       <el-table
-          :data="tableData"
-          style="width: 100%;"
+        :data="tableData"
+        style="width: 100%;"
+        size="medium">
+        <el-table-column
+          prop="cn"
+          width="200"
+          label="编号">
+        </el-table-column>
+        <el-table-column
+          prop="goodsName"
+          :show-overflow-tooltip="true"
+          label="商品名">
+        </el-table-column>
+        <el-table-column
+          prop="goodsPrice"
+          label="单价">
+        </el-table-column>
+        <el-table-column
+          prop="goodsNum"
+          label="入库数量">
+        </el-table-column>
 
-          size="medium">
         <el-table-column
-            prop="cn"
-            width="200"
-            label="编号">
+          prop="expiryTime"
+          :show-overflow-tooltip="true"
+          label="过期日期">
         </el-table-column>
         <el-table-column
-            prop="goodsName"
-            :show-overflow-tooltip="true"
-            label="商品名">
-        </el-table-column>
-        <el-table-column
-            prop="goodsPrice"
-            label="单价">
-        </el-table-column>
-        <el-table-column
-            prop="goodsNum"
-            label="入库数量">
-        </el-table-column>
-
-        <el-table-column
-            prop="expiryTime"
-            :show-overflow-tooltip="true"
-            label="过期日期">
-        </el-table-column>
-        <el-table-column
-            prop="expiryTime"
-            :show-overflow-tooltip="true"
-            label="是否过期">
+          prop="expiryTime"
+          :show-overflow-tooltip="true"
+          label="是否过期">
           <template v-slot="scope">
             <el-tag type="danger" v-if="new Date()>Date.parse(scope.row.expiryTime)">过期</el-tag>
             <el-tag type="success" v-else>未过期</el-tag>
           </template>
         </el-table-column>
         <el-table-column
-            prop="createTime"
-            :show-overflow-tooltip="true"
-            label="入库时间">
+          prop="createTime"
+          :show-overflow-tooltip="true"
+          label="入库时间">
         </el-table-column>
         <el-table-column
-            prop="storeName"
-            :show-overflow-tooltip="true"
-            label="存储仓库">
+          prop="storeName"
+          :show-overflow-tooltip="true"
+          label="存储仓库">
         </el-table-column>
         <el-table-column
-            prop="supplierName"
-            :show-overflow-tooltip="true"
-            label="供货商">
+          prop="supplierName"
+          :show-overflow-tooltip="true"
+          label="供货商">
         </el-table-column>
         <el-table-column
-            prop="createby"
-            :show-overflow-tooltip="true"
-            label="录入者">
+          prop="createby"
+          :show-overflow-tooltip="true"
+          label="录入者">
         </el-table-column>
         <el-table-column
-            prop="state"
-            label="类型">
+          prop="state"
+          label="类型">
           <template v-slot="scope">
             <el-tag type="success" v-if="scope.row.state=='0'">入库</el-tag>
             <el-tag type="danger" v-if="scope.row.state=='1'">过期</el-tag>
@@ -134,8 +130,8 @@
           </template>
         </el-table-column>
         <el-table-column
-            prop="state1"
-            label="状态">
+          prop="state1"
+          label="状态">
           <template v-slot="scope">
             <el-tag type="success" v-if="scope.row.state1=='0'">正常</el-tag>
             <el-tag type="danger" v-else-if="scope.row.state1=='2'">未处理</el-tag>
@@ -143,14 +139,14 @@
           </template>
         </el-table-column>
         <el-table-column
-            prop="info"
-            :show-overflow-tooltip="true"
-            label="备注">
+          prop="info"
+          :show-overflow-tooltip="true"
+          label="备注">
         </el-table-column>
         <el-table-column
-            width="140"
-            fixed="right"
-            label="操作">
+          width="140"
+          fixed="right"
+          label="操作">
           <template v-slot="scope">
             <el-button type="danger" v-if="scope.row.state1=='0'"
                        @click="del(scope.row.cn)" style="font-size: 18px;">
@@ -162,21 +158,21 @@
       </el-table>
       <div style="margin: 10px 0 15px 0;">
         <el-pagination
-            @size-change="handleSizeChange"
-            @current-change="handleCurrentChange"
-            :current-page.sync="searchForm.currentPage"
-            :page-sizes="[5, 10, 20, 50]"
-            :page-size="searchForm.pageSize"
-            layout="total,sizes, prev, pager, next,jumper"
-            :total="searchForm.total">
+          @size-change="handleSizeChange"
+          @current-change="handleCurrentChange"
+          :current-page.sync="searchForm.currentPage"
+          :page-sizes="[5, 10, 20, 50]"
+          :page-size="searchForm.pageSize"
+          layout="total,sizes, prev, pager, next,jumper"
+          :total="searchForm.total">
         </el-pagination>
       </div>
     </div>
     <!--商品入库表单-->
     <el-dialog
-        title="商品入库"
-        :visible.sync="goodsInVisable"
-        width="50%">
+      title="商品入库"
+      :visible.sync="goodsInVisable"
+      width="50%">
       <el-form v-if="selectGoodsVisable" :model="selectGoods" :rules="rules" ref="selectGoods" label-width="100px"
                class="demo-ruleForm">
         <el-form-item label="商品：" prop="goodsId">
@@ -186,10 +182,10 @@
                      @change="$forceUpdate()"
                      clearable>
             <el-option
-                v-for="item in options_goods"
-                :key="item.id"
-                :label="item.name"
-                :value="item.id">
+              v-for="item in options_goods"
+              :key="item.id"
+              :label="item.name"
+              :value="item.id">
             </el-option>
           </el-select>
         </el-form-item>
@@ -200,10 +196,10 @@
                      @change="$forceUpdate()"
                      clearable>
             <el-option
-                v-for="item in options_store"
-                :key="item.id"
-                :label="item.name"
-                :value="item.id">
+              v-for="item in options_store"
+              :key="item.id"
+              :label="item.name"
+              :value="item.id">
             </el-option>
           </el-select>
         </el-form-item>
@@ -241,10 +237,10 @@
                          @change="$forceUpdate()"
                          clearable>
                 <el-option
-                    v-for="item in options_suppliers"
-                    :key="item.id"
-                    :label="item.name"
-                    :value="item.id">
+                  v-for="item in options_suppliers"
+                  :key="item.id"
+                  :label="item.name"
+                  :value="item.id">
                 </el-option>
               </el-select>
             </el-form-item>
@@ -259,24 +255,24 @@
           <el-col :span="12">
             <el-form-item label="生产日期：" prop="birthTime">
               <el-date-picker
-                  size="mini"
-                  style="width: 140px"
-                  value-format="yyyy-MM-dd"
-                  v-model="newForm.birthTime"
-                  type="date"
-                  placeholder="生产日期">
+                size="mini"
+                style="width: 140px"
+                value-format="yyyy-MM-dd"
+                v-model="newForm.birthTime"
+                type="date"
+                placeholder="生产日期">
               </el-date-picker>
             </el-form-item>
           </el-col>
           <el-col :span="12">
             <el-form-item label="过期日期：" prop="expiryTime">
               <el-date-picker
-                  size="mini"
-                  style="width: 140px"
-                  value-format="yyyy-MM-dd"
-                  v-model="newForm.expiryTime"
-                  type="date"
-                  placeholder="过期日期">
+                size="mini"
+                style="width: 140px"
+                value-format="yyyy-MM-dd"
+                v-model="newForm.expiryTime"
+                type="date"
+                placeholder="过期日期">
               </el-date-picker>
             </el-form-item>
           </el-col>
@@ -400,7 +396,7 @@ export default {
       this.newVisable = false;
       this.selectGoodsVisable = true;
       if (
-          this.searchForm.startCreateTime > this.searchForm.endCreateTime
+        this.searchForm.startCreateTime > this.searchForm.endCreateTime
       ) {
         popup("结束时间不能小于开始时间", "warning");
         return;
@@ -412,8 +408,6 @@ export default {
           this.searchForm.total = res.data.total;
           this.searchForm.pageSize = res.data.size;
           this.searchForm.currentPage = res.data.current;
-        } else {
-          popup(res.msg, "error");
         }
       });
     },
@@ -455,27 +449,20 @@ export default {
     },
     detailStoreGoodsIn_goodsAll() {
       selected_goodsAll().then((res) => {
-
         if (res.code == 200) {
           this.options_goods = res.data;
-        } else {
-          popup(res.msg, "error");
         }
       });
     },
     detailStoreGoodsIn_suppliers() {
       queryOptionsSuppliers().then((res) => {
-
         if (res.code == 200) {
           this.options_suppliers = res.data;
-        } else {
-          popup(res.msg, "error");
         }
       });
     },
     detailStoreGoodsIn_storeAll() {
       storeList({state: "0"}).then((res) => {
-
         if (res.code == 200) {
           for (var item of res.data) {
             this.options_store.push({
@@ -483,8 +470,6 @@ export default {
               name: item.name,
             });
           }
-        } else {
-          popup(res.msg, "error");
         }
       });
     },
@@ -492,24 +477,21 @@ export default {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           queryGoodsById({id: this.selectGoods.goodsId}).then(
-              (res) => {
-
-                if (res.code == 200) {
-                  this.selectGoodsVisable = false;
-                  this.newVisable = true;
-                  this.newForm.storeId = this.selectGoods.storeId;
-                  this.selectGoods = {
-                    storeId: "",
-                    goodsId: "",
-                  };
-                  this.newForm.goodsId = res.data.id;
-                  this.newForm.goodsName = res.data.name;
-                  this.newForm.goodsPrice =
-                      res.data.purchashPrice;
-                } else {
-                  popup(res.msg, "error");
-                }
+            (res) => {
+              if (res.code == 200) {
+                this.selectGoodsVisable = false;
+                this.newVisable = true;
+                this.newForm.storeId = this.selectGoods.storeId;
+                this.selectGoods = {
+                  storeId: "",
+                  goodsId: "",
+                };
+                this.newForm.goodsId = res.data.id;
+                this.newForm.goodsName = res.data.name;
+                this.newForm.goodsPrice =
+                  res.data.purchashPrice;
               }
+            }
           );
         }
       });
@@ -524,12 +506,9 @@ export default {
             return;
           }
           saveIn(this.newForm).then((res) => {
-
             if (res.code == 200) {
               popup("入库成功");
               this.init();
-            } else {
-              popup(res.msg, "error");
             }
           });
         }
@@ -545,25 +524,21 @@ export default {
         confirmButtonText: "确定",
         cancelButtonText: "取消",
         type: "warning",
+      }).then(() => {
+        delIn({cn: cn}).then((res) => {
+          if (res.code == 200) {
+            popup("操作成功");
+            this.searchForm.state1 = "0";
+            this.init();
+          }
+        });
       })
-          .then(() => {
-            delIn({cn: cn}).then((res) => {
-
-              if (res.code == 200) {
-                popup("操作成功");
-                this.searchForm.state1 = "0";
-                this.init();
-              } else {
-                popup(res.msg, "error");
-              }
-            });
-          })
-          .catch(() => {
-            this.$message({
-              type: "info",
-              message: "已取消操作",
-            });
+        .catch(() => {
+          this.$message({
+            type: "info",
+            message: "已取消操作",
           });
+        });
     },
   },
   mounted() {

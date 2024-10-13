@@ -8,3 +8,11 @@ export function queryInformation() {
     method: 'get'
   })
 }
+
+export function editPwd(data) {
+  return request({
+    url: apiPrefix + "/editPwd",
+    method: 'post',
+    data: data
+  })
+}

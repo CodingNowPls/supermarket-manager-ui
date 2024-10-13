@@ -4,8 +4,7 @@
       <el-breadcrumb-item>首页</el-breadcrumb-item>
       <el-breadcrumb-item>商品管理</el-breadcrumb-item>
       <el-breadcrumb-item>商品信息</el-breadcrumb-item>
-    </el-breadcrumb
-    >
+    </el-breadcrumb>
     <br/>
     <el-row>
       <el-col :span="6" style="text-align: left; padding-right: 10px">
@@ -15,25 +14,20 @@
         <el-input placeholder="商品名称" v-model="searchForm.name"/>
       </el-col>
       <el-col :span="6" style="text-align: left; padding-right: 10px">
-        <el-input
-            placeholder="商品售价"
-            v-model="searchForm.sellPrice"
-        />
+        <el-input placeholder="商品售价" v-model="searchForm.sellPrice"/>
       </el-col>
       <el-col :span="6">
         <el-select
-            v-model="searchForm.categoryId"
-            placeholder="商品分类"
-            filterable
-            @change="$forceUpdate()"
-            clearable
-        >
+          v-model="searchForm.categoryId"
+          placeholder="商品分类"
+          filterable
+          @change="$forceUpdate()"
+          clearable>
           <el-option
-              v-for="item in options_category"
-              :key="item.id"
-              :label="item.name"
-              :value="item.id"
-          >
+            v-for="item in options_category"
+            :key="item.id"
+            :label="item.name"
+            :value="item.id">
           </el-option>
         </el-select>
       </el-col>
@@ -42,33 +36,29 @@
     <el-row>
       <el-col :span="6" style="text-align: left; padding-right: 10px">
         <el-select
-            v-model="searchForm.state"
-            placeholder="请选择状态"
-            clearable
-        >
+          v-model="searchForm.state"
+          placeholder="请选择状态"
+          clearable>
           <el-option
-              v-for="item in options_state"
-              :key="item.value"
-              :label="item.label"
-              :value="item.value"
-          >
+            v-for="item in options_state"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value">
           </el-option>
         </el-select>
       </el-col>
       <el-col :span="18">
         <span>时间：</span>
         <el-date-picker
-            v-model="searchForm.operateStartTime"
-            type="date"
-            placeholder="起始时间"
-        >
+          v-model="searchForm.operateStartTime"
+          type="date"
+          placeholder="起始时间">
         </el-date-picker>
         -
         <el-date-picker
-            v-model="searchForm.operateEndTime"
-            type="date"
-            placeholder="结束时间"
-        >
+          v-model="searchForm.operateEndTime"
+          type="date"
+          placeholder="结束时间">
         </el-date-picker>
       </el-col>
     </el-row>
@@ -76,20 +66,17 @@
     <el-row>
       <el-col :span="24" style="text-align: left">
         <el-button
-            type="primary"
-            @click="submitSearchForm"
-            style="font-size: 18px"
-        >
+          type="primary"
+          @click="submitSearchForm"
+          style="font-size: 18px">
           <i class="iconfont icon-r-find" style="font-size: 18px">
           </i>
           搜索
-        </el-button
-        >
+        </el-button>
         <el-button
-            type="success"
-            @click="newVisable = true"
-            style="font-size: 18px"
-        >
+          type="success"
+          @click="newVisable = true"
+          style="font-size: 18px">
           <i class="iconfont icon-r-add" style="font-size: 18px"> </i>
           创建商品
         </el-button>
@@ -101,10 +88,7 @@
         <el-table-column type="index" label="序号"></el-table-column>
         <el-table-column prop="coverUrl" label="封面">
           <template v-slot="scope">
-            <img
-                height="60px"
-                :src="BaseApi + scope.row.coverUrl"
-            />
+            <img height="60px" :src="BaseApi + scope.row.coverUrl"/>
           </template>
         </el-table-column>
         <el-table-column prop="id" label="编号"></el-table-column>
@@ -119,13 +103,7 @@
         </el-table-column>
         <el-table-column prop="state" label="状态">
           <template v-slot="scope">
-            <el-tag
-                size="mini"
-                type="success"
-                v-if="scope.row.state == '0'"
-            >上架
-            </el-tag
-            >
+            <el-tag size="mini" type="success" v-if="scope.row.state == '0'">上架</el-tag>
             <el-tag size="mini" type="danger" v-else>下架</el-tag>
           </template>
         </el-table-column>
@@ -133,305 +111,218 @@
           <template v-slot="scope">
             {{
               scope.row.residueStoreNum
-                  ? scope.row.residueStoreNum
-                  : 0
+                ? scope.row.residueStoreNum
+                : 0
             }}
           </template>
         </el-table-column>
         <el-table-column prop="updateby" label="操作者">
         </el-table-column>
-        <el-table-column
-            prop="updateTime"
-            :show-overflow-tooltip="true"
-            label="操作时间"
-        >
+        <el-table-column prop="updateTime" :show-overflow-tooltip="true" label="操作时间">
         </el-table-column>
-        <el-table-column
-            prop="info"
-            :show-overflow-tooltip="true"
-            label="备注"
-        >
+        <el-table-column prop="info" :show-overflow-tooltip="true" label="备注">
         </el-table-column>
         <el-table-column width="360" fixed="right" label="操作">
           <template v-slot="scope">
             <el-button
-                type="success"
-                @click="editBtn(scope.row.id)"
-                style="font-size: 18px"
-            >
-              <i
-                  class="iconfont icon-r-edit"
-                  style="font-size: 18px"
-              >
+              type="success"
+              @click="editBtn(scope.row.id)"
+              style="font-size: 18px">
+              <i class="iconfont icon-r-edit" style="font-size: 18px">
               </i>
               修改
-            </el-button
-            >
-            <el-button
-                type="danger"
-                @click="returnBtn(scope.row.id)"
-                style="font-size: 18px"
-            >
-              <i
-                  class="iconfont icon-r-left"
-                  style="font-size: 18px"
-              >
-              </i>
+            </el-button>
+            <el-button type="danger" @click="returnBtn(scope.row.id)" style="font-size: 18px">
+              <i class="iconfont icon-r-left" style="font-size: 18px"></i>
               退还
-            </el-button
-            >
+            </el-button>
             <el-button
-                v-if="scope.row.state == '0'"
-                type="warning"
-                @click="
-                                upOrdown(
+              v-if="scope.row.state == '0'"
+              type="warning"
+              @click=" upOrdown(
                                     scope.row.id,
                                     scope.row.state,
                                     scope.row.residueNum
                                 )
                             "
-                style="font-size: 18px"
-            >
-              <i
-                  class="iconfont icon-r-bottom"
-                  style="font-size: 18px"
-              >
-              </i>
-              下架
+              style="font-size: 18px">
+              <i class="iconfont icon-r-bottom" style="font-size: 18px"></i>下架
             </el-button>
-            <el-button
-                v-if="scope.row.state == '1'"
-                type="warning"
-                @click="upOrdown(scope.row.id, scope.row.state)"
-                style="font-size: 18px"
-            >
-              <i
-                  class="iconfont icon-r-top"
-                  style="font-size: 18px"
-              >
-              </i>
-              上架
+            <el-button v-if="scope.row.state == '1'" type="warning" @click="upOrdown(scope.row.id, scope.row.state)"
+                       style="font-size: 18px">
+              <i class="iconfont icon-r-top" style="font-size: 18px"></i>上架
             </el-button>
           </template>
         </el-table-column>
       </el-table>
       <div style="margin: 10px 0 15px 0">
         <el-pagination
-            @size-change="handleSizeChange"
-            @current-change="handleCurrentChange"
-            :current-page.sync="searchForm.currentPage"
-            :page-sizes="[5, 10, 20, 50]"
-            :page-size="searchForm.pageSize"
-            layout="total,sizes, prev, pager, next,jumper"
-            :total="searchForm.total"
-        >
+          @size-change="handleSizeChange"
+          @current-change="handleCurrentChange"
+          :current-page.sync="searchForm.currentPage"
+          :page-sizes="[5, 10, 20, 50]"
+          :page-size="searchForm.pageSize"
+          layout="total,sizes, prev, pager, next,jumper"
+          :total="searchForm.total">
         </el-pagination>
       </div>
     </div>
     <!--创建商品表单弹出-->
     <el-dialog
-        title="创建商品"
-        :visible.sync="newVisable"
-        @close="dialog_imgClose"
-        width="50%"
-    >
+      title="创建商品"
+      :visible.sync="newVisable"
+      @close="dialog_imgClose"
+      width="50%">
       <el-form
-          :model="newForm"
-          :rules="rules"
-          ref="newForm"
-          label-width="100px"
-          class="demo-ruleForm"
-      >
+        :model="newForm"
+        :rules="rules"
+        ref="newForm"
+        label-width="100px"
+        class="demo-ruleForm">
         <el-form-item label="商品图：">
           <!--                    action="http://localhost:9291/goods_management/goods/uploadImg"-->
           <el-upload
-              class="avatar-uploader"
-              action="http://sun.ipyingshe.com:9291/goods_management/goods/uploadImg"
-              :show-file-list="false"
-              :on-success="handleAvatarSuccess"
-              :before-upload="beforeAvatarUpload"
-          >
+            class="avatar-uploader"
+            action="http://sun.ipyingshe.com:9291/goods_management/goods/uploadImg"
+            :show-file-list="false"
+            :on-success="handleAvatarSuccess"
+            :before-upload="beforeAvatarUpload">
             <img
-                v-if="imageUrl"
-                :src="BaseApi + imageUrl"
-                class="avatar"
-            />
+              v-if="imageUrl"
+              :src="BaseApi + imageUrl"
+              class="avatar"/>
             <i v-else class="el-icon-plus avatar-uploader-icon"></i>
           </el-upload>
         </el-form-item>
         <el-form-item label="商品名：" prop="name">
-          <el-input
-              v-model="newForm.name"
-              placeholder="如：农夫山泉"
-          ></el-input>
+          <el-input v-model="newForm.name" placeholder="如：农夫山泉"></el-input>
         </el-form-item>
         <el-form-item label="成本价：" prop="purchashPrice">
-          <el-input
-              v-model="newForm.purchashPrice"
-              placeholder="如：9.9"
-          ></el-input>
+          <el-input v-model="newForm.purchashPrice" placeholder="如：9.9"></el-input>
         </el-form-item>
         <el-form-item label="销售价格：">
-          <el-input
-              v-model="newForm.sellPrice"
-              placeholder="如：9.9"
-          ></el-input>
+          <el-input v-model="newForm.sellPrice" placeholder="如：9.9"></el-input>
         </el-form-item>
         <el-form-item label="描述：">
-          <el-input
-              type="textarea"
-              placeholder="如：农夫山泉是矿泉水"
-              v-model="newForm.info"
-          ></el-input>
+          <el-input type="textarea" placeholder="如：农夫山泉是矿泉水" v-model="newForm.info"></el-input>
         </el-form-item>
         <el-form-item label="分类：">
           <el-select
-              v-model="newForm.categoryId"
-              placeholder="请选择分类"
-              filterable
-              @change="$forceUpdate()"
-              clearable
-          >
+            v-model="newForm.categoryId"
+            placeholder="请选择分类"
+            filterable
+            @change="$forceUpdate()"
+            clearable>
             <el-option
-                v-for="item in options_category"
-                :key="item.id"
-                :label="item.name"
-                :value="item.id"
-            >
+              v-for="item in options_category"
+              :key="item.id"
+              :label="item.name"
+              :value="item.id">
             </el-option>
           </el-select>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" @click="submitNewForm('newForm')"
-          >提交
-          </el-button
-          >
+          <el-button type="primary" @click="submitNewForm('newForm')">提交
+          </el-button>
           <el-button @click="saveCancel('newForm')">取消</el-button>
         </el-form-item>
       </el-form>
     </el-dialog>
     <!--修改表单-->
     <el-dialog
-        title="修改商品信息"
-        :visible.sync="dialogVisible"
-        @close="dialog_imgClose"
-        width="50%"
-    >
+      title="修改商品信息"
+      :visible.sync="dialogVisible"
+      @close="dialog_imgClose"
+      width="50%">
       <el-form
-          :model="editForm"
-          :rules="rules"
-          ref="editForm"
-          label-width="100px"
-          class="demo-ruleForm"
-      >
+        :model="editForm"
+        :rules="rules"
+        ref="editForm"
+        label-width="100px"
+        class="demo-ruleForm">
         <!--                action="http://localhost:9291/goods_management/goods/uploadImg"-->
         <el-upload
-            class="avatar-uploader"
-            action="http://sun.ipyingshe.com:9291/goods_management/goods/uploadImg"
-            :show-file-list="false"
-            :on-success="handleAvatarSuccess"
-            :before-upload="beforeAvatarUpload"
-        >
+          class="avatar-uploader"
+          action="http://sun.ipyingshe.com:9291/goods_management/goods/uploadImg"
+          :show-file-list="false"
+          :on-success="handleAvatarSuccess"
+          :before-upload="beforeAvatarUpload">
           <img
-              v-if="imageUrl"
-              :src="BaseApi + imageUrl"
-              class="avatar"
-          />
+            v-if="imageUrl"
+            :src="BaseApi + imageUrl"
+            class="avatar"/>
           <i v-else class="el-icon-plus avatar-uploader-icon"></i>
         </el-upload>
         <el-form-item label="商品名：" prop="name">
-          <el-input
-              v-model="editForm.name"
-              placeholder="如：农夫山泉"
-          ></el-input>
+          <el-input v-model="editForm.name" placeholder="如：农夫山泉"></el-input>
         </el-form-item>
         <el-form-item label="成本价：" prop="purchashPrice">
-          <el-input
-              v-model="editForm.purchashPrice"
-              placeholder="如：9.9"
-          ></el-input>
+          <el-input v-model="editForm.purchashPrice" placeholder="如：9.9"></el-input>
         </el-form-item>
         <el-form-item label="销售价格：">
           <el-input
-              v-model="editForm.sellPrice"
-              placeholder="如：9.9"
-          ></el-input>
+            v-model="editForm.sellPrice"
+            placeholder="如：9.9"></el-input>
         </el-form-item>
         <el-form-item label="描述：">
-          <el-input
-              type="textarea"
-              placeholder="如：农夫山泉是矿泉水"
-              v-model="editForm.info"
-          ></el-input>
+          <el-input type="textarea" placeholder="如：农夫山泉是矿泉水" v-model="editForm.info"></el-input>
         </el-form-item>
         <el-form-item style="width: 40%" label="分类：">
           <el-select
-              v-model="editForm.categoryId"
-              placeholder="请选择分类"
-              filterable
-              @change="$forceUpdate()"
-              clearable
-          >
+            v-model="editForm.categoryId"
+            placeholder="请选择分类"
+            filterable
+            @change="$forceUpdate()"
+            clearable>
             <el-option
-                v-for="item in options_category"
-                :key="item.id"
-                :label="item.name"
-                :value="item.id"
-            >
+              v-for="item in options_category"
+              :key="item.id"
+              :label="item.name"
+              :value="item.id">
             </el-option>
           </el-select>
         </el-form-item>
         <el-form-item>
-          <el-button
-              type="primary"
-              @click="submitEditForm('editForm')"
-          >提交
-          </el-button
-          >
-          <el-button @click="resetEditForm('editForm')"
-          >关闭
-          </el-button
-          >
+          <el-button type="primary" @click="submitEditForm('editForm')">提交
+          </el-button>
+          <el-button @click="resetEditForm('editForm')">关闭
+          </el-button>
         </el-form-item>
       </el-form>
     </el-dialog>
     <!--退还表单-->
     <el-dialog
-        title="退还商品入库信息"
-        :visible.sync="returnVisible"
-        width="60%"
-    >
+      title="退还商品入库信息"
+      :visible.sync="returnVisible"
+      width="60%">
       <el-form
-          :model="returnForm"
-          :rules="rules"
-          ref="returnForm"
-          label-width="100px"
-          class="demo-ruleForm"
-      >
+        :model="returnForm"
+        :rules="rules"
+        ref="returnForm"
+        label-width="100px"
+        class="demo-ruleForm">
         <el-row>
           <el-col :span="12">
             <el-form-item label="商品名：">
               <el-input
-                  readonly
-                  v-model="returnForm.goodsName"
-                  placeholder="如：农夫山泉"
+                readonly
+                v-model="returnForm.goodsName"
+                placeholder="如：农夫山泉"
               ></el-input>
             </el-form-item>
           </el-col>
           <el-col :span="12">
             <el-form-item label="仓库：" prop="storeId">
               <el-select
-                  v-model="returnForm.storeId"
-                  placeholder="请选择仓库"
-                  filterable
-                  clearable
-              >
+                v-model="returnForm.storeId"
+                placeholder="请选择仓库"
+                filterable
+                clearable>
                 <el-option
-                    v-for="item in options_store"
-                    :key="item.id"
-                    :label="item.name"
-                    :value="item.id"
-                >
+                  v-for="item in options_store"
+                  :key="item.id"
+                  :label="item.name"
+                  :value="item.id">
                 </el-option>
               </el-select>
             </el-form-item>
@@ -441,8 +332,8 @@
           <el-col :span="12">
             <el-form-item label="数量：" prop="goodsNum">
               <el-input
-                  type="number"
-                  @change="
+                type="number"
+                @change="
                                     () => {
                                         if (
                                             this.goodsNum_max <
@@ -456,21 +347,19 @@
                                         }
                                     }
                                 "
-                  min="1"
-                  :max="goodsNum_max"
-                  v-model="returnForm.goodsNum"
-                  placeholder="如：1"
-              ></el-input>
+                min="1"
+                :max="goodsNum_max"
+                v-model="returnForm.goodsNum"
+                placeholder="如：1"></el-input>
             </el-form-item>
           </el-col>
           <el-col :span="12">
             <el-form-item label="类型：" prop="state">
               <el-select
-                  v-model="returnForm.state"
-                  @change="$forceUpdate"
-                  placeholder="请选择类型"
-                  clearable
-              >
+                v-model="returnForm.state"
+                @change="$forceUpdate"
+                placeholder="请选择类型"
+                clearable>
                 <el-option label="过期" value="1"></el-option>
                 <el-option label="入库" value="0"></el-option>
               </el-select>
@@ -481,44 +370,32 @@
           <el-col :span="12">
             <el-form-item label="描述：">
               <el-input
-                  type="textarea"
-                  placeholder="如：该商品正执行下架操作"
-                  v-model="returnForm.info"
-              ></el-input>
+                type="textarea"
+                placeholder="如：该商品正执行下架操作"
+                v-model="returnForm.info"></el-input>
             </el-form-item>
           </el-col>
           <el-col :span="12">
             <el-form-item label="日期：" prop="createTime">
               <el-date-picker
-                  size="mini"
-                  value-format="yyyy-MM-dd"
-                  v-model="returnForm.createTime"
-                  type="date"
-                  placeholder="退还日期"
-              >
+                size="mini"
+                value-format="yyyy-MM-dd"
+                v-model="returnForm.createTime"
+                type="date"
+                placeholder="退还日期">
               </el-date-picker>
             </el-form-item>
           </el-col>
         </el-row>
         <el-form-item style="width: 80%">
           <el-button
-              type="primary"
-              @click="submitReturnForm('returnForm')"
-              style="font-size: 18px"
-          >
-            <i
-                class="iconfont icon-r-yes"
-                style="font-size: 18px"
-            >
-            </i> 确定
-          </el-button
-          >
-          <el-button @click="resetReturnForm('returnForm')"
-
-                     style="font-size: 18px"
-          >关闭
-          </el-button
-          >
+            type="primary"
+            @click="submitReturnForm('returnForm')"
+            style="font-size: 18px">
+            <i class="iconfont icon-r-yes" style="font-size: 18px"></i> 确定
+          </el-button>
+          <el-button @click="resetReturnForm('returnForm')" style="font-size: 18px">关闭
+          </el-button>
         </el-form-item>
       </el-form>
     </el-dialog>
@@ -646,8 +523,8 @@ export default {
     },
     init() {
       if (
-          this.searchForm.operateStartTime >
-          this.searchForm.operateEndTime
+        this.searchForm.operateStartTime >
+        this.searchForm.operateEndTime
       ) {
         popup("结束时间不能小于开始时间", "warning");
         return;
@@ -658,8 +535,6 @@ export default {
           this.searchForm.total = res.data.total;
           this.searchForm.pageSize = res.data.size;
           this.searchForm.currentPage = res.data.current;
-        } else {
-          popup(res.msg, "error");
         }
       });
     },
@@ -689,7 +564,7 @@ export default {
     },
     beforeAvatarUpload(file) {
       const isJPG =
-          file.type === "image/jpeg" || file.type === "image/png";
+        file.type === "image/jpeg" || file.type === "image/png";
       const isLt2M = file.size / 1024 / 1024 < 3;
       if (!isJPG) {
         this.$message.error("上传头像图片只能是 JPG或PNG 格式!");
@@ -710,8 +585,6 @@ export default {
               this.imageUrl = "";
               this.newVisable = false;
               this.init();
-            } else {
-              popup(res.msg, "error");
             }
           });
         }
@@ -726,34 +599,32 @@ export default {
         }
       }
       this.$confirm(
-          "确定要将该商品" + (state == "0" ? "下架" : "上架") + "？",
-          "警示",
-          {
-            confirmButtonText: "确定",
-            cancelButtonText: "取消",
-            type: "warning",
-          }
+        "确定要将该商品" + (state == "0" ? "下架" : "上架") + "？",
+        "警示",
+        {
+          confirmButtonText: "确定",
+          cancelButtonText: "取消",
+          type: "warning",
+        }
       )
-          .then(() => {
-            upOrdown({gid: gid, state: state}).then((res) => {
-              if (res.code == 200) {
-                if (state == "0") {
-                  popup("下架成功");
-                } else {
-                  popup("上架成功");
-                }
-                this.init();
+        .then(() => {
+          upOrdown({gid: gid, state: state}).then((res) => {
+            if (res.code == 200) {
+              if (state == "0") {
+                popup("下架成功");
               } else {
-                popup(res.msg, "error");
+                popup("上架成功");
               }
-            });
-          })
-          .catch(() => {
-            this.$message({
-              type: "info",
-              message: "已取消操作",
-            });
+              this.init();
+            }
           });
+        })
+        .catch(() => {
+          this.$message({
+            type: "info",
+            message: "已取消操作",
+          });
+        });
     },
     resetReturnForm(formName) {
       this.$refs[formName].resetFields();
@@ -772,8 +643,6 @@ export default {
               this.imageUrl = "";
               this.dialogVisible = false;
               this.init();
-            } else {
-              popup(res.msg, "error");
             }
           });
         }
@@ -799,11 +668,9 @@ export default {
           };
 
           this.imageUrl = this.editForm.coverUrl
-              ? this.editForm.coverUrl
-              : "";
+            ? this.editForm.coverUrl
+            : "";
           this.dialogVisible = true;
-        } else {
-          popup(res.msg, "warning");
         }
       });
     },
@@ -827,8 +694,6 @@ export default {
           }
           this.goodsNum_max = res.data.residueNum;
           this.returnVisible = true;
-        } else {
-          popup(res.msg, "warning");
         }
       });
     },
@@ -840,8 +705,6 @@ export default {
               popup("退还成功");
               this.returnVisible = false;
               this.init();
-            } else {
-              popup(res.msg, "error");
             }
           });
         }

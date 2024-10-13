@@ -4,24 +4,19 @@
       <el-breadcrumb-item>首页</el-breadcrumb-item>
       <el-breadcrumb-item>系统管理</el-breadcrumb-item>
       <el-breadcrumb-item>角色管理</el-breadcrumb-item>
-    </el-breadcrumb
-    >
+    </el-breadcrumb>
     <br/>
 
     <el-row>
       <el-col :span="8" style="text-align: left; padding-right: 10px">
-        <el-input
-            placeholder="角色名称"
-            v-model="roleSearchForm.name"
-        />
+        <el-input placeholder="角色名称" v-model="roleSearchForm.name"/>
       </el-col>
       <el-col :span="8">
         <el-select
-            @change="$forceUpdate"
-            v-model="roleSearchForm.state"
-            placeholder="状态"
-            clearable
-        >
+          @change="$forceUpdate"
+          v-model="roleSearchForm.state"
+          placeholder="状态"
+          clearable>
           <el-option label="正常" value="0"></el-option>
           <el-option label="停用" value="-1"></el-option>
         </el-select>
@@ -31,20 +26,17 @@
     <el-row>
       <el-col :span="24" style="text-align: left">
         <el-button
-            type="primary"
-            @click="subSearchForm('ruleForm')"
-            style="font-size: 18px"
-        >
+          type="primary"
+          @click="subSearchForm('ruleForm')"
+          style="font-size: 18px">
           <i class="iconfont icon-r-find" style="font-size: 18px">
           </i>
           搜索
-        </el-button
-        >
+        </el-button>
         <el-button
-            type="success"
-            @click="newRoleVisable = true"
-            style="font-size: 18px"
-        >
+          type="success"
+          @click="newRoleVisable = true"
+          style="font-size: 18px">
           <i class="iconfont icon-r-add" style="font-size: 18px"> </i>
           创建角色
         </el-button>
@@ -61,108 +53,74 @@
         <template v-slot="scope">
           <el-tag v-if="scope.row.state == '0'" type="success"
           >正常
-          </el-tag
-          >
+          </el-tag>
           <el-tag v-else type="danger">停用</el-tag>
         </template>
       </el-table-column>
       <el-table-column label="操作" width="360" fixed="right">
         <template v-slot="scope">
           <el-button
-              type="success"
-              @click="editRole(scope.row)"
-              style="font-size: 18px"
-          >
+            type="success"
+            @click="editRole(scope.row)"
+            style="font-size: 18px">
             <i
-                class="iconfont icon-r-edit"
-                style="font-size: 18px"
-            ></i>
+              class="iconfont icon-r-edit"
+              style="font-size: 18px"></i>
             修改
-          </el-button
-          >
-          <el-button
-              v-if="scope.row.state == '0'"
-              type="danger"
-              @click="forbidden(scope.row.id)"
-              style="font-size: 18px"
-          >
-            <i
-                class="iconfont icon-r-no"
-                style="font-size: 18px"
-            ></i>
+          </el-button>
+          <el-button v-if="scope.row.state == '0'" type="danger" @click="forbidden(scope.row.id)"
+                     style="font-size: 18px">
+            <i class="iconfont icon-r-no" style="font-size: 18px"></i>
             停用
-          </el-button
-          >
+          </el-button>
           <el-button
-              type="warning"
-              @click="checkPermissons(scope.row.id)"
-              style="font-size: 18px"
-          >
-            <i
-                class="iconfont icon-r-setting"
-                style="font-size: 18px"
-            ></i>
+            type="warning"
+            @click="checkPermissons(scope.row.id)"
+            style="font-size: 18px">
+            <i class="iconfont icon-r-setting" style="font-size: 18px"></i>
             授权
-          </el-button
-          >
+          </el-button>
         </template>
       </el-table-column>
     </el-table>
     <!--修改描述/状态弹出框-->
     <el-dialog
-        title="角色信息修改"
-        :visible.sync="dialogVisible"
-        width="50%"
-    >
-      <el-form
-          v-model="editRoleForm"
-          label-width="100px"
-          class="demo-ruleForm"
-      >
+      title="角色信息修改"
+      :visible.sync="dialogVisible"
+      width="50%">
+      <el-form v-model="editRoleForm" label-width="100px" class="demo-ruleForm">
         <el-form-item label="名称：">
           <el-input disabled v-model="editRoleForm.name"></el-input>
         </el-form-item>
         <el-form-item label="描述：">
           <el-input
-              type="text"
-              v-model="editRoleForm.info"
+            type="text"
+            v-model="editRoleForm.info"
           ></el-input>
         </el-form-item>
         <el-form-item label="状态：">
           <el-select
-              v-model="editRoleForm.state"
-              clearable
-              @change="$forceUpdate()"
-              placeholder="请选择状态"
-          >
+            v-model="editRoleForm.state"
+            clearable
+            @change="$forceUpdate()"
+            placeholder="请选择状态">
             <el-option
-                v-for="item in options"
-                :key="item.value"
-                :label="item.label"
-                :value="item.value"
-            >
+              v-for="item in options"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value">
             </el-option>
           </el-select>
         </el-form-item>
         <el-form-item>
           <el-button
-              type="primary"
-              @click="submitEditForm"
-              style="font-size: 18px"
-          >
-            <i
-                class="iconfont icon-r-yes"
-                style="font-size: 18px"
-            ></i>
-            提交
-          </el-button
-          >
+            type="primary"
+            @click="submitEditForm"
+            style="font-size: 18px">
+            <i class="iconfont icon-r-yes" style="font-size: 18px"></i>提交
+          </el-button>
           <el-button @click="resetEditForm" style="font-size: 18px">
-            <i
-                class="iconfont icon-r-refresh"
-                style="font-size: 18px"
-            ></i>
-            重置
+            <i class="iconfont icon-r-refresh" style="font-size: 18px"></i>重置
           </el-button
           >
         </el-form-item>
@@ -171,12 +129,11 @@
     <!--创建角色弹出框-->
     <el-dialog title="创建角色" :visible.sync="newRoleVisable" width="50%">
       <el-form
-          :model="newRoleForm"
-          :rules="rules"
-          ref="newRoleForm"
-          label-width="100px"
-          class="demo-ruleForm"
-      >
+        :model="newRoleForm"
+        :rules="rules"
+        ref="newRoleForm"
+        label-width="100px"
+        class="demo-ruleForm">
         <el-form-item label="名称：" prop="name">
           <el-input v-model="newRoleForm.name"></el-input>
         </el-form-item>
@@ -185,76 +142,57 @@
         </el-form-item>
         <el-form-item>
           <el-button
-              type="primary"
-              @click="submitNewForm('newRoleForm')"
-              style="font-size: 18px"
-          >
-            <i
-                class="iconfont icon-r-add"
-                style="font-size: 18px"
-            ></i>
+            type="primary"
+            @click="submitNewForm('newRoleForm')"
+            style="font-size: 18px">
+            <i class="iconfont icon-r-add" style="font-size: 18px"></i>
             创建角色
-          </el-button
-          >
+          </el-button>
           <el-button @click="resetNewForm" style="font-size: 18px">
             <i
-                class="iconfont icon-r-refresh"
-                style="font-size: 18px"
-            ></i
-            >重置
-          </el-button
-          >
+              class="iconfont icon-r-refresh"
+              style="font-size: 18px"></i>重置
+          </el-button>
         </el-form-item>
       </el-form>
     </el-dialog>
     <!--职能分配框-->
     <el-dialog
-        title="权限分配"
-        :visible.sync="distributionFulVisable"
-        width="50%"
-    >
+      title="权限分配"
+      :visible.sync="distributionFulVisable"
+      width="50%">
       <el-form
-          :model="distributionFulForm"
-          label-width="100px"
-          class="demo-ruleForm"
-      >
+        :model="distributionFulForm"
+        label-width="100px"
+        class="demo-ruleForm">
         <el-form-item>
           <el-input
-              placeholder="输入关键字进行过滤"
-              v-model="filterText"
-          >
+            placeholder="输入关键字进行过滤"
+            v-model="filterText">
           </el-input>
           <el-tree
-              :data="fuloptions"
-              class="filter-tree"
-              show-checkbox
-              node-key="value"
-              :default-checked-keys="default_checked_mid"
-              default-expand-all
-              :filter-node-method="filterNode"
-              ref="tree"
-              :props="props"
-          ></el-tree>
+            :data="fuloptions"
+            class="filter-tree"
+            show-checkbox
+            node-key="value"
+            :default-checked-keys="default_checked_mid"
+            default-expand-all
+            :filter-node-method="filterNode"
+            ref="tree"
+            :props="props"></el-tree>
         </el-form-item>
         <el-form-item>
           <el-button
-              type="primary"
-              @click="submitDistributionFulForm"
-              style="font-size: 18px"
-          >
-            <i
-                class="iconfont icon-r-add"
-                style="font-size: 18px"
-            ></i>
-            提交
-          </el-button
-          >
+            type="primary"
+            @click="submitDistributionFulForm"
+            style="font-size: 18px">
+            <i class="iconfont icon-r-add"
+               style="font-size: 18px"></i>提交
+          </el-button>
           <el-button
-              @click="celDistributionFul"
-              style="font-size: 18px"
-          >取消
-          </el-button
-          >
+            @click="celDistributionFul"
+            style="font-size: 18px">取消
+          </el-button>
         </el-form-item>
       </el-form>
     </el-dialog>
@@ -348,15 +286,12 @@ export default {
     },
     /*对接后端修改角色接口*/
     submitEditForm() {
-      if (
-          this.editRoleForm.info == this.editRoleRow.info &&
-          this.editRoleForm.state == this.editRoleRow.state
-      ) {
+      if (this.editRoleForm.info == this.editRoleRow.info &&
+        this.editRoleForm.state == this.editRoleRow.state) {
         popup("您没有更改内容", "warning");
         return;
       }
       edit_role(this.editRoleForm).then((res) => {
-
         if (res.code == 200) {
           popup("操作成功");
           this.editRoleForm = {};
@@ -364,8 +299,6 @@ export default {
           this.dialogVisible = false;
           this.roleSearchForm.state = "0";
           this.init();
-        } else {
-          popup(res.msg, "error");
         }
       });
     },
@@ -379,14 +312,11 @@ export default {
         if (valid) {
           console.log(this.newRoleForm);
           save_role(this.newRoleForm).then((res) => {
-
             if (res.code == 200) {
               popup("操作成功");
               this.newRoleForm = {};
               this.newRoleVisable = false;
               this.init();
-            } else {
-              popup(res.msg, "error");
             }
           });
         }
@@ -401,16 +331,11 @@ export default {
       this.distributionFulForm.rid = rid;
       this.default_checked_mid = [];
       checkPermissons(rid).then((res) => {
-
         if (res.code == 200) {
           this.fuloptions = res.data.menus;
-          this.default_checked_mid = res.data.menuIds.sort(
-              (x, y) => x - y
-          );
+          this.default_checked_mid = res.data.menuIds.sort((x, y) => x - y);
           console.log(typeof this.default_checked_mid);
           console.log(this.default_checked_mid);
-        } else {
-          popup(res.msg, "error");
         }
       });
 
@@ -422,15 +347,12 @@ export default {
       this.distributionFulForm.menuIds = v;
       console.log(this.distributionFulForm.menuIds);
       saveRolePermissons(this.distributionFulForm).then((res) => {
-
         if (res.code == 200) {
           popup("操作成功");
           this.distributionFulVisable = false;
           this.distributionFulForm = {};
           this.default_checked_mid = [];
           this.fuloptions = [];
-        } else {
-          popup(res.msg, "error");
         }
       });
       this.distributionFulVisable = false;

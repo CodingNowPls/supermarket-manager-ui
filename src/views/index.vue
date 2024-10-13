@@ -11,9 +11,9 @@
         <el-col :span="12" style="text-align: right; margin-top: 15px; cursor: pointer">
           <el-dropdown>
             <el-avatar
-                :size="50"
-                shape="square"
-                :src="BaseApi + circleUrl">
+              :size="50"
+              shape="square"
+              :src="BaseApi + circleUrl">
             </el-avatar>
             <b style=" font-size: 24px;color: white; margin-top: -10px;">{{ isAdmin ? "管理员 " : "用户 " }}
               {{ loginName }}</b>
@@ -35,7 +35,7 @@
         </el-form-item>
         <el-form-item>
           <el-button
-              type="primary" @click="logoutSubmit('logoutform')">确 定
+            type="primary" @click="logoutSubmit('logoutform')">确 定
           </el-button>
           <el-button @click="logoutCel('logoutform')">取 消
           </el-button>
@@ -48,9 +48,9 @@
         <el-menu background-color="#000000" text-color="white" :router="true" :unique-opened="true"
                  active-text-color="#FFDEAD">
           <el-submenu
-              v-for="item in menu_catalogs"
-              :key="item.id"
-              :index="item.id + ''">
+            v-for="item in menu_catalogs"
+            :key="item.id"
+            :index="item.id + ''">
             <template slot="title">
               <i :class="item.icon" style="font-size: 26px; color: white">
                 <b style="font-size: 18px"> {{ item.label }}</b>
@@ -129,8 +129,6 @@ export default {
             clearCookie("employee");
             clearCookie("token");
             this.$router.push("/");
-          } else {
-            popup(res.msg, "error");
           }
         });
       })
@@ -158,8 +156,6 @@ export default {
               clearCookie("token");
               this.logoutVisable = false;
               this.$router.push("/");
-            } else {
-              popup(res.msg, "error");
             }
           });
         }

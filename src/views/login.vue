@@ -12,18 +12,18 @@
           <el-row>
             <el-col :span="5" style="text-align: right">
               <i
-                  class="iconfont icon-r-user1"
-                  style="font-size: 28px; color: grey"
+                class="iconfont icon-r-user1"
+                style="font-size: 28px; color: grey"
               >
               </i>
             </el-col>
             <el-col
-                :span="19"
-                style="text-align: left; padding-left: 10px"
+              :span="19"
+              style="text-align: left; padding-left: 10px"
             >
               <el-input
-                  v-model="loginForm.username"
-                  placeholder="账号"
+                v-model="loginForm.username"
+                placeholder="账号"
               ></el-input>
             </el-col>
           </el-row>
@@ -33,28 +33,28 @@
           <el-row>
             <el-col :span="5" style="text-align: right">
               <i
-                  class="iconfont icon-r-lock"
-                  style="font-size: 28px; color: grey"
+                class="iconfont icon-r-lock"
+                style="font-size: 28px; color: grey"
               >
               </i>
             </el-col>
             <el-col
-                :span="19"
-                style="text-align: left; padding-left: 10px"
+              :span="19"
+              style="text-align: left; padding-left: 10px"
             >
               <el-input
-                  type="password"
-                  v-model="loginForm.password"
-                  placeholder="密码"
+                type="password"
+                v-model="loginForm.password"
+                placeholder="密码"
               ></el-input>
             </el-col>
           </el-row>
         </el-form-item>
         <el-form-item>
           <el-button
-              style="font-size: 18px"
-              type="primary"
-              @click="submitForm('loginForm')"
+            style="font-size: 18px"
+            type="primary"
+            @click="submitForm('loginForm')"
           >
             <i class="iconfont icon-r-yes" style="font-size: 18px">
             </i>
@@ -142,21 +142,21 @@ export default {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           login(this.loginForm).then((res) => {
-                if (res.code == 200) {
-                  Cookies.set("token", res.data.token, {
-                    expires: 1 / 48,
-                  });
-                  Cookies.set(
-                      "employee",
-                      JSON.stringify(res.data.employee),
-                      {expires: 1 / 48}
-                  );
-                  popup("登录成功，请稍等...");
-                  this.$router.push("/index");
-                } else {
-                  popup(res.msg, "warning");
-                }
+            if (res.code == 200) {
+              Cookies.set("token", res.data.token, {
+                expires: 1 / 48,
               });
+              Cookies.set(
+                "employee",
+                JSON.stringify(res.data.employee),
+                {expires: 1 / 48}
+              );
+              popup("登录成功，请稍等...");
+              this.$router.push("/index");
+            } else {
+              popup(res.msg, "warning");
+            }
+          });
         } else {
           popup("账号或密码格式不正确！", "error");
         }

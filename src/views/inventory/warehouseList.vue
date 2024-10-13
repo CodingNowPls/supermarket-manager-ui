@@ -4,14 +4,11 @@
       <el-breadcrumb-item>首页</el-breadcrumb-item>
       <el-breadcrumb-item>库存管理</el-breadcrumb-item>
       <el-breadcrumb-item>仓库管理</el-breadcrumb-item>
-    </el-breadcrumb
-    >
+    </el-breadcrumb>
     <br/>
-
     <el-row>
       <el-col :span="8" style="text-align: left;padding-right: 10px;">
         <el-input placeholder="仓库名称" v-model="searchForm.name"/>
-
       </el-col>
       <el-col :span="8">
         <el-select v-model="searchForm.state" placeholder="请选择状态" clearable>
@@ -24,20 +21,17 @@
     <el-row>
       <el-col :span="24" style="text-align: left">
         <el-button
-            type="primary"
-            @click="subSearchForm"
-            style="font-size: 18px"
-        >
+          type="primary"
+          @click="subSearchForm"
+          style="font-size: 18px">
           <i class="iconfont icon-r-find" style="font-size: 18px">
           </i>
           搜索
-        </el-button
-        >
+        </el-button>
         <el-button
-            type="success"
-            @click="newVisable = true"
-            style="font-size: 18px"
-        >
+          type="success"
+          @click="newVisable = true"
+          style="font-size: 18px">
           <i class="iconfont icon-r-add" style="font-size: 18px"> </i>
           创建仓库
         </el-button>
@@ -45,31 +39,31 @@
     </el-row>
     <br/>
     <el-table
-        :data="tableData"
-        style="width: 100%">
+      :data="tableData"
+      style="width: 100%">
       <el-table-column
-          type="index"
-          label="序号"
-          width="180">
+        type="index"
+        label="序号"
+        width="180">
       </el-table-column>
       <el-table-column
-          prop="name"
-          label="名称"
-          width="180">
+        prop="name"
+        label="名称"
+        width="180">
       </el-table-column>
       <el-table-column
-          prop="address"
-          label="地址"
-          width="180">
+        prop="address"
+        label="地址"
+        width="180">
       </el-table-column>
       <el-table-column
-          prop="info"
-          :show-overflow-tooltip="true"
-          label="描述">
+        prop="info"
+        :show-overflow-tooltip="true"
+        label="描述">
       </el-table-column>
       <el-table-column
-          prop="state"
-          label="状态">
+        prop="state"
+        label="状态">
         <template v-slot="scope">
           <el-tag v-if="scope.row.state=='0'" type="success">正常</el-tag>
           <el-tag v-else type="danger">停用</el-tag>
@@ -91,9 +85,9 @@
     </el-table>
     <!--修改仓库弹出框-->
     <el-dialog
-        title="仓库信息修改"
-        :visible.sync="dialogVisible"
-        width="50%">
+      title="仓库信息修改"
+      :visible.sync="dialogVisible"
+      width="50%">
       <el-form v-model="editForm" label-width="100px" class="demo-ruleForm">
         <el-form-item label="名称：">
           <el-input v-model="editForm.name"></el-input>
@@ -110,10 +104,10 @@
                      @change="$forceUpdate()"
                      placeholder="请选择状态">
             <el-option
-                v-for="item in options"
-                :key="item.value"
-                :label="item.label"
-                :value="item.value">
+              v-for="item in options"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value">
             </el-option>
           </el-select>
         </el-form-item>
@@ -128,9 +122,9 @@
     </el-dialog>
     <!--创建仓库弹出框-->
     <el-dialog
-        title="创建仓库"
-        :visible.sync="newVisable"
-        width="50%">
+      title="创建仓库"
+      :visible.sync="newVisable"
+      width="50%">
       <el-form :model="newForm" :rules="rules" ref="newForm" label-width="100px" class="demo-ruleForm">
         <el-form-item label="名称：" prop="name">
           <el-input v-model="newForm.name"></el-input>
@@ -202,8 +196,6 @@ export default {
       deactivate(sid).then(res => {
         if (res.code == 200) {
           popup("操作成功")
-        } else {
-          popup(res.msg, "error")
         }
         this.init()
       })
@@ -214,10 +206,7 @@ export default {
           popup("操作成功")
           this.init()
           this.dialogVisible = false
-        } else {
-          popup(res.msg, "error")
         }
-
       })
     },
     editCancel() {
@@ -229,14 +218,11 @@ export default {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           save(this.newForm).then(res => {
-
             if (res.code == 200) {
               popup("操作成功")
               this.newForm = {}
               this.newVisable = false
               this.init()
-            } else {
-              popup(res.msg, "error")
             }
           })
         }

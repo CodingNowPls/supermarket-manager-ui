@@ -4,70 +4,56 @@
       <el-breadcrumb-item>首页</el-breadcrumb-item>
       <el-breadcrumb-item>人事管理</el-breadcrumb-item>
       <el-breadcrumb-item>员工管理</el-breadcrumb-item>
-    </el-breadcrumb
-    >
+    </el-breadcrumb>
     <br/>
 
     <el-row>
       <el-col :span="8">
-        <el-input
-            style="width: 95%"
-            placeholder="用户名"
-            v-model="searchForm.username"
-        />
+        <el-input style="width: 95%" placeholder="用户名" v-model="searchForm.username"/>
+      </el-col>
+      <el-col :span="8">
+        <el-input style="width: 95%" placeholder="姓名" v-model="searchForm.nickName"/>
       </el-col>
       <el-col :span="8">
         <el-input
-            style="width: 95%"
-            placeholder="姓名"
-            v-model="searchForm.nickName"
-        />
-      </el-col>
-      <el-col :span="8">
-        <el-input
-            style="width: 95%"
-            type="number"
-            :min="0"
-            :max="100"
-            placeholder="年龄"
-            v-model="searchForm.age"
-        />
+          style="width: 95%"
+          type="number"
+          :min="0"
+          :max="100"
+          placeholder="年龄"
+          v-model="searchForm.age"/>
       </el-col>
     </el-row>
     <br/>
     <el-row>
       <el-col :span="12">
         <el-input
-            style="width: 97%"
-            placeholder="住址"
-            v-model="searchForm.address"
-        />
+          style="width: 97%"
+          placeholder="住址"
+          v-model="searchForm.address"/>
       </el-col>
       <el-col :span="6">
         <el-select
-            v-model="searchForm.sex"
-            @change="$forceUpdate()"
-            placeholder="性别"
-            clearable
-        >
+          v-model="searchForm.sex"
+          @change="$forceUpdate()"
+          placeholder="性别"
+          clearable>
           <el-option label="女" value="0"></el-option>
           <el-option label="男" value="1"></el-option>
         </el-select>
       </el-col>
       <el-col :span="6">
         <el-select
-            v-model="searchForm.deptId"
-            placeholder="部门"
-            filterable
-            @change="$forceUpdate()"
-            clearable
-        >
+          v-model="searchForm.deptId"
+          placeholder="部门"
+          filterable
+          @change="$forceUpdate()"
+          clearable>
           <el-option
-              v-for="item in options"
-              :key="item.id"
-              :label="item.name"
-              :value="item.id"
-          >
+            v-for="item in options"
+            :key="item.id"
+            :label="item.name"
+            :value="item.id">
           </el-option>
         </el-select>
       </el-col>
@@ -76,20 +62,17 @@
     <el-row>
       <el-col :span="24" style="text-align: left">
         <el-button
-            type="primary"
-            @click="submitSearchForm"
-            style="font-size: 18px"
-        >
+          type="primary"
+          @click="submitSearchForm"
+          style="font-size: 18px">
           <i class="iconfont icon-r-find" style="font-size: 18px">
           </i>
           搜索
-        </el-button
-        >
+        </el-button>
         <el-button
-            type="success"
-            @click="newVisable = true"
-            style="font-size: 18px"
-        >
+          type="success"
+          @click="newVisable = true"
+          style="font-size: 18px">
           <i class="iconfont icon-r-add" style="font-size: 18px"> </i>
           新建员工
         </el-button>
@@ -111,169 +94,129 @@
         <el-table-column width="50" prop="age" label="年龄">
         </el-table-column>
         <el-table-column
-            width="130"
-            :show-overflow-tooltip="true"
-            prop="address"
-            label="住址"
-        >
+          width="130"
+          :show-overflow-tooltip="true"
+          prop="address"
+          label="住址">
         </el-table-column>
         <el-table-column
-            width="130"
-            :show-overflow-tooltip="true"
-            prop="deptName"
-            label="所属部门"
-        >
+          width="130"
+          :show-overflow-tooltip="true"
+          prop="deptName"
+          label="所属部门">
         </el-table-column>
         <el-table-column
-            width="120"
-            :show-overflow-tooltip="true"
-            prop="createTime"
-            label="入职时间"
-        >
+          width="120"
+          :show-overflow-tooltip="true"
+          prop="createTime"
+          label="入职时间">
         </el-table-column>
         <el-table-column
-            width="120"
-            :show-overflow-tooltip="true"
-            prop="leaveTime"
-            label="离职时间"
-        >
+          width="120"
+          :show-overflow-tooltip="true"
+          prop="leaveTime"
+          label="离职时间">
         </el-table-column>
         <el-table-column width="120" prop="state" label="状态">
           <template v-slot="scope">
             <el-tag v-if="scope.row.state == '0'" type="success"
             >在职
-            </el-tag
-            >
+            </el-tag>
             <el-tag v-else type="danger">离职</el-tag>
           </template>
         </el-table-column>
         <el-table-column label="操作" width="570" fixed="right">
           <template v-slot="scope">
             <el-button
-                style="font-size: 16px"
-                type="primary"
-                @click="detailBtn(scope.row)"
-            >
-              <i
-                  style="font-size: 16px"
-                  class="iconfont icon-r-find"
-              >
+              style="font-size: 16px"
+              type="primary"
+              @click="detailBtn(scope.row)">
+              <i style="font-size: 16px"
+                 class="iconfont icon-r-find">
               </i>
               详情
             </el-button>
             <el-button
-                style="font-size: 16px"
-                type="success"
-                @click="editBtn(scope.row.id)"
-            >
+              style="font-size: 16px"
+              type="success"
+              @click="editBtn(scope.row.id)">
               <i
-                  style="font-size: 16px"
-                  class="iconfont icon-r-edit"
-              >
+                style="font-size: 16px"
+                class="iconfont icon-r-edit">
               </i>
               修改
-            </el-button
-            >
+            </el-button>
             <el-button
-                style="font-size: 16px"
-                type="danger"
-                @click="delBtn(scope.row)"
-            >
-              <i
-                  style="font-size: 16px"
-                  class="iconfont icon-r-delete"
-              >
+              style="font-size: 16px"
+              type="danger"
+              @click="delBtn(scope.row)">
+              <i style="font-size: 16px"
+                 class="iconfont icon-r-delete">
               </i>
               删除
-            </el-button
-            >
+            </el-button>
             <el-button
-                style="font-size: 16px"
-                type="warning"
-                @click="empRoleBtn(scope.row.id)"
-            >
-              <i
-                  style="font-size: 16px"
-                  class="iconfont icon-r-user1"
-              >
+              style="font-size: 16px"
+              type="warning"
+              @click="empRoleBtn(scope.row.id)">
+              <i style="font-size: 16px"
+                 class="iconfont icon-r-user1">
               </i>
               职务
-            </el-button
-            >
+            </el-button>
 
-            <el-button
-                style="font-size: 16px"
-                type="warning"
-                @click="resetPwd(scope.row)"
-            >
-              <i
-                  style="font-size: 16px"
-                  class="iconfont icon-r-lock"
-              >
+            <el-button style="font-size: 16px"
+                       type="warning"
+                       @click="resetPwd(scope.row)">
+              <i style="font-size: 16px"
+                 class="iconfont icon-r-lock">
               </i>
               重置密码
-            </el-button
-            >
+            </el-button>
           </template>
         </el-table-column>
       </el-table>
       <div style="margin: 10px 0 15px 0">
         <el-pagination
-            @size-change="handleSizeChange"
-            @current-change="handleCurrentChange"
-            :current-page.sync="searchForm.currentPage"
-            :page-sizes="[5, 10, 20, 50]"
-            :page-size="searchForm.pageSize"
-            layout="total,sizes, prev, pager, next,jumper"
-            :total="searchForm.total"
-        >
+          @size-change="handleSizeChange"
+          @current-change="handleCurrentChange"
+          :current-page.sync="searchForm.currentPage"
+          :page-sizes="[5, 10, 20, 50]"
+          :page-size="searchForm.pageSize"
+          layout="total,sizes, prev, pager, next,jumper"
+          :total="searchForm.total">
         </el-pagination>
       </div>
     </div>
     <!--用户详情-->
     <el-dialog :visible.sync="detailVisable" width="50%">
       <el-descriptions :model="detailForm" column="2" title="员工信息">
-        <el-descriptions-item label="用户名">{{
-            detailForm.username
-          }}
+        <el-descriptions-item label="用户名">{{ detailForm.username }}
         </el-descriptions-item>
-        <el-descriptions-item label="性别">{{
-            detailForm.sex == "1" ? "男" : "女"
-          }}
+        <el-descriptions-item label="性别">{{ detailForm.sex == "1" ? "男" : "女" }}
         </el-descriptions-item>
-        <el-descriptions-item label="年龄">{{
-            detailForm.age
-          }}
+        <el-descriptions-item label="年龄">{{ detailForm.age }}
         </el-descriptions-item>
-        <el-descriptions-item label="住址">{{
-            detailForm.address
-          }}
+        <el-descriptions-item label="住址">{{ detailForm.address }}
         </el-descriptions-item>
-        <el-descriptions-item label="昵称">{{
-            detailForm.nickName
-          }}
+        <el-descriptions-item label="昵称">{{ detailForm.nickName }}
         </el-descriptions-item>
         <el-descriptions-item label="头像"
-        ><img :src="BaseApi + detailForm.headImg" width="30px"
-        /></el-descriptions-item>
+        ><img :src="BaseApi + detailForm.headImg" width="30px"/>
+        </el-descriptions-item>
         <el-descriptions-item label="状态">
           <el-tag v-if="detailForm.state == '0'" type="success"
           >在职
-          </el-tag
-          >
+          </el-tag>
           <el-tag v-else type="danger">离职</el-tag>
         </el-descriptions-item>
         <el-descriptions-item label="系统管理员">
-          <el-tag v-if="detailForm.isAdmin == true" type="success"
-          >是
-          </el-tag
-          >
+          <el-tag v-if="detailForm.isAdmin == true" type="success">是
+          </el-tag>
           <el-tag v-else type="danger">否</el-tag>
         </el-descriptions-item>
         <el-descriptions-item label="描述"></el-descriptions-item>
-        <el-descriptions-item label="录入者">{{
-            detailForm.createby
-          }}
+        <el-descriptions-item label="录入者">{{ detailForm.createby }}
         </el-descriptions-item>
         <el-descriptions-item label="所属部门">
           <el-tag v-if="detailForm.deptName" type="warning">{{
@@ -290,21 +233,19 @@
           }}
         </el-descriptions-item>
         <el-descriptions-item
-            v-if="detailForm.state != '0'"
-            label="离职时间"
+          v-if="detailForm.state != '0'"
+          label="离职时间"
         >{{ detailForm.leaveTime }}
         </el-descriptions-item>
         <el-descriptions-item label="角色">
           <div style="flex-wrap: wrap;display: flex;">
-
             <el-tag
-                size="mini"
-                type="success"
-                :key="item.id"
-                v-for="item in detailForm.roleNames"
+              size="mini"
+              type="success"
+              :key="item.id"
+              v-for="item in detailForm.roleNames"
             >{{ item }}
-            </el-tag
-            >
+            </el-tag>
           </div>
         </el-descriptions-item>
       </el-descriptions>
@@ -312,42 +253,37 @@
     </el-dialog>
     <!--录入-->
     <el-dialog
-        title="录入用户"
-        :visible.sync="newVisable"
-        size="mini"
-        @close="dialog_imgClose"
-        label-width="200"
-        width="50%"
-    >
+      title="录入用户"
+      :visible.sync="newVisable"
+      size="mini"
+      @close="dialog_imgClose"
+      label-width="200"
+      width="50%">
       <el-form
-          :model="newForm"
-          :rules="rules"
-          ref="newForm"
-          label-width="100px"
-          class="demo-ruleForm"
-      >
+        :model="newForm"
+        :rules="rules"
+        ref="newForm"
+        label-width="100px"
+        class="demo-ruleForm">
         <el-row>
           <el-col :span="24">
             <el-form-item label="头像：">
               <el-upload
-                  class="avatar-uploader"
-                  :action="
+                class="avatar-uploader"
+                :action="
                                     BaseApi +
                                     '/personnel_management/employee/uploadImg'
                                 "
-                  :show-file-list="false"
-                  :on-success="handleAvatarSuccess"
-                  :before-upload="beforeAvatarUpload"
-              >
+                :show-file-list="false"
+                :on-success="handleAvatarSuccess"
+                :before-upload="beforeAvatarUpload">
                 <img
-                    v-if="imageUrl"
-                    :src="BaseApi + imageUrl"
-                    class="avatar"
-                />
+                  v-if="imageUrl"
+                  :src="BaseApi + imageUrl"
+                  class="avatar"/>
                 <i
-                    v-else
-                    class="el-icon-plus avatar-uploader-icon"
-                ></i>
+                  v-else
+                  class="el-icon-plus avatar-uploader-icon"></i>
               </el-upload>
             </el-form-item>
           </el-col>
@@ -356,8 +292,8 @@
           <el-col :span="12">
             <el-form-item label="电话号码：" prop="username">
               <el-input
-                  max="11"
-                  v-model="newForm.username"
+                max="11"
+                v-model="newForm.username"
               ></el-input>
             </el-form-item>
           </el-col>
@@ -376,10 +312,10 @@
           <el-col :span="12">
             <el-form-item label="年龄：">
               <el-input
-                  type="number"
-                  min="18"
-                  max="70"
-                  v-model="newForm.age"
+                type="number"
+                min="18"
+                max="70"
+                v-model="newForm.age"
               ></el-input>
             </el-form-item>
           </el-col>
@@ -388,19 +324,17 @@
           <el-col :span="12">
             <el-form-item label="所属部门：">
               <el-select
-                  style="width: 200px"
-                  v-model="newForm.deptId"
-                  placeholder="请选择部门"
-                  filterable
-                  @change="$forceUpdate()"
-                  clearable
-              >
+                style="width: 200px"
+                v-model="newForm.deptId"
+                placeholder="请选择部门"
+                filterable
+                @change="$forceUpdate()"
+                clearable>
                 <el-option
-                    v-for="item in options"
-                    :key="item.id"
-                    :label="item.name"
-                    :value="item.id"
-                >
+                  v-for="item in options"
+                  :key="item.id"
+                  :label="item.name"
+                  :value="item.id">
                 </el-option>
               </el-select>
             </el-form-item>
@@ -408,8 +342,8 @@
           <el-col :span="12">
             <el-form-item label="住址：">
               <el-input
-                  type="text"
-                  v-model="newForm.address"
+                type="text"
+                v-model="newForm.address"
               ></el-input>
             </el-form-item>
           </el-col>
@@ -418,21 +352,20 @@
           <el-col :span="12">
             <el-form-item label="员工备注：">
                             <textarea
-                                cols="20"
-                                rows="3"
-                                v-model="newForm.info"
+                              cols="20"
+                              rows="3"
+                              v-model="newForm.info"
                             ></textarea>
             </el-form-item>
           </el-col>
           <el-col :span="12">
             <el-form-item label="性别：">
               <el-select
-                  style="width: 200px"
-                  v-model="newForm.sex"
-                  @change="$forceUpdate()"
-                  placeholder="请选择性别"
-                  clearable
-              >
+                style="width: 200px"
+                v-model="newForm.sex"
+                @change="$forceUpdate()"
+                placeholder="请选择性别"
+                clearable>
                 <el-option label="女" value="0"></el-option>
                 <el-option label="男" value="1"></el-option>
               </el-select>
@@ -442,50 +375,45 @@
         <el-form-item>
           <el-button type="primary" @click="submitNewForm('newForm')"
           >提交
-          </el-button
-          >
+          </el-button>
           <el-button @click="saveCancel">取消</el-button>
         </el-form-item>
       </el-form>
     </el-dialog>
     <!--修改-->
     <el-dialog
-        title="修改员工"
-        @close="dialog_imgClose"
-        :visible.sync="editVisable"
-        size="mini"
-        label-width="200"
-        width="50%"
-    >
+      title="修改员工"
+      @close="dialog_imgClose"
+      :visible.sync="editVisable"
+      size="mini"
+      label-width="200"
+      width="50%">
       <el-form
-          :model="editForm"
-          :rules="rules"
-          ref="editForm"
-          label-width="100px"
-          class="demo-ruleForm"
-      >
+        :model="editForm"
+        :rules="rules"
+        ref="editForm"
+        label-width="100px"
+        class="demo-ruleForm">
         <el-row>
           <el-col :span="24">
             <el-form-item label="头像：">
               <el-upload
-                  class="avatar-uploader"
-                  :action="
+                class="avatar-uploader"
+                :action="
                                     BaseApi +
                                     '/personnel_management/employee/uploadImg'
                                 "
-                  :show-file-list="false"
-                  :on-success="handleAvatarSuccess"
-                  :before-upload="beforeAvatarUpload"
-              >
+                :show-file-list="false"
+                :on-success="handleAvatarSuccess"
+                :before-upload="beforeAvatarUpload">
                 <img
-                    v-if="imageUrl"
-                    :src="BaseApi + imageUrl"
-                    class="avatar"
+                  v-if="imageUrl"
+                  :src="BaseApi + imageUrl"
+                  class="avatar"
                 />
                 <i
-                    v-else
-                    class="el-icon-plus avatar-uploader-icon"
-                ></i>
+                  v-else
+                  class="el-icon-plus avatar-uploader-icon"></i>
               </el-upload>
             </el-form-item>
           </el-col>
@@ -494,8 +422,8 @@
           <el-col :span="12">
             <el-form-item label="电话号码：" prop="username">
               <el-input
-                  max="11"
-                  v-model="editForm.username"
+                max="11"
+                v-model="editForm.username"
               ></el-input>
             </el-form-item>
           </el-col>
@@ -514,10 +442,10 @@
           <el-col :span="12">
             <el-form-item label="年龄：">
               <el-input
-                  type="number"
-                  min="18"
-                  max="70"
-                  v-model="editForm.age"
+                type="number"
+                min="18"
+                max="70"
+                v-model="editForm.age"
               ></el-input>
             </el-form-item>
           </el-col>
@@ -526,19 +454,17 @@
           <el-col :span="12">
             <el-form-item label="所属部门：">
               <el-select
-                  style="width: 200px"
-                  v-model="editForm.deptId"
-                  placeholder="请选择部门"
-                  filterable
-                  @change="$forceUpdate()"
-                  clearable
-              >
+                style="width: 200px"
+                v-model="editForm.deptId"
+                placeholder="请选择部门"
+                filterable
+                @change="$forceUpdate()"
+                clearable>
                 <el-option
-                    v-for="item in options"
-                    :key="item.id"
-                    :label="item.name"
-                    :value="item.id"
-                >
+                  v-for="item in options"
+                  :key="item.id"
+                  :label="item.name"
+                  :value="item.id">
                 </el-option>
               </el-select>
             </el-form-item>
@@ -546,8 +472,8 @@
           <el-col :span="12">
             <el-form-item label="住址：">
               <el-input
-                  type="text"
-                  v-model="editForm.address"
+                type="text"
+                v-model="editForm.address"
               ></el-input>
             </el-form-item>
           </el-col>
@@ -556,21 +482,20 @@
           <el-col :span="12">
             <el-form-item label="员工备注：">
                             <textarea
-                                cols="20"
-                                rows="3"
-                                v-model="editForm.info"
+                              cols="20"
+                              rows="3"
+                              v-model="editForm.info"
                             ></textarea>
             </el-form-item>
           </el-col>
           <el-col :span="12">
             <el-form-item label="性别：">
               <el-select
-                  style="width: 200px"
-                  v-model="editForm.sex"
-                  @change="$forceUpdate()"
-                  placeholder="请选择性别"
-                  clearable
-              >
+                style="width: 200px"
+                v-model="editForm.sex"
+                @change="$forceUpdate()"
+                placeholder="请选择性别"
+                clearable>
                 <el-option label="女" value="0"></el-option>
                 <el-option label="男" value="1"></el-option>
               </el-select>
@@ -581,11 +506,10 @@
           <el-col :span="12">
             <el-form-item label="状态：">
               <el-select
-                  style="width: 200px"
-                  v-model="editForm.state"
-                  placeholder="请选择状态"
-                  clearable
-              >
+                style="width: 200px"
+                v-model="editForm.state"
+                placeholder="请选择状态"
+                clearable>
                 <el-option label="在职" value="0"></el-option>
                 <el-option label="离职" value="1"></el-option>
               </el-select>
@@ -595,12 +519,11 @@
 
         <el-form-item>
           <el-button
-              type="primary"
-              style="font-size: 18px;"
-              @click="submitEditForm('editForm')"
+            type="primary"
+            style="font-size: 18px;"
+            @click="submitEditForm('editForm')"
           ><i class="iconfont icon-r-yes" style="font-size: 18px;"> </i> 提交
-          </el-button
-          >
+          </el-button>
           <el-button @click="editCancel" style="font-size: 18px;">取消</el-button>
         </el-form-item>
       </el-form>
@@ -610,39 +533,35 @@
       <div>
         <label>已有职务：</label>
         <el-select
-            disabled
-            size="small"
-            v-model="hasRoleIds"
-            :multiple="true"
-            filterable
-            placeholder="没有职务"
-        >
+          disabled
+          size="small"
+          v-model="hasRoleIds"
+          :multiple="true"
+          filterable
+          placeholder="没有职务">
           <el-option
-              v-for="item in allRoles"
-              :key="item.id"
-              :label="item.label"
-              :value="item.id"
-          >
+            v-for="item in allRoles"
+            :key="item.id"
+            :label="item.label"
+            :value="item.id">
           </el-option>
         </el-select>
       </div>
       <div>
         <label>更改职务：</label>
         <el-select
-            size="small"
-            name="roleIds"
-            v-model="empRoleForm.empRoleIds"
-            :multiple="true"
-            @change="$forceUpdate()"
-            filterable
-            placeholder="请选择职务"
-        >
+          size="small"
+          name="roleIds"
+          v-model="empRoleForm.empRoleIds"
+          :multiple="true"
+          @change="$forceUpdate()"
+          filterable
+          placeholder="请选择职务">
           <el-option
-              v-for="item in allRoles"
-              :key="item.id"
-              :label="item.label"
-              :value="item.id"
-          >
+            v-for="item in allRoles"
+            :key="item.id"
+            :label="item.label"
+            :value="item.id">
           </el-option>
         </el-select>
       </div>
@@ -654,25 +573,22 @@
     </el-dialog>
     <!--重置密码-->
     <el-dialog
-        title="重置密码"
-        v-model="resetPwdForm"
-        :visible.sync="resetPwdVisable"
-    >
+      title="重置密码"
+      v-model="resetPwdForm"
+      :visible.sync="resetPwdVisable">
       <el-form>
         <el-form-item label="密码：">
           <el-input
-              style="width: 75%; margin: 0 auto; padding: 0"
-              type="password"
-              v-model="resetPwdForm.code"
-              placeholder="请输入密码"
+            style="width: 75%; margin: 0 auto; padding: 0"
+            type="password"
+            v-model="resetPwdForm.code"
+            placeholder="请输入密码"
           ></el-input>
         </el-form-item>
-        <el-button type="primary" @click="submitResetPwd" style="font-size: 18px;"
-        >
+        <el-button type="primary" @click="submitResetPwd" style="font-size: 18px;">
           <i class="iconfont icon-r-yes" style="font-size: 18px;"> </i>
           确定
-        </el-button
-        >
+        </el-button>
         <el-button @click="resetPwdVisable = false" style="font-size: 18px;">取消</el-button>
       </el-form>
     </el-dialog>
@@ -751,8 +667,6 @@ export default {
 
         if (res.code == 200) {
           this.options = res.data;
-        } else {
-          popup(res.msg, "error");
         }
       });
     },
@@ -761,8 +675,6 @@ export default {
 
         if (res.code == 200) {
           this.allRoles = res.data;
-        } else {
-          popup(res.msg, "warning");
         }
       });
     },
@@ -774,8 +686,6 @@ export default {
           this.searchForm.total = res.data.total;
           this.searchForm.pageSize = res.data.size;
           this.searchForm.currentPage = res.data.current;
-        } else {
-          popup(res.msg, "error");
         }
       });
     },
@@ -800,8 +710,6 @@ export default {
           this.detailForm = res.data;
           this.detailForm.deptName = row.deptName;
           this.detailVisable = true;
-        } else {
-          popup(res.msg, "error");
         }
       });
       console.log(this.detailForm);
@@ -816,7 +724,7 @@ export default {
     },
     beforeAvatarUpload(file) {
       const isJPG =
-          file.type === "image/jpeg" || file.type === "image/png";
+        file.type === "image/jpeg" || file.type === "image/png";
       const isLt2M = file.size / 1024 / 1024 < 3;
       if (!isJPG) {
         this.$message.error("上传头像图片只能是 JPG或PNG 格式!");
@@ -831,15 +739,12 @@ export default {
         if (valid) {
           this.newForm.headImg = this.imageUrl;
           save(this.newForm).then((res) => {
-
             if (res.code == 200) {
               popup("操作成功");
               this.newForm = {};
               this.imageUrl = "";
               this.newVisable = false;
               this.init();
-            } else {
-              popup(res.msg, "error");
             }
           });
         }
@@ -865,8 +770,6 @@ export default {
           console.log(this.editForm);
           this.imageUrl = this.editForm.headImg;
           this.editVisable = true;
-        } else {
-          popup(res.msg, "error");
         }
       });
     },
@@ -882,8 +785,6 @@ export default {
               this.imageUrl = "";
               this.editVisable = false;
               this.init();
-            } else {
-              popup(res.msg, "error");
             }
           });
         }
@@ -896,27 +797,25 @@ export default {
         cancelButtonText: "取消",
         type: "warning",
       })
-          .then(() => {
-            if (row.state == "1") {
-              popup("已是离职状态", "warning");
-              return;
-            }
-            deactivate(row.id).then((res) => {
+        .then(() => {
+          if (row.state == "1") {
+            popup("已是离职状态", "warning");
+            return;
+          }
+          deactivate(row.id).then((res) => {
 
-              if (res.code == 200) {
-                popup("操作成功");
-                this.init();
-              } else {
-                popup(res.msg, "error");
-              }
-            });
-          })
-          .catch(() => {
-            this.$message({
-              type: "info",
-              message: "已取消操作",
-            });
+            if (res.code == 200) {
+              popup("操作成功");
+              this.init();
+            }
           });
+        })
+        .catch(() => {
+          this.$message({
+            type: "info",
+            message: "已取消操作",
+          });
+        });
     },
     dialog_imgClose() {
       this.imageUrl = "";
@@ -931,16 +830,14 @@ export default {
           this.empRoleForm.empRoleIds = res.data;
           this.hasRoleIds = res.data;
           this.empRoleVisable = true;
-        } else {
-          popup(res.msg, "warning");
         }
       });
       this.empRoleVisable = true;
     },
     submitRoleBtn() {
       if (
-          JSON.stringify(this.hasRoleIds) ===
-          JSON.stringify(this.empRoleForm.empRoleIds)
+        JSON.stringify(this.hasRoleIds) ===
+        JSON.stringify(this.empRoleForm.empRoleIds)
       ) {
         popup("你未做改动...", "warning");
       } else {
@@ -949,28 +846,27 @@ export default {
           cancelButtonText: "取消",
           type: "warning",
         })
-            .then(() => {
-              this.empRoleForm.empRoleIds =
-                  this.empRoleForm.empRoleIds.toString();
-              saveRoleEmp(this.empRoleForm).then((res) => {
+          .then(() => {
+            this.empRoleForm.empRoleIds =
+              this.empRoleForm.empRoleIds.toString();
+            saveRoleEmp(this.empRoleForm).then((res) => {
 
-                if (res.code == 200) {
-                  popup("操作成功");
-                  this.hasRoleIds = [];
-                  this.empRoleForm = {};
-                  this.empRoleVisable = false;
-                } else {
-                  this.empRoleForm.empRoleIds = this.hasRoleIds;
-                  popup(res.msg, "error");
-                }
-              });
-            })
-            .catch(() => {
-              this.$message({
-                type: "info",
-                message: "已取消操作",
-              });
+              if (res.code == 200) {
+                popup("操作成功");
+                this.hasRoleIds = [];
+                this.empRoleForm = {};
+                this.empRoleVisable = false;
+              } else {
+                this.empRoleForm.empRoleIds = this.hasRoleIds;
+              }
             });
+          })
+          .catch(() => {
+            this.$message({
+              type: "info",
+              message: "已取消操作",
+            });
+          });
       }
     },
     roleBtnCancel() {
@@ -990,30 +886,28 @@ export default {
         cancelButtonText: "取消",
         type: "warning",
       })
-          .then(() => {
-            resetPwd(this.resetPwdForm).then((res) => {
+        .then(() => {
+          resetPwd(this.resetPwdForm).then((res) => {
 
-              if (res.code == 200) {
-                this.resetPwdVisable = false;
-                var emp = loginEmp();
-                if (emp.id == this.resetPwdForm.eid) {
-                  clearCookie("employee");
-                  clearCookie("token");
-                  this.$router.push("/");
-                }
-                this.resetPwdForm = {};
-                popup("密码重置成功");
-              } else {
-                popup(res.msg, "error");
+            if (res.code == 200) {
+              this.resetPwdVisable = false;
+              var emp = loginEmp();
+              if (emp.id == this.resetPwdForm.eid) {
+                clearCookie("employee");
+                clearCookie("token");
+                this.$router.push("/");
               }
-            });
-          })
-          .catch(() => {
-            this.$message({
-              type: "info",
-              message: "已取消操作",
-            });
+              this.resetPwdForm = {};
+              popup("密码重置成功");
+            }
           });
+        })
+        .catch(() => {
+          this.$message({
+            type: "info",
+            message: "已取消操作",
+          });
+        });
     },
   },
   mounted() {

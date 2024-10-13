@@ -15,23 +15,12 @@
     <br/>
     <el-row>
       <el-col :span="24" style="text-align: left">
-        <el-button
-            type="primary"
-            @click="submitSearchForm"
-            style="font-size: 18px"
-        >
-          <i class="iconfont icon-r-find" style="font-size: 18px">
-          </i>
+        <el-button type="primary" @click="submitSearchForm" style="font-size: 18px">
+          <i class="iconfont icon-r-find" style="font-size: 18px"></i>
           搜索
-        </el-button
-        >
-        <el-button
-            type="info"
-            @click="resetSearchForm"
-            style="font-size: 18px"
-        >
-          <i class="iconfont icon-r-refresh" style="font-size: 18px">
-          </i>
+        </el-button>
+        <el-button type="info" @click="resetSearchForm" style="font-size: 18px">
+          <i class="iconfont icon-r-refresh" style="font-size: 18px"></i>
           重置
         </el-button>
       </el-col>
@@ -39,44 +28,31 @@
     <br/>
     <div class="table">
       <el-table
-          :data="tableData"
-          style="width: 100%"
-          size="medium"
-          row-key="id"
-          border
-          :tree-props="{ children: 'children' }"
-      >
+        :data="tableData"
+        style="width: 100%"
+        size="medium"
+        row-key="id"
+        border
+        :tree-props="{ children: 'children' }">
         <el-table-column prop="label" label="菜单名"></el-table-column>
         <el-table-column
-            width="150"
-            prop="flag"
-            :show-overflow-tooltip="true"
-            label="标识符"
-        >
+          width="150"
+          prop="flag"
+          :show-overflow-tooltip="true"
+          label="标识符">
           <template v-slot="scope">
-            <el-tag type="info">{{
-                scope.row.flag ? scope.row.flag : "暂定"
-              }}
-            </el-tag>
+            <el-tag type="info">{{ scope.row.flag ? scope.row.flag : "暂定" }}</el-tag>
           </template>
         </el-table-column>
         <el-table-column prop="type" label="类型">
           <template v-slot="scope">
             <el-tag v-if="scope.row.type == 0"
             >目录
-            </el-tag
-            >
-            <el-tag
-
-                v-else-if="scope.row.type == 1"
-                type="success"
-            >菜单
-            </el-tag
-            >
-            <el-tag v-else type="warning"
-            >按钮
-            </el-tag
-            >
+            </el-tag>
+            <el-tag v-else-if="scope.row.type == 1" type="success">菜单
+            </el-tag>
+            <el-tag v-else type="warning">按钮
+            </el-tag>
           </template>
         </el-table-column>
         <el-table-column prop="icon" label="图标">
@@ -85,52 +61,39 @@
           </template>
         </el-table-column>
         <el-table-column
-            prop="info"
-            :show-overflow-tooltip="true"
-            label="描述"
-        >
+          prop="info"
+          :show-overflow-tooltip="true"
+          label="描述">
           <template v-slot="scope">
-            <el-tag type="info">{{
-                scope.row.info ? scope.row.info : "无"
-              }}
+            <el-tag type="info">{{ scope.row.info ? scope.row.info : "无" }}
             </el-tag>
           </template>
         </el-table-column>
         <el-table-column
-            prop="component"
-            :show-overflow-tooltip="true"
-            label="组件路径"
-        >
+          prop="component"
+          :show-overflow-tooltip="true"
+          label="组件路径">
           <template v-slot="scope">
-            <el-tag type="info">{{
-                scope.row.component ? scope.row.component : "暂定"
-              }}
+            <el-tag type="info">{{ scope.row.component ? scope.row.component : "暂定" }}
             </el-tag>
           </template>
         </el-table-column>
         <el-table-column prop="state" label="状态">
           <template v-slot="scope">
-            <el-tag
-
-                type="success"
-                v-if="scope.row.state == 0"
-            >正常
-            </el-tag
-            >
+            <el-tag type="success" v-if="scope.row.state == 0">正常</el-tag>
             <el-tag type="danger" v-else>禁用</el-tag>
           </template>
         </el-table-column>
       </el-table>
       <div style="margin: 10px 0 15px 0">
         <el-pagination
-            @size-change="handleSizeChange"
-            @current-change="handleCurrentChange"
-            :current-page.sync="searchForm.currentPage"
-            :page-sizes="[5, 10, 20, 50]"
-            :page-size="searchForm.pageSize"
-            layout="total,sizes, prev, pager, next,jumper"
-            :total="searchForm.total"
-        >
+          @size-change="handleSizeChange"
+          @current-change="handleCurrentChange"
+          :current-page.sync="searchForm.currentPage"
+          :page-sizes="[5, 10, 20, 50]"
+          :page-size="searchForm.pageSize"
+          layout="total,sizes, prev, pager, next,jumper"
+          :total="searchForm.total">
         </el-pagination>
       </div>
     </div>
@@ -163,8 +126,6 @@ export default {
           this.searchForm.total = res.data.total;
           this.searchForm.pageSize = res.data.size;
           this.searchForm.currentPage = res.data.current;
-        } else {
-          popup(res.msg, "error");
         }
       });
     },

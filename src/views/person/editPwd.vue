@@ -9,56 +9,48 @@
     <br/>
     <div id="edit_pwd">
       <el-form
-          :model="pwdForm"
-          :rules="rules"
-          ref="pwdForm"
-          label-width="100px"
-          class="demo-ruleForm"
-      >
+        :model="pwdForm"
+        :rules="rules"
+        ref="pwdForm"
+        label-width="100px"
+        class="demo-ruleForm">
         <i class="iconfont icon-r-lock" style="font-size: 32px">
-          <b style="font-size: 28px">密码修改</b></i
-        >
+          <b style="font-size: 28px">密码修改</b></i>
         <br/>
         <br/>
         <el-form-item label="账号">
           <el-input disabled v-model="pwdForm.username"></el-input>
         </el-form-item>
         <el-form-item label="旧密码" prop="oldPwd">
-          <el-input
-              type="password"
-              v-model="pwdForm.oldPwd"
-          ></el-input>
+          <el-input type="password"
+                    v-model="pwdForm.oldPwd"></el-input>
         </el-form-item>
         <el-form-item label="新密码" prop="newPwd">
           <el-input
-              type="password"
-              v-model="pwdForm.newPwd"
+            type="password"
+            v-model="pwdForm.newPwd"
           ></el-input>
         </el-form-item>
         <el-form-item>
           <el-button
-              type="primary"
-              @click="submitForm('pwdForm')"
-              style="font-size: 18px"
-          >
+            type="primary"
+            @click="submitForm('pwdForm')"
+            style="font-size: 18px">
             <i
-                class="iconfont icon-r-yes"
-                style="font-size: 18px"
+              class="iconfont icon-r-yes"
+              style="font-size: 18px"
             ></i>
             确定
-          </el-button
-          >
+          </el-button>
           <el-button
-              @click="resetForm('pwdForm')"
-              style="font-size: 18px"
-          >
+            @click="resetForm('pwdForm')"
+            style="font-size: 18px">
             <i
-                class="iconfont icon-r-refresh"
-                style="font-size: 18px"
+              class="iconfont icon-r-refresh"
+              style="font-size: 18px"
             ></i>
             重置
-          </el-button
-          >
+          </el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -68,6 +60,7 @@
 import {loginEmp, removeToken} from "@/assets/js/auth";
 import Cookies from "js-cookie";
 import {ajaxPost, popup} from "@/assets/js/common";
+import {editPwd} from "@/api/person/personApi";
 
 export default {
   data() {
@@ -117,31 +110,27 @@ export default {
             confirmButtonText: "确定",
             cancelButtonText: "取消",
             type: "warning",
-          })
-              .then(() => {
-                ajaxPost("/person/editPwd", this.pwdForm).then(
-                    (res) => {
-
-                      if (res.code == 200) {
-                        popup("密码修改成功,请重新登录...");
-                        this.pwdForm = {
-                          username: this.pwdForm.username,
-                        };
-                        Cookies.remove("employee");
-                        removeToken();
-                        this.$router.push("/");
-                      } else {
-                        popup(res.msg, "error");
-                      }
-                    }
-                );
-              })
-              .catch(() => {
-                this.$message({
-                  type: "info",
-                  message: "已取消操作",
-                });
+          }).then(() => {
+            editPwd(this.pwdForm).then(
+              (res) => {
+                if (res.code == 200) {
+                  popup("密码修改成功,请重新登录...");
+                  this.pwdForm = {
+                    username: this.pwdForm.username,
+                  };
+                  Cookies.remove("employee");
+                  removeToken();
+                  this.$router.push("/");
+                }
+              }
+            ).catch(() => {
+              this.$message({
+                type: "info",
+                message: "已取消操作",
               });
+            });
+            ;
+          })
         }
       });
     },
