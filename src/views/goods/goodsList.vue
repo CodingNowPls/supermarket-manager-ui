@@ -82,9 +82,7 @@
         <el-table-column prop="residueStoreNum" label="库存量">
           <template v-slot="scope">
             {{
-              scope.row.residueStoreNum
-                ? scope.row.residueStoreNum
-                : 0
+              scope.row.residueStoreNum ? scope.row.residueStoreNum : 0
             }}
           </template>
         </el-table-column>
@@ -132,7 +130,6 @@
     <el-dialog title="创建商品" :visible.sync="newVisable" @close="dialog_imgClose" width="50%">
       <el-form :model="newForm" :rules="rules" ref="newForm" label-width="100px" class="demo-ruleForm">
         <el-form-item label="商品图：">
-          <!--                    action="http://localhost:9291/goods_management/goods/uploadImg"-->
           <el-upload class="avatar-uploader" action="{{BaseApi}}/goods/goods/uploadImg"
                      :show-file-list="false" :on-success="handleAvatarSuccess" :before-upload="beforeAvatarUpload">
             <img v-if="imageUrl" :src="BaseApi + imageUrl" class="avatar"/>
