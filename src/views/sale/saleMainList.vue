@@ -4,7 +4,6 @@
       <i style="font-size: 42px" class="iconfont icon-r-home"> </i>
       销售主页
     </div>
-
     <div class="cmd">
       <el-col :span="12">
         <button @click="saleBtn">
@@ -41,8 +40,7 @@
         :rules="rules"
         ref="newForm"
         label-width="100px"
-        class="demo-ruleForm"
-      >
+        class="demo-ruleForm">
         <el-row>
           <el-col :span="24">
             <el-form-item style="width: 60%" label="销售编号：">
@@ -59,75 +57,59 @@
             <el-form-item
               v-if="!newForm.sellTime"
               label="支付方式："
-              prop="sellway"
-            >
+              prop="sellway">
               <el-radio
                 type="radio"
                 v-model="newForm.sellway"
-                label="0"
-              >支付宝
-              </el-radio
-              >
+                label="0">支付宝
+              </el-radio>
               <el-radio
                 type="radio"
                 v-model="newForm.sellway"
-                label="1"
-              >微信
-              </el-radio
-              >
+                label="1">微信
+              </el-radio>
               <el-radio
                 type="radio"
                 v-model="newForm.sellway"
-                label="2"
-              >现金
-              </el-radio
-              >
+                label="2">现金
+              </el-radio>
               <el-radio
                 type="radio"
                 v-model="newForm.sellway"
-                label="3"
-              >银行卡
-              </el-radio
-              >
+                label="3">银行卡
+              </el-radio>
             </el-form-item>
             <el-form-item
               v-else
               style="width: 80%"
               label="支付方式："
-              prop="sellway"
-            >
+              prop="sellway">
               <el-radio
                 disabled
                 type="radio"
                 v-model="newForm.sellway"
-                label="0"
-              >支付宝
+                label="0">支付宝
+              </el-radio>
+              <el-radio
+                disabled
+                type="radio"
+                v-model="newForm.sellway"
+                label="1">微信
               </el-radio
               >
               <el-radio
                 disabled
                 type="radio"
                 v-model="newForm.sellway"
-                label="1"
-              >微信
-              </el-radio
-              >
-              <el-radio
-                disabled
-                type="radio"
-                v-model="newForm.sellway"
-                label="2"
-              >现金
-              </el-radio
-              >
+                label="2">现金
+              </el-radio>
               <el-radio
                 disabled
                 type="radio"
                 v-model="newForm.sellway"
                 label="3"
               >银行卡
-              </el-radio
-              >
+              </el-radio>
             </el-form-item>
           </el-col>
         </el-row>
@@ -137,11 +119,9 @@
               v-if="!newForm.sellTime"
               style="width: 60%"
               label="顾客类型："
-              prop="type"
-            >
+              prop="type">
               <el-radio
-                @change="
-                                    () => {
+                @change="       () => {
                                         if (this.newForm.type == '1') {
                                             this.newForm.sellTotalmoney = (
                                                 this.totalMoney * 0.9
@@ -154,12 +134,10 @@
                                 "
                 type="radio"
                 v-model="newForm.type"
-                label="1"
-              >会员
+                label="1">会员
               </el-radio>
               <el-radio
-                @change="
-                                    () => {
+                @change="    () => {
                                         if (this.newForm.type == '1') {
                                             this.newForm.sellTotalmoney = (
                                                 this.totalMoney * 0.9
@@ -180,12 +158,10 @@
               v-else
               style="width: 60%"
               label="顾客类型："
-              prop="type"
-            >
+              prop="type">
               <el-radio
                 disabled
-                @change="
-                                    () => {
+                @change="       () => {
                                         if (this.newForm.type == '1') {
                                             this.newForm.sellTotalmoney = (
                                                 this.totalMoney * 0.9
@@ -198,13 +174,11 @@
                                 "
                 type="radio"
                 v-model="newForm.type"
-                label="1"
-              >会员
+                label="1">会员
               </el-radio>
               <el-radio
                 disabled
-                @change="
-                                    () => {
+                @change=" () => {
                                         if (this.newForm.type == '1') {
                                             this.newForm.sellTotalmoney = (
                                                 this.totalMoney * 0.9
@@ -217,8 +191,7 @@
                                 "
                 type="radio"
                 v-model="newForm.type"
-                label="0"
-              >非会员
+                label="0">非会员
               </el-radio>
             </el-form-item>
           </el-col>
@@ -226,31 +199,24 @@
             <el-form-item
               style="width: 60%"
               label="会员账号："
-              prop="memberPhone"
-            >
+              prop="memberPhone">
               <el-input
-                @change="
-                                    queryMemberByPhone(newForm.memberPhone)
-                                "
-                v-model="newForm.memberPhone"
+                @change="queryMemberByPhone(newForm.memberPhone)" v-model="newForm.memberPhone"
                 placeholder="如：电话号码"
               ></el-input>
             </el-form-item>
           </el-col>
           <el-col
             :span="12"
-            v-if="newForm.type == '1' && newForm.sellTime"
-          >
+            v-if="newForm.type == '1' && newForm.sellTime">
             <el-form-item
               style="width: 60%"
               label="会员账号："
-              prop="memberPhone"
-            >
+              prop="memberPhone">
               <el-input
                 readonly
                 v-model="newForm.memberPhone"
-                placeholder="如：电话号码"
-              ></el-input>
+                placeholder="如：电话号码"></el-input>
             </el-form-item>
           </el-col>
         </el-row>
@@ -258,20 +224,17 @@
         <el-row>
           <el-col
             :span="24"
-            style="text-align: left; margin-bottom: 10px"
-          >
+            style="text-align: left; margin-bottom: 10px">
             <el-button type="success" @click="addGoodsBtn">
               <i class="iconfont icon-r-add"> </i>
               添加商品
-            </el-button
-            >
+            </el-button>
           </el-col>
           <el-col :span="24">
             <el-table
               :data="newForm.detailSaleRecords"
               style="width: 100%; border-top: 1px solid lightgrey"
-              size="medium"
-            >
+              size="medium">
               <el-table-column prop="goodsId" label="商品编号">
               </el-table-column>
               <el-table-column prop="goodsName" label="商品名">
@@ -279,31 +242,24 @@
               <el-table-column
                 prop="goodsNum"
                 width="400px"
-                label="数量"
-              >
+                label="数量">
                 <template
                   v-if="!newForm.sellTime"
-                  v-slot="scope"
-                >
+                  v-slot="scope">
                   <el-button
                     @click="redueGoodsNum(scope.row)"
-                    type="success"
-                  >-
-                  </el-button
-                  >
+                    type="success">-
+                  </el-button>
                   <el-input
                     readonly
                     style="width: 100px"
                     type="number"
                     min="1"
-                    v-model="scope.row.goodsNum"
-                  ></el-input>
+                    v-model="scope.row.goodsNum"></el-input>
                   <el-button
                     @click="addGoodsNum(scope.row)"
-                    type="success"
-                  >+
-                  </el-button
-                  >
+                    type="success">+
+                  </el-button>
                 </template>
                 <template v-else v-slot="scope">
                   <el-button type="success">+</el-button>
@@ -312,8 +268,7 @@
                     style="width: 100px"
                     type="number"
                     min="1"
-                    v-model="scope.row.goodsNum"
-                  ></el-input>
+                    v-model="scope.row.goodsNum"></el-input>
                   <el-button type="success">-</el-button>
                 </template>
               </el-table-column>
@@ -321,15 +276,12 @@
               </el-table-column>
               <el-table-column
                 v-if="!newForm.sellTime"
-                label="操作"
-              >
+                label="操作">
                 <template v-slot="scope">
                   <el-button
                     @click="removedetailRecords(scope.row)"
-                    type="danger"
-                  >移除
-                  </el-button
-                  >
+                    type="danger">移除
+                  </el-button>
                 </template>
               </el-table-column>
             </el-table>
@@ -341,21 +293,18 @@
             <el-form-item
               v-if="!newForm.sellTime"
               style="width: 100%"
-              label="备注："
-            >
+              label="备注：">
               <el-input
                 type="textarea"
                 v-model="newForm.info"
-                placeholder="如：订单1"
-              ></el-input>
+                placeholder="如：订单1"></el-input>
             </el-form-item>
             <el-form-item v-else style="width: 60%" label="备注：">
               <el-input
                 disabled
                 type="textarea"
                 v-model="newForm.info"
-                placeholder="如：订单1"
-              ></el-input>
+                placeholder="如：订单1"></el-input>
             </el-form-item>
           </el-col>
         </el-row>
@@ -373,31 +322,13 @@
                   ).toFixed(2)
                   : 0
               }}元&nbsp;&nbsp;
-              <span v-if="newForm.sellway"
-              >支付方式：{{
-                  newForm.sellway == "0"
-                    ? "支付宝"
-                    : newForm.sellway == "1"
-                      ? "微信"
-                      : newForm.sellway == "2"
-                        ? "现金"
-                        : "银行卡"
-                }}&nbsp;&nbsp;</span
-              >
-              <span v-if="newForm.type == '1'"
-              >会员享受9折&nbsp;&nbsp;优惠{{
-                  totalMoney
-                    ? parseFloat(
-                      totalMoney -
-                      newForm.sellTotalmoney
-                    ).toFixed(2)
-                    : 0
-                }}元&nbsp;&nbsp;</span
-              >
-              <span v-if="newForm.sellTime"
-              >消费时间：{{ newForm.sellTime }}&nbsp;&nbsp;
-                                操作者编号：{{ newForm.eid }}</span
-              >
+              <span
+                v-if="newForm.sellway">支付方式：{{ newForm.sellway == "0" ? "支付宝" : newForm.sellway == "1" ? "微信" : newForm.sellway == "2" ? "现金" : "银行卡" }}&nbsp;&nbsp;</span>
+              <span
+                v-if="newForm.type == '1'">会员享受9折&nbsp;&nbsp;优惠{{ totalMoney ? parseFloat(totalMoney - newForm.sellTotalmoney).toFixed(2) : 0 }}元&nbsp;&nbsp;</span>
+              <span v-if="newForm.sellTime">消费时间：{{ newForm.sellTime }}&nbsp;&nbsp;操作者编号：{{
+                  newForm.eid
+                }}</span>
             </div>
           </el-col>
         </el-row>
@@ -409,28 +340,23 @@
                 v-if="!newForm.sellTime"
                 type="success"
                 @click="submitNewForm('newForm')"
-                style="font-size: 22px"
-              >
+                style="font-size: 22px">
                 <i
                   style="font-size: 22px"
-                  class="iconfont icon-r-yes"
-                >
+                  class="iconfont icon-r-yes">
                 </i>
                 支付
               </el-button>
               <el-button
                 style="font-size: 22px"
                 type="info"
-                @click="closeNewForm('newForm')"
-              >
+                @click="closeNewForm('newForm')">
                 <i
                   style="font-size: 22px"
-                  class="iconfont icon-r-no"
-                >
+                  class="iconfont icon-r-no">
                 </i>
                 关闭
-              </el-button
-              >
+              </el-button>
             </el-form-item>
           </el-col>
         </el-row>
@@ -442,8 +368,7 @@
         :model="detailSaleRecords"
         :rules="rules"
         ref="detailSaleRecords"
-        class="demo-ruleForm"
-      >
+        class="demo-ruleForm">
         <el-form-item label="商品：" prop="goodsId">
           <el-select
             style="width: 100%"
@@ -451,22 +376,19 @@
             placeholder="请选择商品"
             @change="selectedAddGoods"
             filterable
-            clearable
-          >
+            clearable>
             <el-option
               v-for="item in options_saleRecordsAddGoods"
               :key="item.id"
               :label="item.name"
-              :value="item.id"
-            >
+              :value="item.id">
             </el-option>
           </el-select>
         </el-form-item>
         <el-form-item label="数量：">
           <el-input
             type="number"
-            @change="
-                            () => {
+            @change="  () => {
                                 this.$forceUpdate();
                                 if (
                                     this.goodsNum_max <
@@ -485,46 +407,36 @@
             min="1"
             :max="goodsNum_max"
             v-model="detailSaleRecords.goodsNum"
-            :placeholder="` ${
-                            goodsNum_max ? '库存数量：' + goodsNum_max : ''
-                        }`"
-          ></el-input>
+            :placeholder="` ${          goodsNum_max ? '库存数量：' + goodsNum_max : '' }`"></el-input>
         </el-form-item>
         <el-form-item label="单价：" prop="goodsId">
           <el-input
             disabled
-            v-model="detailSaleRecords.goodsPrice"
-          ></el-input>
+            v-model="detailSaleRecords.goodsPrice"></el-input>
         </el-form-item>
         <el-form-item>
           <el-button
             type="success"
             @click="addDetailSaleRecords"
-            style="font-size: 22px"
-          >
+            style="font-size: 22px">
             <i
               class="iconfont icon-r-add"
-              style="font-size: 22px"
-            ></i>
+              style="font-size: 22px"></i>
             添加
-          </el-button
-          >
+          </el-button>
           <el-button
             type="info"
-            @click="
-                            () => {
+            @click="   () => {
                                 this.addGoodsVisable = false;
                                 this.detailSaleRecords = {};
                                 this.options_saleRecordsAddGoods = [];
                                 this.goodsNum_max = '';
                             }
                         "
-            style="font-size: 22px"
-          >
+            style="font-size: 22px">
             <i
               class="iconfont icon-r-no"
-              style="font-size: 22px"
-            ></i>
+              style="font-size: 22px"></i>
             取消
           </el-button>
         </el-form-item>
@@ -536,14 +448,12 @@
       title="积分兑换"
       :visible.sync="pointProductsVisable"
       label-width="200"
-      width="40%"
-    >
+      width="40%">
       <el-form
         :model="pointProductsForm"
         :rules="rules"
         ref="pointProductsForm"
-        class="demo-ruleForm"
-      >
+        class="demo-ruleForm">
         <el-form-item v-if="confirmVisiable">
           <img
             width="100px"
@@ -554,86 +464,74 @@
         <el-form-item
           v-if="!confirmVisiable"
           label="会员账号："
-          prop="memberId"
-        >
+          prop="memberId">
           <el-select
             @change="queryPointProductByMemberId"
             v-model="pointProductsForm.memberId"
             placeholder="请选择会员"
             filterable
-            clearable
-          >
+            clearable>
             <el-option
               v-for="item in options_members"
               :key="item.id"
               :label="item.name"
-              :value="item.id"
-            >
+              :value="item.id">
             </el-option>
           </el-select>
         </el-form-item>
         <el-form-item
           v-if="confirmVisiable"
           label="会员账号："
-          prop="memberId"
-        >
+          prop="memberId">
           <el-select
             disabled
             @change="queryPointProductByMemberId"
             v-model="pointProductsForm.memberId"
             placeholder="请选择会员"
             filterable
-            clearable
-          >
+            clearable>
             <el-option
               v-for="item in options_members"
               :key="item.id"
               :label="item.name"
-              :value="item.id"
-            >
+              :value="item.id">
             </el-option>
           </el-select>
         </el-form-item>
         <el-form-item
           v-if="!confirmVisiable"
           label="积分商品："
-          prop="goodsId"
-        >
+          prop="goodsId">
           <el-select
             @change="queryPointProductByGoodsId"
             v-model="pointProductsForm.goodsId"
             placeholder="请选择积分商品"
             filterable
-            clearable
-          >
+            clearable>
             <el-option
               v-for="item in options_pointProducts"
               :key="item.id"
               :label="item.name"
-              :value="item.id"
-            >
+              :value="item.id">
             </el-option>
           </el-select>
         </el-form-item>
         <el-form-item
           v-if="confirmVisiable"
           label="积分商品："
-          prop="goodsId"
-        >
+          prop="goodsId">
           <el-select
             disabled
             @change="queryPointProductByGoodsId"
             v-model="pointProductsForm.goodsId"
             placeholder="请选择积分商品"
             filterable
-            clearable
-          >
+            clearable>
             <el-option
               v-for="item in options_pointProducts"
               :key="item.id"
               :label="item.name"
-              :value="item.id"
-            >
+              :value="item.id">
             </el-option>
           </el-select>
         </el-form-item>
@@ -650,8 +548,7 @@
             v-if="confirmVisiable"
             type="primary"
             @click="submitPointProductsForm('pointProductsForm')"
-            style="font-size: 22px"
-          >
+            style="font-size: 22px">
             <i class="iconfont icon-r-yes" style="font-size: 22px">
             </i>
             确认兑换
@@ -660,19 +557,16 @@
             v-if="confirmVisiable"
             type="info"
             @click="closePointProductsForm"
-            style="font-size: 22px"
-          >
+            style="font-size: 22px">
             <i class="iconfont icon-r-no" style="font-size: 22px">
             </i>
             关闭
-          </el-button
-          >
+          </el-button>
           <el-button
             type="success"
             v-if="!confirmVisiable"
             @click="confirmPointProducts('pointProductsForm')"
-            style="font-size: 22px"
-          >
+            style="font-size: 22px">
             <i class="iconfont icon-r-yes" style="font-size: 22px">
             </i>
             兑换
@@ -681,13 +575,11 @@
             v-if="!confirmVisiable"
             type="info"
             @click="closeConfirmPointProducts"
-            style="font-size: 22px"
-          >
+            style="font-size: 22px">
             <i class="iconfont icon-r-yes" style="font-size: 22px">
             </i>
             关闭
-          </el-button
-          >
+          </el-button>
         </el-form-item>
       </el-form>
     </el-dialog>
@@ -705,7 +597,6 @@ import {queryMemberByPhone} from "@/api/member/memberApi";
 import {
   queryMemberByGoodsId,
   queryOptionsMember,
-  queryOptionsMemberPhone,
   queryOptionsPointProducts,
   queryPointProductByGoodsId,
   queryPointProductBymemberId,
@@ -837,10 +728,7 @@ export default {
       });
     },
     queryPointProductByGoodsId() {
-      queryMemberByGoodsId({
-        goodsId: this.pointProductsForm.goodsId,
-      }).then((res) => {
-
+      queryMemberByGoodsId({goodsId: this.pointProductsForm.goodsId,}).then((res) => {
         if (res.code == 200) {
           this.options_members = res.data;
           if (!this.options_members.length) {
@@ -848,18 +736,13 @@ export default {
             this.pointProductsForm.memberId = "";
             return;
           }
-        } else {
-          popup(res.msg, "error");
         }
       });
     },
     queryOptionsPointProducts() {
       queryOptionsPointProducts().then((res) => {
-
         if (res.code == 200) {
           this.options_pointProducts = res.data;
-        } else {
-          popup(res.msg, "error");
         }
       });
     },
@@ -868,8 +751,6 @@ export default {
 
         if (res.code == 200) {
           this.options_members = res.data;
-        } else {
-          popup(res.msg, "error");
         }
       });
     },
@@ -883,7 +764,6 @@ export default {
             if (res.code == 200) {
               popup("兑换成功");
               this.pointProductsForm = {};
-
               this.pointProductsForm = {
                 memberId: "",
                 goodsId: "",
@@ -891,10 +771,7 @@ export default {
                 integral: "",
               };
               this.pointProductsVisable = false;
-
               this.confirmVisiable = !this.confirmVisiable;
-            } else {
-              popup(res.msg, "error");
             }
           });
         }
@@ -903,12 +780,8 @@ export default {
     closePointProductsForm() {
       this.confirmVisiable = false;
     },
-    moreFuns() {
-      popup("正在研发...", "warning");
-    },
     queryMemberByPhone(phone) {
       queryMemberByPhone({phone: phone}).then((res) => {
-
         if (res.code != 200) {
           popup(res.msg, "error");
           this.newForm.memberPhone = "";
@@ -931,7 +804,6 @@ export default {
             return;
           }
           saveSaleRecords(this.newForm).then((res) => {
-
             if (res.code == 200) {
               this.newForm = {...res.data};
               console.log(this.newForm);
@@ -968,9 +840,7 @@ export default {
             parseInt(this.newForm.sellTotal) - row.goodsNum;
           this.totalMoney = (
             parseFloat(this.totalMoney) -
-            parseFloat(
-              parseInt(row.goodsNum) * parseFloat(row.goodsPrice)
-            )
+            parseFloat(parseInt(row.goodsNum) * parseFloat(row.goodsPrice))
           ).toFixed(2);
           if (this.newForm.type == "1") {
             this.newForm.sellTotalmoney =
@@ -999,7 +869,6 @@ export default {
     },
     addGoodsNum(row) {
       queryGoodsById({id: row.goodsId}).then((res) => {
-
         if (res.code == 200) {
           if (row.goodsNum >= res.data.residueNum) {
             popup(
@@ -1011,7 +880,6 @@ export default {
             row.goodsNum = parseInt(row.goodsNum) + 1;
             this.newForm.sellTotal =
               parseInt(this.newForm.sellTotal) + 1;
-
             this.totalMoney = (
               parseFloat(this.totalMoney) +
               parseFloat(row.goodsPrice)
@@ -1025,9 +893,6 @@ export default {
               ).toFixed(2);
             }
           }
-        } else {
-          popup(res.msg, "error");
-          return;
         }
       });
     },
@@ -1052,7 +917,6 @@ export default {
     },
     initOptionSaleRecordsAddGoodsAll() {
       getOptionSaleRecordsGoods().then((res) => {
-
         if (res.code == 200) {
           this.options_saleRecordsAddGoods = res.data;
           if (this.options_saleRecordsAddGoods.length > 0) {
@@ -1060,8 +924,6 @@ export default {
           } else {
             popup("目前没有可售卖的商品", "warning");
           }
-        } else {
-          popup(res.msg, "error");
         }
       });
     },
@@ -1108,19 +970,15 @@ export default {
     },
     saleBtn() {
       getCn().then((res) => {
-
         if (res.code == 200) {
           this.newForm.cn = res.data;
           this.newVisable = true;
-        } else {
-          popup(res.msg, "error");
         }
       });
     },
     selectedAddGoods() {
       queryGoodsById({id: this.detailSaleRecords.goodsId}).then(
         (res) => {
-
           if (res.code == 200) {
             this.detailSaleRecords.goodsPrice =
               res.data.purchashPrice;
@@ -1129,15 +987,6 @@ export default {
           }
         }
       );
-    },
-    paymentCode(sellway) {
-      if (this.newForm.detailSaleRecords.length <= 0) {
-        popup("还没选择出售的商品", "error");
-        return;
-      }
-      if (sellway != "2") {
-        this.paymentCodeVisable = true;
-      }
     },
     exchangePointProductBtn() {
       this.queryOptionsMember();

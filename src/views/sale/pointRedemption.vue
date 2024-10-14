@@ -19,14 +19,12 @@
           placeholder="请选择会员账号"
           filterable
           @change="$forceUpdate()"
-          clearable
-        >
+          clearable>
           <el-option
             v-for="item in options_memberPhone"
             :key="item.id"
             :label="item.name"
-            :value="item.id"
-          >
+            :value="item.id">
           </el-option>
         </el-select>
       </el-col>
@@ -37,8 +35,7 @@
           v-model="searchForm.startTime"
           type="date"
           value-format="yyyy-MM-dd"
-          placeholder="起始时间"
-        >
+          placeholder="起始时间">
         </el-date-picker>
         -
         <el-date-picker
@@ -46,8 +43,7 @@
           style="width: 140px"
           value-format="yyyy-MM-dd"
           type="date"
-          placeholder="结束时间"
-        >
+          placeholder="结束时间">
         </el-date-picker>
       </el-col>
     </el-row>
@@ -57,8 +53,7 @@
         <el-button
           type="success"
           @click="submitSearchForm"
-          style="font-size: 18px"
-        >
+          style="font-size: 18px">
           <i class="iconfont icon-r-find" style="font-size: 18px">
           </i>
           搜索
@@ -73,11 +68,7 @@
         </el-table-column>
         <el-table-column prop="goodsCoverUrl" label="商品封面">
           <template v-slot="scope">
-            <img
-              :src="BaseApi + scope.row.goodsCoverUrl"
-              alt="兑换商品图片"
-              height="50px"
-            />
+            <img :src="BaseApi + scope.row.goodsCoverUrl" alt="兑换商品图片" height="50px"/>
           </template>
         </el-table-column>
         <el-table-column prop="goodsName" label="商品">
@@ -87,8 +78,7 @@
         <el-table-column
           width="200"
           prop="memberPhone"
-          label="会员账号"
-        >
+          label="会员账号">
         </el-table-column>
         <el-table-column prop="updateTime" width="200" label="兑换时间">
         </el-table-column>
@@ -99,8 +89,7 @@
             <el-button
               type="danger"
               @click="del(scope.row.cn)"
-              style="font-size: 18px;"
-            >
+              style="font-size: 18px;">
               <i class="iconfont icon-r-delete" style="font-size: 18px;"> </i>
               删除
             </el-button>
@@ -175,12 +164,9 @@ export default {
       })
         .then(() => {
           delExchangePointProducts({cn: cn}).then((res) => {
-
             if (res.code == 200) {
               popup("操作成功");
               this.init();
-            } else {
-              popup(res.msg, "error");
             }
           });
         })

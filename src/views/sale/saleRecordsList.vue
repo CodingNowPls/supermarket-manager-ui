@@ -322,7 +322,7 @@
         </el-row>
         <el-row>
           <el-col :span="24">
-            <div v-if="saleRecordForm.detailSaleRecords.length > 0">
+            <div v-if="saleRecordForm.detailSaleRecords > 0">
               订单号：{{ saleRecordForm.cn }}&nbsp;&nbsp;
               商品总数：{{
                 saleRecordForm.sellTotal
@@ -408,14 +408,11 @@ export default {
         return;
       }
       queryPageByQoSaleRecords(this.searchForm).then((res) => {
-
         if (res.code == 200) {
           this.tableData = res.data.records;
           this.searchForm.total = res.data.total;
           this.searchForm.pageSize = res.data.size;
           this.searchForm.currentPage = res.data.current;
-        } else {
-          popup(res.msg, "error");
         }
       });
     },
@@ -427,12 +424,9 @@ export default {
       })
         .then(() => {
           delSaleRecords({cn: cn}).then((res) => {
-
             if (res.code == 200) {
               popup("操作成功");
               this.init();
-            } else {
-              popup(res.msg, "error");
             }
           });
         })
