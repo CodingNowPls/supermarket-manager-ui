@@ -21,17 +21,12 @@
     <br/>
     <el-row>
       <el-col :span="24" style="text-align: left">
-        <el-button
-          type="primary"
-          @click="subSearchForm"
-          style="font-size: 18px">
+        <el-button type="primary" @click="subSearchForm" style="font-size: 18px">
           <i class="iconfont icon-r-find" style="font-size: 18px">
           </i>
           搜索
-        </el-button
-        >
-        <el-button type="success" @click="newVisable=true"
-                   style="font-size: 18px">
+        </el-button>
+        <el-button type="success" @click="newVisable = true" style="font-size: 18px">
           <i class="iconfont icon-r-add" style="font-size: 18px">
           </i> 创建部门
         </el-button>
@@ -39,28 +34,16 @@
     </el-row>
     <br/>
 
-    <el-table
-      :data="tableData"
-      style="width: 100%">
-      <el-table-column
-        type="index"
-        label="序号"
-        width="180">
+    <el-table :data="tableData" style="width: 100%">
+      <el-table-column type="index" label="序号" width="180">
       </el-table-column>
-      <el-table-column
-        prop="name"
-        label="名称"
-        width="180">
+      <el-table-column prop="name" label="名称" width="180">
       </el-table-column>
-      <el-table-column
-        prop="info"
-        label="描述">
+      <el-table-column prop="info" label="描述">
       </el-table-column>
-      <el-table-column
-        prop="state"
-        label="状态">
+      <el-table-column prop="state" label="状态">
         <template v-slot="scope">
-          <el-tag v-if="scope.row.state=='0'" type="success" style="font-size: 14px;">
+          <el-tag v-if="scope.row.state == '0'" type="success" style="font-size: 14px;">
             <i class="iconfont icon-r-yes" style="font-size: 14px;"> </i> 正常
           </el-tag>
           <el-tag v-else type="danger" style="font-size: 14px;">
@@ -68,8 +51,7 @@
           </el-tag>
         </template>
       </el-table-column>
-      <el-table-column
-        label="操作" width="240" fixed="right">
+      <el-table-column label="操作" width="240" fixed="right">
         <template v-slot="scope">
           <el-button type="success" @click="edit(scope.row)" style="font-size: 18px;">
             <i class="iconfont icon-r-edit" style="font-size: 18px;"> </i> 修改
@@ -81,10 +63,7 @@
       </el-table-column>
     </el-table>
     <!--修改描述/状态弹出框-->
-    <el-dialog
-      title="部门修改"
-      :visible.sync="dialogVisible"
-      width="50%">
+    <el-dialog title="部门修改" :visible.sync="dialogVisible" width="50%">
       <el-form v-model="editForm" label-width="100px" class="demo-ruleForm">
         <el-form-item label="名称：">
           <el-input disabled v-model="editForm.name"></el-input>
@@ -93,15 +72,8 @@
           <el-input type="text" v-model="editForm.info"></el-input>
         </el-form-item>
         <el-form-item label="状态：">
-          <el-select v-model="editForm.state"
-                     clearable
-                     @change="$forceUpdate()"
-                     placeholder="请选择状态">
-            <el-option
-              v-for="item in options"
-              :key="item.value"
-              :label="item.label"
-              :value="item.value">
+          <el-select v-model="editForm.state" clearable @change="$forceUpdate()" placeholder="请选择状态">
+            <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
             </el-option>
           </el-select>
         </el-form-item>
@@ -116,10 +88,7 @@
       </el-form>
     </el-dialog>
     <!--创建弹出框-->
-    <el-dialog
-      title="创建部门"
-      :visible.sync="newVisable"
-      width="50%">
+    <el-dialog title="创建部门" :visible.sync="newVisable" width="50%">
       <el-form :model="newForm" :rules="rules" ref="newForm" label-width="100px" class="demo-ruleForm">
         <el-form-item label="名称：" prop="name">
           <el-input v-model="newForm.name"></el-input>

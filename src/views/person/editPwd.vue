@@ -4,16 +4,10 @@
       <el-breadcrumb-item>首页</el-breadcrumb-item>
       <el-breadcrumb-item>个人中心</el-breadcrumb-item>
       <el-breadcrumb-item>密码修改</el-breadcrumb-item>
-    </el-breadcrumb
-    >
+    </el-breadcrumb>
     <br/>
     <div id="edit_pwd">
-      <el-form
-        :model="pwdForm"
-        :rules="rules"
-        ref="pwdForm"
-        label-width="100px"
-        class="demo-ruleForm">
+      <el-form :model="pwdForm" :rules="rules" ref="pwdForm" label-width="100px" class="demo-ruleForm">
         <i class="iconfont icon-r-lock" style="font-size: 32px">
           <b style="font-size: 28px">密码修改</b></i>
         <br/>
@@ -22,33 +16,17 @@
           <el-input disabled v-model="pwdForm.username"></el-input>
         </el-form-item>
         <el-form-item label="旧密码" prop="oldPwd">
-          <el-input type="password"
-                    v-model="pwdForm.oldPwd"></el-input>
+          <el-input type="password" v-model="pwdForm.oldPwd"></el-input>
         </el-form-item>
         <el-form-item label="新密码" prop="newPwd">
-          <el-input
-            type="password"
-            v-model="pwdForm.newPwd"
-          ></el-input>
+          <el-input type="password" v-model="pwdForm.newPwd"></el-input>
         </el-form-item>
         <el-form-item>
-          <el-button
-            type="primary"
-            @click="submitForm('pwdForm')"
-            style="font-size: 18px">
-            <i
-              class="iconfont icon-r-yes"
-              style="font-size: 18px"
-            ></i>
-            确定
+          <el-button type="primary" @click="submitForm('pwdForm')" style="font-size: 18px">
+            <i class="iconfont icon-r-yes" style="font-size: 18px"></i>确定
           </el-button>
-          <el-button
-            @click="resetForm('pwdForm')"
-            style="font-size: 18px">
-            <i
-              class="iconfont icon-r-refresh"
-              style="font-size: 18px"
-            ></i>
+          <el-button @click="resetForm('pwdForm')" style="font-size: 18px">
+            <i class="iconfont icon-r-refresh" style="font-size: 18px"></i>
             重置
           </el-button>
         </el-form-item>

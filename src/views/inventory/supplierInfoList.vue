@@ -21,18 +21,12 @@
     <br/>
     <el-row>
       <el-col :span="24" style="text-align: left">
-        <el-button
-          type="primary"
-          @click="subSearchForm"
-          style="font-size: 18px">
+        <el-button type="primary" @click="subSearchForm" style="font-size: 18px">
           <i class="iconfont icon-r-find" style="font-size: 18px">
           </i>
           搜索
         </el-button>
-        <el-button
-          type="success"
-          @click="newVisable = true"
-          style="font-size: 18px">
+        <el-button type="success" @click="newVisable = true" style="font-size: 18px">
           <i class="iconfont icon-r-add" style="font-size: 18px"> </i>
           创建供货商
         </el-button>
@@ -44,172 +38,91 @@
       <el-table :data="tableData" style="width: 100%" size="medium">
         <el-table-column type="index" width="200" label="序号">
         </el-table-column>
-        <el-table-column
-          prop="name"
-          :show-overflow-tooltip="true"
-          label="名称">
+        <el-table-column prop="name" :show-overflow-tooltip="true" label="名称">
         </el-table-column>
-        <el-table-column
-          prop="address"
-          :show-overflow-tooltip="true"
-          label="地址">
+        <el-table-column prop="address" :show-overflow-tooltip="true" label="地址">
         </el-table-column>
-        <el-table-column
-          prop="tel"
-          :show-overflow-tooltip="true"
-          label="联系电话">
+        <el-table-column prop="tel" :show-overflow-tooltip="true" label="联系电话">
         </el-table-column>
-        <el-table-column
-          prop="info"
-          :show-overflow-tooltip="true"
-          label="备注">
+        <el-table-column prop="info" :show-overflow-tooltip="true" label="备注">
         </el-table-column>
         <el-table-column width="240" fixed="right" label="操作">
           <template v-slot="scope">
-            <el-button
-              type="warning"
-              @click="editBtn(scope.row.cn)"
-              style="font-size: 18px">
-              <i
-                class="iconfont icon-r-edit"
-                style="font-size: 18px"></i>
+            <el-button type="warning" @click="editBtn(scope.row.cn)" style="font-size: 18px">
+              <i class="iconfont icon-r-edit" style="font-size: 18px"></i>
               修改
             </el-button>
-            <el-button
-              type="danger"
-              @click="delBtn(scope.row.cn)"
-              style="font-size: 18px">
-              <i class="iconfont icon-r-delete"
-                 style="font-size: 18px"
-              ></i>
+            <el-button type="danger" @click="delBtn(scope.row.cn)" style="font-size: 18px">
+              <i class="iconfont icon-r-delete" style="font-size: 18px"></i>
               删除
             </el-button>
           </template>
         </el-table-column>
       </el-table>
       <div style="margin: 10px 0 15px 0">
-        <el-pagination
-          @size-change="handleSizeChange"
-          @current-change="handleCurrentChange"
-          :current-page.sync="searchForm.currentPage"
-          :page-sizes="[5, 10, 20, 50]"
-          :page-size="searchForm.pageSize"
-          layout="total,sizes, prev, pager, next,jumper"
-          :total="searchForm.total">
+        <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange"
+                       :current-page.sync="searchForm.currentPage" :page-sizes="[5, 10, 20, 50]"
+                       :page-size="searchForm.pageSize"
+                       layout="total,sizes, prev, pager, next,jumper" :total="searchForm.total">
         </el-pagination>
       </div>
     </div>
     <!--创建弹出框-->
-    <el-dialog
-      title="创建供货商信息"
-      :visible.sync="newVisable"
-      width="50%">
-      <el-form
-        :model="newForm"
-        :rules="rules"
-        ref="newForm"
-        label-width="100px"
-        class="demo-ruleForm">
+    <el-dialog title="创建供货商信息" :visible.sync="newVisable" width="50%">
+      <el-form :model="newForm" :rules="rules" ref="newForm" label-width="100px" class="demo-ruleForm">
         <el-form-item label="名称：" prop="name">
-          <el-input
-            v-model="newForm.name"
-            placeholder="供应商名称"></el-input>
+          <el-input v-model="newForm.name" placeholder="供应商名称"></el-input>
         </el-form-item>
         <el-form-item label="地址：" prop="address">
-          <el-input
-            type="text"
-            v-model="newForm.address"
-            placeholder="供应商地址"></el-input>
+          <el-input type="text" v-model="newForm.address" placeholder="供应商地址"></el-input>
         </el-form-item>
         <el-form-item label="电话：" prop="tel">
-          <el-input
-            type="text"
-            v-model="newForm.tel"
-            placeholder="联系电话"></el-input>
+          <el-input type="text" v-model="newForm.tel" placeholder="联系电话"></el-input>
         </el-form-item>
         <el-form-item label="描述：">
-          <el-input
-            type="textarea"
-            v-model="newForm.info"
-            placeholder="供应商的简单描述"></el-input>
+          <el-input type="textarea" v-model="newForm.info" placeholder="供应商的简单描述"></el-input>
         </el-form-item>
         <el-form-item>
-          <el-button
-            type="primary"
-            @click="submitNewForm('newForm')"
-            style="font-size: 18px">
-            <i
-              class="iconfont icon-r-yes"
-              style="font-size: 18px"></i>
+          <el-button type="primary" @click="submitNewForm('newForm')" style="font-size: 18px">
+            <i class="iconfont icon-r-yes" style="font-size: 18px"></i>
             提交
           </el-button>
-          <el-button
-            @click="  () => {
-                                this.$refs['newForm'].resetFields();
-                                newForm = {};
-                                newVisable = false;
-                            }
-                        "
-            style="font-size: 18px">关闭
+          <el-button @click="() => {
+            this.$refs['newForm'].resetFields();
+            newForm = {};
+            newVisable = false;
+          }
+            " style="font-size: 18px">关闭
           </el-button>
         </el-form-item>
       </el-form>
     </el-dialog>
     <!--修改弹出框-->
-    <el-dialog
-      title="修改供货商信息"
-      :visible.sync="editVisable"
-      width="50%">
-      <el-form
-        :model="editForm"
-        :rules="rules"
-        ref="editForm"
-        label-width="100px"
-        class="demo-ruleForm">
+    <el-dialog title="修改供货商信息" :visible.sync="editVisable" width="50%">
+      <el-form :model="editForm" :rules="rules" ref="editForm" label-width="100px" class="demo-ruleForm">
         <el-form-item label="名称：" prop="name">
-          <el-input
-            v-model="editForm.name"
-            placeholder="供应商名称"
-          ></el-input>
+          <el-input v-model="editForm.name" placeholder="供应商名称"></el-input>
         </el-form-item>
         <el-form-item label="地址：" prop="address">
-          <el-input
-            type="text"
-            v-model="editForm.address"
-            placeholder="供应商地址"
-          ></el-input>
+          <el-input type="text" v-model="editForm.address" placeholder="供应商地址"></el-input>
         </el-form-item>
         <el-form-item label="电话：" prop="tel">
-          <el-input
-            type="text"
-            v-model="editForm.tel"
-            placeholder="联系电话"
-          ></el-input>
+          <el-input type="text" v-model="editForm.tel" placeholder="联系电话"></el-input>
         </el-form-item>
         <el-form-item label="描述：">
-          <el-input
-            type="textarea"
-            v-model="editForm.info"
-            placeholder="供应商的简单描述"
-          ></el-input>
+          <el-input type="textarea" v-model="editForm.info" placeholder="供应商的简单描述"></el-input>
         </el-form-item>
         <el-form-item>
-          <el-button
-            type="primary"
-            @click="submitEditForm('editForm')"
-            style="font-size: 18px">
-            <i class="iconfont icon-r-yes"
-               style="font-size: 18px"></i>
+          <el-button type="primary" @click="submitEditForm('editForm')" style="font-size: 18px">
+            <i class="iconfont icon-r-yes" style="font-size: 18px"></i>
             提交
           </el-button>
-          <el-button
-            @click="      () => {
-                                this.$refs['editForm'].resetFields();
-                                editForm = {};
-                                editVisable = false;
-                            }
-                        "
-            style="font-size: 18px">关闭
+          <el-button @click="() => {
+            this.$refs['editForm'].resetFields();
+            editForm = {};
+            editVisable = false;
+          }
+            " style="font-size: 18px">关闭
           </el-button>
         </el-form-item>
       </el-form>

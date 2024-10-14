@@ -12,11 +12,7 @@
         <el-input placeholder="角色名称" v-model="roleSearchForm.name"/>
       </el-col>
       <el-col :span="8">
-        <el-select
-          @change="$forceUpdate"
-          v-model="roleSearchForm.state"
-          placeholder="状态"
-          clearable>
+        <el-select @change="$forceUpdate" v-model="roleSearchForm.state" placeholder="状态" clearable>
           <el-option label="正常" value="0"></el-option>
           <el-option label="停用" value="-1"></el-option>
         </el-select>
@@ -25,18 +21,12 @@
     <br/>
     <el-row>
       <el-col :span="24" style="text-align: left">
-        <el-button
-          type="primary"
-          @click="subSearchForm('ruleForm')"
-          style="font-size: 18px">
+        <el-button type="primary" @click="subSearchForm('ruleForm')" style="font-size: 18px">
           <i class="iconfont icon-r-find" style="font-size: 18px">
           </i>
           搜索
         </el-button>
-        <el-button
-          type="success"
-          @click="newRoleVisable = true"
-          style="font-size: 18px">
+        <el-button type="success" @click="newRoleVisable = true" style="font-size: 18px">
           <i class="iconfont icon-r-add" style="font-size: 18px"> </i>
           创建角色
         </el-button>
@@ -51,21 +41,15 @@
       <el-table-column prop="info" label="描述"></el-table-column>
       <el-table-column prop="state" label="状态">
         <template v-slot="scope">
-          <el-tag v-if="scope.row.state == '0'" type="success"
-          >正常
+          <el-tag v-if="scope.row.state == '0'" type="success">正常
           </el-tag>
           <el-tag v-else type="danger">停用</el-tag>
         </template>
       </el-table-column>
       <el-table-column label="操作" width="360" fixed="right">
         <template v-slot="scope">
-          <el-button
-            type="success"
-            @click="editRole(scope.row)"
-            style="font-size: 18px">
-            <i
-              class="iconfont icon-r-edit"
-              style="font-size: 18px"></i>
+          <el-button type="success" @click="editRole(scope.row)" style="font-size: 18px">
+            <i class="iconfont icon-r-edit" style="font-size: 18px"></i>
             修改
           </el-button>
           <el-button v-if="scope.row.state == '0'" type="danger" @click="forbidden(scope.row.id)"
@@ -73,10 +57,7 @@
             <i class="iconfont icon-r-no" style="font-size: 18px"></i>
             停用
           </el-button>
-          <el-button
-            type="warning"
-            @click="checkPermissions(scope.row.id)"
-            style="font-size: 18px">
+          <el-button type="warning" @click="checkPermissions(scope.row.id)" style="font-size: 18px">
             <i class="iconfont icon-r-setting" style="font-size: 18px"></i>
             授权
           </el-button>
@@ -84,56 +65,33 @@
       </el-table-column>
     </el-table>
     <!--修改描述/状态弹出框-->
-    <el-dialog
-      title="角色信息修改"
-      :visible.sync="dialogVisible"
-      width="50%">
+    <el-dialog title="角色信息修改" :visible.sync="dialogVisible" width="50%">
       <el-form v-model="editRoleForm" label-width="100px" class="demo-ruleForm">
         <el-form-item label="名称：">
           <el-input disabled v-model="editRoleForm.name"></el-input>
         </el-form-item>
         <el-form-item label="描述：">
-          <el-input
-            type="text"
-            v-model="editRoleForm.info"
-          ></el-input>
+          <el-input type="text" v-model="editRoleForm.info"></el-input>
         </el-form-item>
         <el-form-item label="状态：">
-          <el-select
-            v-model="editRoleForm.state"
-            clearable
-            @change="$forceUpdate()"
-            placeholder="请选择状态">
-            <el-option
-              v-for="item in options"
-              :key="item.value"
-              :label="item.label"
-              :value="item.value">
+          <el-select v-model="editRoleForm.state" clearable @change="$forceUpdate()" placeholder="请选择状态">
+            <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
             </el-option>
           </el-select>
         </el-form-item>
         <el-form-item>
-          <el-button
-            type="primary"
-            @click="submitEditForm"
-            style="font-size: 18px">
+          <el-button type="primary" @click="submitEditForm" style="font-size: 18px">
             <i class="iconfont icon-r-yes" style="font-size: 18px"></i>提交
           </el-button>
           <el-button @click="resetEditForm" style="font-size: 18px">
             <i class="iconfont icon-r-refresh" style="font-size: 18px"></i>重置
-          </el-button
-          >
+          </el-button>
         </el-form-item>
       </el-form>
     </el-dialog>
     <!--创建角色弹出框-->
     <el-dialog title="创建角色" :visible.sync="newRoleVisable" width="50%">
-      <el-form
-        :model="newRoleForm"
-        :rules="rules"
-        ref="newRoleForm"
-        label-width="100px"
-        class="demo-ruleForm">
+      <el-form :model="newRoleForm" :rules="rules" ref="newRoleForm" label-width="100px" class="demo-ruleForm">
         <el-form-item label="名称：" prop="name">
           <el-input v-model="newRoleForm.name"></el-input>
         </el-form-item>
@@ -141,57 +99,32 @@
           <el-input type="text" v-model="newRoleForm.info"></el-input>
         </el-form-item>
         <el-form-item>
-          <el-button
-            type="primary"
-            @click="submitNewForm('newRoleForm')"
-            style="font-size: 18px">
+          <el-button type="primary" @click="submitNewForm('newRoleForm')" style="font-size: 18px">
             <i class="iconfont icon-r-add" style="font-size: 18px"></i>
             创建角色
           </el-button>
           <el-button @click="resetNewForm" style="font-size: 18px">
-            <i
-              class="iconfont icon-r-refresh"
-              style="font-size: 18px"></i>重置
+            <i class="iconfont icon-r-refresh" style="font-size: 18px"></i>重置
           </el-button>
         </el-form-item>
       </el-form>
     </el-dialog>
     <!--职能分配框-->
-    <el-dialog
-      title="权限分配"
-      :visible.sync="distributionFulVisable"
-      width="50%">
-      <el-form
-        :model="distributionFulForm"
-        label-width="100px"
-        class="demo-ruleForm">
+    <el-dialog title="权限分配" :visible.sync="distributionFulVisable" width="50%">
+      <el-form :model="distributionFulForm" label-width="100px" class="demo-ruleForm">
         <el-form-item>
-          <el-input
-            placeholder="输入关键字进行过滤"
-            v-model="filterText">
+          <el-input placeholder="输入关键字进行过滤" v-model="filterText">
           </el-input>
-          <el-tree
-            :data="fuloptions"
-            class="filter-tree"
-            show-checkbox
-            node-key="value"
-            :default-checked-keys="default_checked_mid"
-            default-expand-all
-            :filter-node-method="filterNode"
-            ref="tree"
+          <el-tree :data="fuloptions" class="filter-tree" show-checkbox node-key="value"
+                   :default-checked-keys="default_checked_mid" default-expand-all :filter-node-method="filterNode"
+                   ref="tree"
             :props="props"></el-tree>
         </el-form-item>
         <el-form-item>
-          <el-button
-            type="primary"
-            @click="submitDistributionFulForm"
-            style="font-size: 18px">
-            <i class="iconfont icon-r-add"
-               style="font-size: 18px"></i>提交
+          <el-button type="primary" @click="submitDistributionFulForm" style="font-size: 18px">
+            <i class="iconfont icon-r-add" style="font-size: 18px"></i>提交
           </el-button>
-          <el-button
-            @click="celDistributionFul"
-            style="font-size: 18px">取消
+          <el-button @click="celDistributionFul" style="font-size: 18px">取消
           </el-button>
         </el-form-item>
       </el-form>

@@ -10,9 +10,7 @@
       </div>
     </div>
     <!--商品上货架-->
-    <el-dialog
-      :fullscreen="true"
-      :visible.sync="visable1">
+    <el-dialog :fullscreen="true" :visible.sync="visable1">
       <div class="searchForm">
         <div class="column">
           <span>商品名：</span>
@@ -20,98 +18,56 @@
         </div>
         <div class="column">
           <el-button type="success" @click="submitSearchForm">搜索</el-button>
-          <el-button type="primary" @click="visable1=false">关闭</el-button>
+          <el-button type="primary" @click="visable1 = false">关闭</el-button>
         </div>
       </div>
       <div class="table">
-        <el-table
-          :data="tableData"
-          style="width: 100%;"
-
-          size="medium">
-          <el-table-column
-            width="200"
-            type="index"
-            label="序号">
+        <el-table :data="tableData" style="width: 100%;" size="medium">
+          <el-table-column width="200" type="index" label="序号">
           </el-table-column>
-          <el-table-column
-            prop="coverUrl"
-            label="封面">
+          <el-table-column prop="coverUrl" label="封面">
             <template v-slot="scope">
               <img height="60px" :src="scope.row.coverUrl">
             </template>
           </el-table-column>
-          <el-table-column
-            prop="name"
-            label="商品名">
+          <el-table-column prop="name" label="商品名">
           </el-table-column>
-          <el-table-column
-            prop="goodsNum"
-            label="出货数量">
+          <el-table-column prop="goodsNum" label="出货数量">
           </el-table-column>
-          <el-table-column
-            width="100px"
-            label="操作">
+          <el-table-column width="100px" label="操作">
             <template v-slot="scope">
-              <el-button type="warning"
-                         @click="outGoodsBtn1(scope.row)" plain>出货
+              <el-button type="warning" @click="outGoodsBtn1(scope.row)" plain>出货
               </el-button>
             </template>
           </el-table-column>
         </el-table>
         <div style="margin: 10px 0 15px 0;">
-          <el-pagination
-            @size-change="handleSizeChange"
-            @current-change="handleCurrentChange"
-            :current-page.sync="searchForm.currentPage"
-            :page-sizes="[5, 10, 20, 50]"
-            :page-size="searchForm.pageSize"
-            layout="total,sizes, prev, pager, next,jumper"
-            :total="searchForm.total">
+          <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange"
+                         :current-page.sync="searchForm.currentPage" :page-sizes="[5, 10, 20, 50]"
+                         :page-size="searchForm.pageSize"
+                         layout="total,sizes, prev, pager, next,jumper" :total="searchForm.total">
           </el-pagination>
         </div>
       </div>
     </el-dialog>
     <!--商品出库-->
-    <el-dialog
-      title="商品出库"
-      :visible.sync="goodsOutVisable"
-      width="50%">
+    <el-dialog title="商品出库" :visible.sync="goodsOutVisable" width="50%">
       <el-form v-if="selectGoodsVisable" :model="selectGoods" :rules="rules" ref="selectGoods" label-width="100px"
                class="demo-ruleForm">
         <el-form-item style="width:40%" label="商品：" prop="goodsId">
-          <el-select disabled v-model="selectGoods.goodsId"
-                     placeholder="请选择商品"
-                     filterable
-                     clearable>
-            <el-option
-              v-for="item in options_goods"
-              :key="item.id"
-              :label="item.name"
-              :value="item.id">
+          <el-select disabled v-model="selectGoods.goodsId" placeholder="请选择商品" filterable clearable>
+            <el-option v-for="item in options_goods" :key="item.id" :label="item.name" :value="item.id">
             </el-option>
           </el-select>
         </el-form-item>
         <el-form-item style="width:40%" label="仓库：" prop="storeId">
-          <el-select v-model="selectGoods.storeId"
-                     @change="$forceUpdate"
-                     placeholder="请选择仓库"
-                     filterable
-                     clearable>
-            <el-option
-              v-for="item in options_store"
-              :key="item.id"
-              :label="item.name"
-              :value="item.id">
+          <el-select v-model="selectGoods.storeId" @change="$forceUpdate" placeholder="请选择仓库" filterable clearable>
+            <el-option v-for="item in options_store" :key="item.id" :label="item.name" :value="item.id">
             </el-option>
           </el-select>
         </el-form-item>
         <el-form-item style="width:40%" label="类型：" prop="state">
-          <el-select
-            v-model="selectGoods.state"
-            @change="$forceUpdate()"
-            filterable
-            placeholder="请选择类型" clearable>
+          <el-select v-model="selectGoods.state" @change="$forceUpdate()" filterable placeholder="请选择类型" clearable>
             <el-option label="出库" value="0"></el-option>
           </el-select>
         </el-form-item>
@@ -130,11 +86,8 @@
           </el-col>
           <el-col :span="12">
             <el-form-item style="width:60%" label="类型：" prop="state">
-              <el-select disabled
-                         v-model="newForm.state"
-                         filterable
-                         @change="$forceUpdate()"
-                         placeholder="请选择类型" clearable>
+              <el-select disabled v-model="newForm.state" filterable @change="$forceUpdate()" placeholder="请选择类型"
+                         clearable>
                 <el-option label="出库" value="0"></el-option>
                 <el-option label="过期" value="1"></el-option>
                 <el-option label="下架" value="2"></el-option>
@@ -145,28 +98,21 @@
         <el-row>
           <el-col :span="12">
             <el-form-item style="width: 60%" label="商品数量：" prop="goodsNum">
-              <el-input type="number" @change="()=>{
-                                if(this.goodsNum_max<this.newForm.goodsNum){
-                                    this.newForm.goodsNum=this.goodsNum_max
-                                }
-                                if(this.newForm.goodsNum<1){
-                                    this.newForm.goodsNum=1
-                                }
+              <el-input type="number" @change="() => {
+                if (this.goodsNum_max < this.newForm.goodsNum) {
+                  this.newForm.goodsNum = this.goodsNum_max
+                }
+                if (this.newForm.goodsNum < 1) {
+                  this.newForm.goodsNum = 1
+                }
 
-                            }" min="1" :max="goodsNum_max" v-model="newForm.goodsNum" placeholder="如：1"></el-input>
+              }" min="1" :max="goodsNum_max" v-model="newForm.goodsNum" placeholder="如：1"></el-input>
             </el-form-item>
           </el-col>
           <el-col :span="12">
             <el-form-item style="width:60%" label="仓库：" prop="storeId">
-              <el-select disabled v-model="newForm.storeId"
-                         placeholder="请选择仓库"
-                         filterable
-                         clearable>
-                <el-option
-                  v-for="item in options_store"
-                  :key="item.id"
-                  :label="item.name"
-                  :value="item.id">
+              <el-select disabled v-model="newForm.storeId" placeholder="请选择仓库" filterable clearable>
+                <el-option v-for="item in options_store" :key="item.id" :label="item.name" :value="item.id">
                 </el-option>
               </el-select>
             </el-form-item>
@@ -175,13 +121,8 @@
         <el-row>
           <el-col :span="12">
             <el-form-item style="width: 60%" label="出库日期：" prop="createTime">
-              <el-date-picker
-                size="mini"
-                style="width: 140px"
-                value-format="yyyy-MM-dd"
-                v-model="newForm.createTime"
-                type="date"
-                placeholder="出库日期">
+              <el-date-picker size="mini" style="width: 140px" value-format="yyyy-MM-dd" v-model="newForm.createTime"
+                              type="date" placeholder="出库日期">
               </el-date-picker>
             </el-form-item>
           </el-col>
@@ -198,9 +139,7 @@
       </el-form>
     </el-dialog>
     <!--商品过期/下架列表显示-->
-    <el-dialog
-      :fullscreen="true"
-      :visible.sync="visable2">
+    <el-dialog :fullscreen="true" :visible.sync="visable2">
       <div class="searchForm">
         <div class="column">
           <span>商品名：</span>
@@ -208,91 +147,60 @@
         </div>
         <div class="column">
           <span>类型：</span>
-          <el-select style="width: 120px"
-                     v-model="searchForm1.state"
-                     @change="$forceUpdate()"
-                     placeholder="请选择类型" clearable>
+          <el-select style="width: 120px" v-model="searchForm1.state" @change="$forceUpdate()" placeholder="请选择类型"
+                     clearable>
             <el-option label="过期" value="1"></el-option>
             <el-option label="下架" value="2"></el-option>
           </el-select>
         </div>
         <div class="column">
           <el-button type="success" @click="submitSearchForm1">搜索</el-button>
-          <el-button type="primary" @click="visable2=false">关闭</el-button>
+          <el-button type="primary" @click="visable2 = false">关闭</el-button>
         </div>
       </div>
       <div class="table">
-        <el-table
-          :data="tableData1"
-          style="width: 100%;"
-
-          size="medium">
-          <el-table-column
-            width="200"
-            type="index"
-            label="序号">
+        <el-table :data="tableData1" style="width: 100%;" size="medium">
+          <el-table-column width="200" type="index" label="序号">
           </el-table-column>
-          <el-table-column
-            prop="coverUrl"
-            label="封面">
+          <el-table-column prop="coverUrl" label="封面">
             <template v-slot="scope">
               <img height="60px" :src="scope.row.coverUrl">
             </template>
           </el-table-column>
-          <el-table-column
-            prop="goodsName"
-            label="商品名">
+          <el-table-column prop="goodsName" label="商品名">
           </el-table-column>
-          <el-table-column
-            prop="storeName"
-            label="仓库">
+          <el-table-column prop="storeName" label="仓库">
           </el-table-column>
-          <el-table-column
-            prop="untreatedNum"
-            label="处理数量">
+          <el-table-column prop="untreatedNum" label="处理数量">
           </el-table-column>
-          <el-table-column
-            prop="state"
-            label="类型">
+          <el-table-column prop="state" label="类型">
             <template v-slot="scope">
-              <el-tag type="warning" v-if="scope.row.state=='1'">过期</el-tag>
-              <el-tag type="danger" v-if="scope.row.state=='2'">下架</el-tag>
+              <el-tag type="warning" v-if="scope.row.state == '1'">过期</el-tag>
+              <el-tag type="danger" v-if="scope.row.state == '2'">下架</el-tag>
             </template>
           </el-table-column>
-          <el-table-column
-            prop="createTime"
-            label="通知时间">
+          <el-table-column prop="createTime" label="通知时间">
           </el-table-column>
-          <el-table-column
-            width="100px"
-            label="操作">
+          <el-table-column width="100px" label="操作">
             <template v-slot="scope">
-              <el-button type="warning"
-                         @click="outUntreatedBtn(scope.row)" plain>处理
+              <el-button type="warning" @click="outUntreatedBtn(scope.row)" plain>处理
               </el-button>
             </template>
           </el-table-column>
 
         </el-table>
         <div style="margin: 10px 0 15px 0;">
-          <el-pagination
-            @size-change="handleSizeChange"
-            @current-change="handleCurrentChange"
-            :current-page.sync="searchForm1.currentPage"
-            :page-sizes="[5, 10, 20, 50]"
-            :page-size="searchForm1.pageSize"
-            layout="total,sizes, prev, pager, next,jumper"
-            :total="searchForm1.total">
+          <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange"
+                         :current-page.sync="searchForm1.currentPage" :page-sizes="[5, 10, 20, 50]"
+                         :page-size="searchForm1.pageSize"
+                         layout="total,sizes, prev, pager, next,jumper" :total="searchForm1.total">
           </el-pagination>
         </div>
       </div>
     </el-dialog>
 
     <!--处理表单填写-->
-    <el-dialog
-      title="过期/下架商品处理表单"
-      :visible.sync="visable3"
-      width="50%">
+    <el-dialog title="过期/下架商品处理表单" :visible.sync="visable3" width="50%">
       <el-form v-if="" :model="outUntreatedForm" :rules="rules" ref="outUntreatedForm" label-width="100px"
                class="demo-ruleForm">
         <el-row>
@@ -310,17 +218,15 @@
           </el-col>
           <el-col :span="24">
             <el-form-item style="width: 60%" label="商品数量:" prop="untreatedNum">
-              <el-input
-                @change="()=>{
-                                        if (outUntreatedForm.untreatedNum<=0){
-                                            outUntreatedForm.untreatedNum=1
-                                        }
-                                        if (outUntreatedForm.untreatedNum>untreatedNum){
-                                            outUntreatedForm.untreatedNum=untreatedNum
-                                        }
-                                    }"
-                :placeholder="'如：'+untreatedNum"
-                type="number" min="1" :max="untreatedNum" v-model="outUntreatedForm.untreatedNum"/>
+              <el-input @change="() => {
+                if (outUntreatedForm.untreatedNum <= 0) {
+                  outUntreatedForm.untreatedNum = 1
+                }
+                if (outUntreatedForm.untreatedNum > untreatedNum) {
+                  outUntreatedForm.untreatedNum = untreatedNum
+                }
+              }" :placeholder="'如：' + untreatedNum" type="number" min="1" :max="untreatedNum"
+                        v-model="outUntreatedForm.untreatedNum"/>
             </el-form-item>
           </el-col>
           <el-col :span="24">
@@ -331,10 +237,8 @@
           </el-col>
           <el-col :span="24">
             <el-form-item style="width: 40%" label="类型:">
-              <el-select disabled
-                         v-model="outUntreatedForm.state"
-                         @change="$forceUpdate()"
-                         placeholder="请选择类型" clearable>
+              <el-select disabled v-model="outUntreatedForm.state" @change="$forceUpdate()" placeholder="请选择类型"
+                         clearable>
                 <el-option label="过期" value="1"></el-option>
                 <el-option label="下架" value="2"></el-option>
               </el-select>
@@ -621,7 +525,8 @@ export default {
   background-color: #bfdcf6;
 }
 
-#detail_store_goods_in .noticeOut h1, .btns {
+#detail_store_goods_in .noticeOut h1,
+.btns {
   width: 100%;
 
 }

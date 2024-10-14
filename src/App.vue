@@ -5,7 +5,8 @@
 </template>
 
 <style>
-body, html {
+body,
+html {
   overflow-x: hidden;
 }
 </style>

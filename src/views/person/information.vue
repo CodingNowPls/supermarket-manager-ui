@@ -9,25 +9,15 @@
     <i class="iconfont icon-r-paper" style="font-size: 32px"><b style="font-size: 28px">完善个人资料</b></i>
     <br/>
     <br/>
-    <el-form
-      :model="informationForm"
-      :rules="rules"
-      ref="informationForm"
-      label-width="100px"
-      class="demo-ruleForm">
+    <el-form :model="informationForm" :rules="rules" ref="informationForm" label-width="100px" class="demo-ruleForm">
       <el-row>
         <el-col :span="12">
           <el-form-item style="width: 40%">
-            <el-upload
-              class="avatar-uploader"
-              action="http://sun.ipyingshe.com:9291/personnel_management/employee/uploadImg"
-              :show-file-list="false"
-              :on-success="handleAvatarSuccess"
-              :before-upload="beforeAvatarUpload">
-              <img
-                v-if="imageUrl"
-                :src="BaseApi + imageUrl"
-                class="avatar"/>
+            <el-upload class="avatar-uploader"
+                       action="http://sun.ipyingshe.com:9291/personnel_management/employee/uploadImg"
+                       :show-file-list="false"
+                       :on-success="handleAvatarSuccess" :before-upload="beforeAvatarUpload">
+              <img v-if="imageUrl" :src="BaseApi + imageUrl" class="avatar"/>
               <i v-else class="el-icon-plus avatar-uploader-icon"></i>
             </el-upload>
           </el-form-item>
@@ -40,21 +30,14 @@
           </el-form-item>
         </el-col>
         <el-col :span="12">
-          <el-form-item
-            style="width: 40%"
-            label="姓名："
-            prop="nickName">
-            <el-input
-              v-model="informationForm.nickName"></el-input>
+          <el-form-item style="width: 40%" label="姓名：" prop="nickName">
+            <el-input v-model="informationForm.nickName"></el-input>
           </el-form-item>
         </el-col>
       </el-row>
       <el-row>
         <el-col :span="12">
-          <el-form-item
-            style="width: 40%"
-            label="身份证号："
-            prop="idCard">
+          <el-form-item style="width: 40%" label="身份证号：" prop="idCard">
             <el-input v-model="informationForm.idCard"></el-input>
           </el-form-item>
         </el-col>
@@ -66,22 +49,11 @@
       </el-row>
       <el-row>
         <el-col :span="12">
-          <el-form-item
-            style="width: 40%"
-            label="所属部门：">
-            <el-select
-              disabled
-              style="width: 200px"
-              v-model="informationForm.deptId"
-              placeholder="请选择部门"
-              filterable
-              @change="$forceUpdate()"
-              clearable>
-              <el-option
-                v-for="item in options"
-                :key="item.id"
-                :label="item.name"
-                :value="item.id">
+          <el-form-item style="width: 40%" label="所属部门：">
+            <el-select disabled style="width: 200px" v-model="informationForm.deptId" placeholder="请选择部门"
+                       filterable
+                       @change="$forceUpdate()" clearable>
+              <el-option v-for="item in options" :key="item.id" :label="item.name" :value="item.id">
               </el-option>
             </el-select>
           </el-form-item>
@@ -95,20 +67,13 @@
       <el-row>
         <el-col :span="12">
           <el-form-item style="width: 40%" label="备注：">
-            <el-input
-              type="textarea"
-              cols="50"
-              rows="3"
-              v-model="informationForm.info"></el-input>
+            <el-input type="textarea" cols="50" rows="3" v-model="informationForm.info"></el-input>
           </el-form-item>
         </el-col>
         <el-col :span="12">
           <el-form-item style="width: 40%" label="性别：">
-            <el-select
-              style="width: 200px"
-              v-model="informationForm.sex"
-              @change="$forceUpdate()"
-              placeholder="请选择性别"
+            <el-select style="width: 200px" v-model="informationForm.sex" @change="$forceUpdate()"
+                       placeholder="请选择性别"
               clearable>
               <el-option label="女" value="0"></el-option>
               <el-option label="男" value="1"></el-option>

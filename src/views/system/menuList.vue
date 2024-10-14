@@ -4,8 +4,7 @@
       <el-breadcrumb-item>首页</el-breadcrumb-item>
       <el-breadcrumb-item>系统管理</el-breadcrumb-item>
       <el-breadcrumb-item>菜单管理</el-breadcrumb-item>
-    </el-breadcrumb
-    >
+    </el-breadcrumb>
     <br/>
     <el-row>
       <el-col :span="8" style="text-align: left; padding-right: 10px">
@@ -27,27 +26,17 @@
     </el-row>
     <br/>
     <div class="table">
-      <el-table
-        :data="tableData"
-        style="width: 100%"
-        size="medium"
-        row-key="id"
-        border
+      <el-table :data="tableData" style="width: 100%" size="medium" row-key="id" border
         :tree-props="{ children: 'children' }">
         <el-table-column prop="label" label="菜单名"></el-table-column>
-        <el-table-column
-          width="150"
-          prop="flag"
-          :show-overflow-tooltip="true"
-          label="标识符">
+        <el-table-column width="150" prop="flag" :show-overflow-tooltip="true" label="标识符">
           <template v-slot="scope">
             <el-tag type="info">{{ scope.row.flag ? scope.row.flag : "暂定" }}</el-tag>
           </template>
         </el-table-column>
         <el-table-column prop="type" label="类型">
           <template v-slot="scope">
-            <el-tag v-if="scope.row.type == 0"
-            >目录
+            <el-tag v-if="scope.row.type == 0">目录
             </el-tag>
             <el-tag v-else-if="scope.row.type == 1" type="success">菜单
             </el-tag>
@@ -60,19 +49,13 @@
             <i :class="scope.row.icon"></i>
           </template>
         </el-table-column>
-        <el-table-column
-          prop="info"
-          :show-overflow-tooltip="true"
-          label="描述">
+        <el-table-column prop="info" :show-overflow-tooltip="true" label="描述">
           <template v-slot="scope">
             <el-tag type="info">{{ scope.row.info ? scope.row.info : "无" }}
             </el-tag>
           </template>
         </el-table-column>
-        <el-table-column
-          prop="component"
-          :show-overflow-tooltip="true"
-          label="组件路径">
+        <el-table-column prop="component" :show-overflow-tooltip="true" label="组件路径">
           <template v-slot="scope">
             <el-tag type="info">{{ scope.row.component ? scope.row.component : "暂定" }}
             </el-tag>
@@ -86,14 +69,10 @@
         </el-table-column>
       </el-table>
       <div style="margin: 10px 0 15px 0">
-        <el-pagination
-          @size-change="handleSizeChange"
-          @current-change="handleCurrentChange"
-          :current-page.sync="searchForm.currentPage"
-          :page-sizes="[5, 10, 20, 50]"
-          :page-size="searchForm.pageSize"
-          layout="total,sizes, prev, pager, next,jumper"
-          :total="searchForm.total">
+        <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange"
+                       :current-page.sync="searchForm.currentPage" :page-sizes="[5, 10, 20, 50]"
+                       :page-size="searchForm.pageSize"
+                       layout="total,sizes, prev, pager, next,jumper" :total="searchForm.total">
         </el-pagination>
       </div>
     </div>

@@ -15,40 +15,22 @@
         <el-input style="width: 95%" placeholder="姓名" v-model="searchForm.nickName"/>
       </el-col>
       <el-col :span="8">
-        <el-input
-          style="width: 95%"
-          type="number"
-          :min="0"
-          :max="100"
-          placeholder="年龄"
-          v-model="searchForm.age"/>
+        <el-input style="width: 95%" type="number" :min="0" :max="100" placeholder="年龄" v-model="searchForm.age"/>
       </el-col>
     </el-row>
     <br/>
     <el-row>
       <el-col :span="12">
-        <el-input
-          style="width: 97%"
-          placeholder="住址"
-          v-model="searchForm.address"/>
+        <el-input style="width: 97%" placeholder="住址" v-model="searchForm.address"/>
       </el-col>
       <el-col :span="6">
-        <el-select
-          v-model="searchForm.sex"
-          @change="$forceUpdate()"
-          placeholder="性别"
-          clearable>
+        <el-select v-model="searchForm.sex" @change="$forceUpdate()" placeholder="性别" clearable>
           <el-option label="女" value="0"></el-option>
           <el-option label="男" value="1"></el-option>
         </el-select>
       </el-col>
       <el-col :span="6">
-        <el-select
-          v-model="searchForm.deptId"
-          placeholder="部门"
-          filterable
-          @change="$forceUpdate()"
-          clearable>
+        <el-select v-model="searchForm.deptId" placeholder="部门" filterable @change="$forceUpdate()" clearable>
           <el-option
             v-for="item in options"
             :key="item.id"
@@ -61,13 +43,8 @@
     <br/>
     <el-row>
       <el-col :span="24" style="text-align: left">
-        <el-button
-          type="primary"
-          @click="submitSearchForm"
-          style="font-size: 18px">
-          <i class="iconfont icon-r-find" style="font-size: 18px">
-          </i>
-          搜索
+        <el-button type="primary" @click="submitSearchForm" style="font-size: 18px">
+          <i class="iconfont icon-r-find" style="font-size: 18px"></i>搜索
         </el-button>
         <el-button
           type="success"
@@ -155,14 +132,8 @@
               </i>
               删除
             </el-button>
-            <el-button
-              style="font-size: 16px"
-              type="warning"
-              @click="empRoleBtn(scope.row.id)">
-              <i style="font-size: 16px"
-                 class="iconfont icon-r-user1">
-              </i>
-              职务
+            <el-button style="font-size: 16px" type="warning" @click="empRoleBtn(scope.row.id)">
+              <i style="font-size: 16px" class="iconfont icon-r-user1"></i>职务
             </el-button>
 
             <el-button style="font-size: 16px"

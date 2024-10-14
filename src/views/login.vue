@@ -11,20 +11,11 @@
         <el-form-item prop="username">
           <el-row>
             <el-col :span="5" style="text-align: right">
-              <i
-                class="iconfont icon-r-user1"
-                style="font-size: 28px; color: grey"
-              >
+              <i class="iconfont icon-r-user1" style="font-size: 28px; color: grey">
               </i>
             </el-col>
-            <el-col
-              :span="19"
-              style="text-align: left; padding-left: 10px"
-            >
-              <el-input
-                v-model="loginForm.username"
-                placeholder="账号"
-              ></el-input>
+            <el-col :span="19" style="text-align: left; padding-left: 10px">
+              <el-input v-model="loginForm.username" placeholder="账号"></el-input>
             </el-col>
           </el-row>
         </el-form-item>
@@ -32,35 +23,20 @@
         <el-form-item prop="password">
           <el-row>
             <el-col :span="5" style="text-align: right">
-              <i
-                class="iconfont icon-r-lock"
-                style="font-size: 28px; color: grey"
-              >
+              <i class="iconfont icon-r-lock" style="font-size: 28px; color: grey">
               </i>
             </el-col>
-            <el-col
-              :span="19"
-              style="text-align: left; padding-left: 10px"
-            >
-              <el-input
-                type="password"
-                v-model="loginForm.password"
-                placeholder="密码"
-              ></el-input>
+            <el-col :span="19" style="text-align: left; padding-left: 10px">
+              <el-input type="password" v-model="loginForm.password" placeholder="密码"></el-input>
             </el-col>
           </el-row>
         </el-form-item>
         <el-form-item>
-          <el-button
-            style="font-size: 18px"
-            type="primary"
-            @click="submitForm('loginForm')"
-          >
+          <el-button style="font-size: 18px" type="primary" @click="submitForm('loginForm')">
             <i class="iconfont icon-r-yes" style="font-size: 18px">
             </i>
             登录
-          </el-button
-          >
+          </el-button>
         </el-form-item>
       </el-form>
     </div>

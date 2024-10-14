@@ -21,10 +21,7 @@
     <br/>
     <el-row>
       <el-col :span="24" style="text-align: left">
-        <el-button
-          type="primary"
-          @click="submitSearchForm"
-          style="font-size: 18px">
+        <el-button type="primary" @click="submitSearchForm" style="font-size: 18px">
           <i class="iconfont icon-r-find" style="font-size: 18px">
           </i>
           搜索
@@ -36,61 +33,33 @@
       <el-table :data="tableData" style="width: 100%" size="medium">
         <el-table-column type="index" width="200" label="序号">
         </el-table-column>
-        <el-table-column
-          prop="storeName"
-          :show-overflow-tooltip="true"
-          label="仓库名">
+        <el-table-column prop="storeName" :show-overflow-tooltip="true" label="仓库名">
         </el-table-column>
-        <el-table-column
-          prop="residueNum"
-          :show-overflow-tooltip="true"
-          label="存货数量">
+        <el-table-column prop="residueNum" :show-overflow-tooltip="true" label="存货数量">
         </el-table-column>
         <el-table-column label="操作">
           <template v-slot="scope">
-            <el-button
-              type="primary"
-              style="font-size: 18px"
-              @click="detailStoreBtn(scope.row)">
-              <i
-                class="iconfont icon-r-find"
-                style="font-size: 18px"
-              ></i>
+            <el-button type="primary" style="font-size: 18px" @click="detailStoreBtn(scope.row)">
+              <i class="iconfont icon-r-find" style="font-size: 18px"></i>
               存储明细
             </el-button>
           </template>
         </el-table-column>
       </el-table>
       <div style="margin: 10px 0 15px 0">
-        <el-pagination
-          @size-change="handleSizeChange"
-          @current-change="handleCurrentChange"
-          :current-page.sync="searchForm.currentPage"
-          :page-sizes="[5, 10, 20, 50]"
-          :page-size="searchForm.pageSize"
-          layout="total,sizes, prev, pager, next,jumper"
-          :total="searchForm.total">
+        <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange"
+                       :current-page.sync="searchForm.currentPage" :page-sizes="[5, 10, 20, 50]"
+                       :page-size="searchForm.pageSize"
+                       layout="total,sizes, prev, pager, next,jumper" :total="searchForm.total">
         </el-pagination>
       </div>
     </div>
-    <el-dialog
-      title="仓库存储明细"
-      :visible.sync="detailStoreVisible"
-      width="95%"
-      height="100%">
+    <el-dialog title="仓库存储明细" :visible.sync="detailStoreVisible" width="95%" height="100%">
       <el-row>
         <el-col :span="8" style="text-align: right;">
-          <el-select
-            v-model="searchDetailForm.id"
-            placeholder="请选择商品"
-            filterable
-            @change="$forceUpdate()"
-            clearable>
-            <el-option
-              v-for="item in options_storeGoods"
-              :key="item.id"
-              :label="item.name"
-              :value="item.id">
+          <el-select v-model="searchDetailForm.id" placeholder="请选择商品" filterable @change="$forceUpdate()"
+                     clearable>
+            <el-option v-for="item in options_storeGoods" :key="item.id" :label="item.name" :value="item.id">
             </el-option>
           </el-select>
         </el-col>
@@ -107,8 +76,7 @@
         <el-col :span="8">
           <i class="iconfont icon-r-add" style="font-size: 28px">
             <b>
-              总存储量：<span style="color: #fc4316"
-            >{{ totalStoreNum1 ? totalStoreNum1 : 0 }}件</span>
+              总存储量：<span style="color: #fc4316">{{ totalStoreNum1 ? totalStoreNum1 : 0 }}件</span>
             </b>
           </i>
         </el-col>
@@ -118,37 +86,21 @@
         <el-table :data="tableData1" style="width: 100%" size="medium">
           <el-table-column type="index" width="200" label="序号">
           </el-table-column>
-          <el-table-column
-            prop="goodsName"
-            :show-overflow-tooltip="true"
-            label="商品名">
+          <el-table-column prop="goodsName" :show-overflow-tooltip="true" label="商品名">
           </el-table-column>
-          <el-table-column
-            prop="residueNum"
-            :show-overflow-tooltip="true"
-            label="商品数量">
+          <el-table-column prop="residueNum" :show-overflow-tooltip="true" label="商品数量">
           </el-table-column>
-          <el-table-column
-            prop="percentage"
-            :show-overflow-tooltip="true"
-            label="占总存储量">
+          <el-table-column prop="percentage" :show-overflow-tooltip="true" label="占总存储量">
             <template v-slot="scope">
-              <el-progress
-                type="circle"
-                width="70"
-                :percentage="scope.row.percentage"
+              <el-progress type="circle" width="70" :percentage="scope.row.percentage"
                 :color="customColorMethod"></el-progress>
             </template>
           </el-table-column>
         </el-table>
         <div style="margin: 10px 0 15px 0">
-          <el-pagination
-            @size-change="handleSizeChange1"
-            @current-change="handleCurrentChange1"
-            :current-page.sync="searchDetailForm.currentPage"
-            :page-sizes="[5, 10, 20, 50]"
-            :page-size="searchDetailForm.pageSize"
-            layout="total,sizes, prev, pager, next,jumper"
+          <el-pagination @size-change="handleSizeChange1" @current-change="handleCurrentChange1"
+                         :current-page.sync="searchDetailForm.currentPage" :page-sizes="[5, 10, 20, 50]"
+                         :page-size="searchDetailForm.pageSize" layout="total,sizes, prev, pager, next,jumper"
             :total="searchDetailForm.total">
           </el-pagination>
         </div>

@@ -23,10 +23,7 @@
     <br/>
     <el-row>
       <el-col :span="24" style="text-align: left">
-        <el-button
-          type="primary"
-          @click="submitSearchForm"
-          style="font-size: 18px">
+        <el-button type="primary" @click="submitSearchForm" style="font-size: 18px">
           <i class="iconfont icon-r-find" style="font-size: 18px">
           </i>
           搜索
@@ -38,47 +35,27 @@
       <el-table :data="tableData" style="width: 100%" size="medium">
         <el-table-column type="index" width="200" label="序号">
         </el-table-column>
-        <el-table-column
-          prop="coverUrl"
-          :show-overflow-tooltip="true"
-          label="封面">
+        <el-table-column prop="coverUrl" :show-overflow-tooltip="true" label="封面">
           <template v-slot="scope">
             <img width="60px" :src="BaseApi + scope.row.coverUrl"/>
           </template>
         </el-table-column>
-        <el-table-column
-          prop="goodsName"
-          :show-overflow-tooltip="true"
-          label="商品名">
+        <el-table-column prop="goodsName" :show-overflow-tooltip="true" label="商品名">
         </el-table-column>
-        <el-table-column
-          prop="salesVolume"
-          :show-overflow-tooltip="true"
-          label="销量">
+        <el-table-column prop="salesVolume" :show-overflow-tooltip="true" label="销量">
         </el-table-column>
-        <el-table-column
-          prop="percentage"
-          :show-overflow-tooltip="true"
-          label="销售量占比">
+        <el-table-column prop="percentage" :show-overflow-tooltip="true" label="销售量占比">
           <template v-slot="scope">
-            <el-progress
-              width="50"
-              type="dashboard"
-              :percentage="scope.row.percentage"
-              :color="customColorMethod"
-            ></el-progress>
+            <el-progress width="50" type="dashboard" :percentage="scope.row.percentage"
+                         :color="customColorMethod"></el-progress>
           </template>
         </el-table-column>
       </el-table>
       <div style="margin: 10px 0 15px 0">
-        <el-pagination
-          @size-change="handleSizeChange"
-          @current-change="handleCurrentChange"
-          :current-page.sync="searchForm.currentPage"
-          :page-sizes="[5, 10, 20, 50]"
-          :page-size="searchForm.pageSize"
-          layout="total,sizes, prev, pager, next,jumper"
-          :total="searchForm.total">
+        <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange"
+                       :current-page.sync="searchForm.currentPage" :page-sizes="[5, 10, 20, 50]"
+                       :page-size="searchForm.pageSize"
+                       layout="total,sizes, prev, pager, next,jumper" :total="searchForm.total">
         </el-pagination>
       </div>
     </div>

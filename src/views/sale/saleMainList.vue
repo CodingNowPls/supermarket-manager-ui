@@ -35,252 +35,138 @@
     </div>
     <!--销售-->
     <el-dialog title="销售商品" :visible.sync="newVisable" width="80%">
-      <el-form
-        :model="newForm"
-        :rules="rules"
-        ref="newForm"
-        label-width="100px"
-        class="demo-ruleForm">
+      <el-form :model="newForm" :rules="rules" ref="newForm" label-width="100px" class="demo-ruleForm">
         <el-row>
           <el-col :span="24">
             <el-form-item style="width: 60%" label="销售编号：">
-              <el-input
-                disabled
-                v-model="newForm.cn"
-                placeholder="如：销售编号"
-              ></el-input>
+              <el-input disabled v-model="newForm.cn" placeholder="如：销售编号"></el-input>
             </el-form-item>
           </el-col>
         </el-row>
         <el-row>
           <el-col :span="12">
-            <el-form-item
-              v-if="!newForm.sellTime"
-              label="支付方式："
-              prop="sellway">
-              <el-radio
-                type="radio"
-                v-model="newForm.sellway"
-                label="0">支付宝
+            <el-form-item v-if="!newForm.sellTime" label="支付方式：" prop="sellway">
+              <el-radio type="radio" v-model="newForm.sellway" label="0">支付宝
               </el-radio>
-              <el-radio
-                type="radio"
-                v-model="newForm.sellway"
-                label="1">微信
+              <el-radio type="radio" v-model="newForm.sellway" label="1">微信
               </el-radio>
-              <el-radio
-                type="radio"
-                v-model="newForm.sellway"
-                label="2">现金
+              <el-radio type="radio" v-model="newForm.sellway" label="2">现金
               </el-radio>
-              <el-radio
-                type="radio"
-                v-model="newForm.sellway"
-                label="3">银行卡
+              <el-radio type="radio" v-model="newForm.sellway" label="3">银行卡
               </el-radio>
             </el-form-item>
-            <el-form-item
-              v-else
-              style="width: 80%"
-              label="支付方式："
-              prop="sellway">
-              <el-radio
-                disabled
-                type="radio"
-                v-model="newForm.sellway"
-                label="0">支付宝
+            <el-form-item v-else style="width: 80%" label="支付方式：" prop="sellway">
+              <el-radio disabled type="radio" v-model="newForm.sellway" label="0">支付宝
               </el-radio>
-              <el-radio
-                disabled
-                type="radio"
-                v-model="newForm.sellway"
-                label="1">微信
-              </el-radio
-              >
-              <el-radio
-                disabled
-                type="radio"
-                v-model="newForm.sellway"
-                label="2">现金
+              <el-radio disabled type="radio" v-model="newForm.sellway" label="1">微信
               </el-radio>
-              <el-radio
-                disabled
-                type="radio"
-                v-model="newForm.sellway"
-                label="3"
-              >银行卡
+              <el-radio disabled type="radio" v-model="newForm.sellway" label="2">现金
+              </el-radio>
+              <el-radio disabled type="radio" v-model="newForm.sellway" label="3">银行卡
               </el-radio>
             </el-form-item>
           </el-col>
         </el-row>
         <el-row>
           <el-col :span="12">
-            <el-form-item
-              v-if="!newForm.sellTime"
-              style="width: 60%"
-              label="顾客类型："
-              prop="type">
-              <el-radio
-                @change="       () => {
-                                        if (this.newForm.type == '1') {
-                                            this.newForm.sellTotalmoney = (
-                                                this.totalMoney * 0.9
-                                            ).toFixed(2);
-                                        } else {
-                                            this.newForm.sellTotalmoney =
-                                                this.totalMoney.toFixed(2);
-                                        }
-                                    }
-                                "
-                type="radio"
-                v-model="newForm.type"
-                label="1">会员
+            <el-form-item v-if="!newForm.sellTime" style="width: 60%" label="顾客类型：" prop="type">
+              <el-radio @change="() => {
+                if (this.newForm.type == '1') {
+                  this.newForm.sellTotalmoney = (
+                    this.totalMoney * 0.9
+                  ).toFixed(2);
+                } else {
+                  this.newForm.sellTotalmoney =
+                    this.totalMoney.toFixed(2);
+                }
+              }
+                " type="radio" v-model="newForm.type" label="1">会员
               </el-radio>
-              <el-radio
-                @change="    () => {
-                                        if (this.newForm.type == '1') {
-                                            this.newForm.sellTotalmoney = (
-                                                this.totalMoney * 0.9
-                                            ).toFixed(2);
-                                        } else {
-                                            this.newForm.sellTotalmoney =
-                                                this.totalMoney.toFixed(2);
-                                        }
-                                    }
-                                "
-                type="radio"
-                v-model="newForm.type"
-                label="0"
-              >非会员
+              <el-radio @change="() => {
+                if (this.newForm.type == '1') {
+                  this.newForm.sellTotalmoney = (
+                    this.totalMoney * 0.9
+                  ).toFixed(2);
+                } else {
+                  this.newForm.sellTotalmoney =
+                    this.totalMoney.toFixed(2);
+                }
+              }" type="radio" v-model="newForm.type" label="0">非会员
               </el-radio>
             </el-form-item>
-            <el-form-item
-              v-else
-              style="width: 60%"
-              label="顾客类型："
-              prop="type">
-              <el-radio
-                disabled
-                @change="       () => {
-                                        if (this.newForm.type == '1') {
-                                            this.newForm.sellTotalmoney = (
-                                                this.totalMoney * 0.9
-                                            ).toFixed(2);
-                                        } else {
-                                            this.newForm.sellTotalmoney =
-                                                this.totalMoney.toFixed(2);
-                                        }
-                                    }
-                                "
-                type="radio"
-                v-model="newForm.type"
-                label="1">会员
+            <el-form-item v-else style="width: 60%" label="顾客类型：" prop="type">
+              <el-radio disabled @change="() => {
+                if (this.newForm.type == '1') {
+                  this.newForm.sellTotalmoney = (
+                    this.totalMoney * 0.9
+                  ).toFixed(2);
+                } else {
+                  this.newForm.sellTotalmoney =
+                    this.totalMoney.toFixed(2);
+                }
+              }
+                " type="radio" v-model="newForm.type" label="1">会员
               </el-radio>
-              <el-radio
-                disabled
-                @change=" () => {
-                                        if (this.newForm.type == '1') {
-                                            this.newForm.sellTotalmoney = (
-                                                this.totalMoney * 0.9
-                                            ).toFixed(2);
-                                        } else {
-                                            this.newForm.sellTotalmoney =
-                                                this.totalMoney.toFixed(2);
-                                        }
-                                    }
-                                "
-                type="radio"
-                v-model="newForm.type"
-                label="0">非会员
+              <el-radio disabled @change="() => {
+                if (this.newForm.type == '1') {
+                  this.newForm.sellTotalmoney = (
+                    this.totalMoney * 0.9
+                  ).toFixed(2);
+                } else {
+                  this.newForm.sellTotalmoney =
+                    this.totalMoney.toFixed(2);
+                }
+              }
+                " type="radio" v-model="newForm.type" label="0">非会员
               </el-radio>
             </el-form-item>
           </el-col>
           <el-col :span="12" v-if="newForm.type == '1'">
-            <el-form-item
-              style="width: 60%"
-              label="会员账号："
-              prop="memberPhone">
-              <el-input
-                @change="queryMemberByPhone(newForm.memberPhone)" v-model="newForm.memberPhone"
-                placeholder="如：电话号码"
-              ></el-input>
+            <el-form-item style="width: 60%" label="会员账号：" prop="memberPhone">
+              <el-input @change="queryMemberByPhone(newForm.memberPhone)" v-model="newForm.memberPhone"
+                        placeholder="如：电话号码"></el-input>
             </el-form-item>
           </el-col>
-          <el-col
-            :span="12"
-            v-if="newForm.type == '1' && newForm.sellTime">
-            <el-form-item
-              style="width: 60%"
-              label="会员账号："
-              prop="memberPhone">
-              <el-input
-                readonly
-                v-model="newForm.memberPhone"
-                placeholder="如：电话号码"></el-input>
+          <el-col :span="12" v-if="newForm.type == '1' && newForm.sellTime">
+            <el-form-item style="width: 60%" label="会员账号：" prop="memberPhone">
+              <el-input readonly v-model="newForm.memberPhone" placeholder="如：电话号码"></el-input>
             </el-form-item>
           </el-col>
         </el-row>
         <hr/>
         <el-row>
-          <el-col
-            :span="24"
-            style="text-align: left; margin-bottom: 10px">
+          <el-col :span="24" style="text-align: left; margin-bottom: 10px">
             <el-button type="success" @click="addGoodsBtn">
               <i class="iconfont icon-r-add"> </i>
               添加商品
             </el-button>
           </el-col>
           <el-col :span="24">
-            <el-table
-              :data="newForm.detailSaleRecords"
-              style="width: 100%; border-top: 1px solid lightgrey"
+            <el-table :data="newForm.detailSaleRecords" style="width: 100%; border-top: 1px solid lightgrey"
               size="medium">
               <el-table-column prop="goodsId" label="商品编号">
               </el-table-column>
               <el-table-column prop="goodsName" label="商品名">
               </el-table-column>
-              <el-table-column
-                prop="goodsNum"
-                width="400px"
-                label="数量">
-                <template
-                  v-if="!newForm.sellTime"
-                  v-slot="scope">
-                  <el-button
-                    @click="redueGoodsNum(scope.row)"
-                    type="success">-
+              <el-table-column prop="goodsNum" width="400px" label="数量">
+                <template v-if="!newForm.sellTime" v-slot="scope">
+                  <el-button @click="redueGoodsNum(scope.row)" type="success">-
                   </el-button>
-                  <el-input
-                    readonly
-                    style="width: 100px"
-                    type="number"
-                    min="1"
-                    v-model="scope.row.goodsNum"></el-input>
-                  <el-button
-                    @click="addGoodsNum(scope.row)"
-                    type="success">+
+                  <el-input readonly style="width: 100px" type="number" min="1" v-model="scope.row.goodsNum"></el-input>
+                  <el-button @click="addGoodsNum(scope.row)" type="success">+
                   </el-button>
                 </template>
                 <template v-else v-slot="scope">
                   <el-button type="success">+</el-button>
-                  <el-input
-                    readonly
-                    style="width: 100px"
-                    type="number"
-                    min="1"
-                    v-model="scope.row.goodsNum"></el-input>
+                  <el-input readonly style="width: 100px" type="number" min="1" v-model="scope.row.goodsNum"></el-input>
                   <el-button type="success">-</el-button>
                 </template>
               </el-table-column>
               <el-table-column prop="goodsPrice" label="商品单价">
               </el-table-column>
-              <el-table-column
-                v-if="!newForm.sellTime"
-                label="操作">
+              <el-table-column v-if="!newForm.sellTime" label="操作">
                 <template v-slot="scope">
-                  <el-button
-                    @click="removedetailRecords(scope.row)"
-                    type="danger">移除
+                  <el-button @click="removedetailRecords(scope.row)" type="danger">移除
                   </el-button>
                 </template>
               </el-table-column>
@@ -290,21 +176,11 @@
         <br/>
         <el-row>
           <el-col :span="24">
-            <el-form-item
-              v-if="!newForm.sellTime"
-              style="width: 100%"
-              label="备注：">
-              <el-input
-                type="textarea"
-                v-model="newForm.info"
-                placeholder="如：订单1"></el-input>
+            <el-form-item v-if="!newForm.sellTime" style="width: 100%" label="备注：">
+              <el-input type="textarea" v-model="newForm.info" placeholder="如：订单1"></el-input>
             </el-form-item>
             <el-form-item v-else style="width: 60%" label="备注：">
-              <el-input
-                disabled
-                type="textarea"
-                v-model="newForm.info"
-                placeholder="如：订单1"></el-input>
+              <el-input disabled type="textarea" v-model="newForm.info" placeholder="如：订单1"></el-input>
             </el-form-item>
           </el-col>
         </el-row>
@@ -322,10 +198,12 @@
                   ).toFixed(2)
                   : 0
               }}元&nbsp;&nbsp;
-              <span
-                v-if="newForm.sellway">支付方式：{{ newForm.sellway == "0" ? "支付宝" : newForm.sellway == "1" ? "微信" : newForm.sellway == "2" ? "现金" : "银行卡" }}&nbsp;&nbsp;</span>
-              <span
-                v-if="newForm.type == '1'">会员享受9折&nbsp;&nbsp;优惠{{ totalMoney ? parseFloat(totalMoney - newForm.sellTotalmoney).toFixed(2) : 0 }}元&nbsp;&nbsp;</span>
+              <span v-if="newForm.sellway">支付方式：{{
+                  newForm.sellway == "0" ? "支付宝" : newForm.sellway == "1" ? "微信" : newForm.sellway == "2" ? "现金" : "银行卡"
+                }}&nbsp;&nbsp;</span>
+              <span v-if="newForm.type == '1'">会员享受9折&nbsp;&nbsp;优惠{{
+                  totalMoney ? parseFloat(totalMoney - newForm.sellTotalmoney).toFixed(2) : 0
+                }}元&nbsp;&nbsp;</span>
               <span v-if="newForm.sellTime">消费时间：{{ newForm.sellTime }}&nbsp;&nbsp;操作者编号：{{
                   newForm.eid
                 }}</span>
@@ -336,24 +214,14 @@
         <el-row>
           <el-col :span="24">
             <el-form-item>
-              <el-button
-                v-if="!newForm.sellTime"
-                type="success"
-                @click="submitNewForm('newForm')"
+              <el-button v-if="!newForm.sellTime" type="success" @click="submitNewForm('newForm')"
                 style="font-size: 22px">
-                <i
-                  style="font-size: 22px"
-                  class="iconfont icon-r-yes">
+                <i style="font-size: 22px" class="iconfont icon-r-yes">
                 </i>
                 支付
               </el-button>
-              <el-button
-                style="font-size: 22px"
-                type="info"
-                @click="closeNewForm('newForm')">
-                <i
-                  style="font-size: 22px"
-                  class="iconfont icon-r-no">
+              <el-button style="font-size: 22px" type="info" @click="closeNewForm('newForm')">
+                <i style="font-size: 22px" class="iconfont icon-r-no">
                 </i>
                 关闭
               </el-button>
@@ -364,79 +232,49 @@
     </el-dialog>
     <!--添加商品表单-->
     <el-dialog title="添加商品" :visible.sync="addGoodsVisable" width="70%">
-      <el-form
-        :model="detailSaleRecords"
-        :rules="rules"
-        ref="detailSaleRecords"
-        class="demo-ruleForm">
+      <el-form :model="detailSaleRecords" :rules="rules" ref="detailSaleRecords" class="demo-ruleForm">
         <el-form-item label="商品：" prop="goodsId">
-          <el-select
-            style="width: 100%"
-            v-model="detailSaleRecords.goodsId"
-            placeholder="请选择商品"
-            @change="selectedAddGoods"
-            filterable
-            clearable>
-            <el-option
-              v-for="item in options_saleRecordsAddGoods"
-              :key="item.id"
-              :label="item.name"
-              :value="item.id">
+          <el-select style="width: 100%" v-model="detailSaleRecords.goodsId" placeholder="请选择商品"
+                     @change="selectedAddGoods" filterable clearable>
+            <el-option v-for="item in options_saleRecordsAddGoods" :key="item.id" :label="item.name" :value="item.id">
             </el-option>
           </el-select>
         </el-form-item>
         <el-form-item label="数量：">
-          <el-input
-            type="number"
-            @change="  () => {
-                                this.$forceUpdate();
-                                if (
-                                    this.goodsNum_max <
-                                    this.detailSaleRecords.goodsNum
-                                ) {
-                                    this.detailSaleRecords.goodsNum =
-                                        this.goodsNum_max;
-                                    return;
-                                }
-                                if (this.detailSaleRecords.goodsNum < 1) {
-                                    this.detailSaleRecords.goodsNum = 1;
-                                    return;
-                                }
-                            }
-                        "
-            min="1"
-            :max="goodsNum_max"
-            v-model="detailSaleRecords.goodsNum"
-            :placeholder="` ${          goodsNum_max ? '库存数量：' + goodsNum_max : '' }`"></el-input>
+          <el-input type="number" @change="() => {
+            this.$forceUpdate();
+            if (
+              this.goodsNum_max <
+              this.detailSaleRecords.goodsNum
+            ) {
+              this.detailSaleRecords.goodsNum =
+                this.goodsNum_max;
+              return;
+            }
+            if (this.detailSaleRecords.goodsNum < 1) {
+              this.detailSaleRecords.goodsNum = 1;
+              return;
+            }
+          }
+            " min="1" :max="goodsNum_max" v-model="detailSaleRecords.goodsNum"
+                    :placeholder="` ${goodsNum_max ? '库存数量：' + goodsNum_max : ''}`"></el-input>
         </el-form-item>
         <el-form-item label="单价：" prop="goodsId">
-          <el-input
-            disabled
-            v-model="detailSaleRecords.goodsPrice"></el-input>
+          <el-input disabled v-model="detailSaleRecords.goodsPrice"></el-input>
         </el-form-item>
         <el-form-item>
-          <el-button
-            type="success"
-            @click="addDetailSaleRecords"
-            style="font-size: 22px">
-            <i
-              class="iconfont icon-r-add"
-              style="font-size: 22px"></i>
+          <el-button type="success" @click="addDetailSaleRecords" style="font-size: 22px">
+            <i class="iconfont icon-r-add" style="font-size: 22px"></i>
             添加
           </el-button>
-          <el-button
-            type="info"
-            @click="   () => {
-                                this.addGoodsVisable = false;
-                                this.detailSaleRecords = {};
-                                this.options_saleRecordsAddGoods = [];
-                                this.goodsNum_max = '';
-                            }
-                        "
-            style="font-size: 22px">
-            <i
-              class="iconfont icon-r-no"
-              style="font-size: 22px"></i>
+          <el-button type="info" @click="() => {
+            this.addGoodsVisable = false;
+            this.detailSaleRecords = {};
+            this.options_saleRecordsAddGoods = [];
+            this.goodsNum_max = '';
+          }
+            " style="font-size: 22px">
+            <i class="iconfont icon-r-no" style="font-size: 22px"></i>
             取消
           </el-button>
         </el-form-item>
@@ -444,138 +282,62 @@
     </el-dialog>
 
     <!--积分商品-->
-    <el-dialog
-      title="积分兑换"
-      :visible.sync="pointProductsVisable"
-      label-width="200"
-      width="40%">
-      <el-form
-        :model="pointProductsForm"
-        :rules="rules"
-        ref="pointProductsForm"
-        class="demo-ruleForm">
+    <el-dialog title="积分兑换" :visible.sync="pointProductsVisable" label-width="200" width="40%">
+      <el-form :model="pointProductsForm" :rules="rules" ref="pointProductsForm" class="demo-ruleForm">
         <el-form-item v-if="confirmVisiable">
-          <img
-            width="100px"
-            :src="BaseApi + pointProductsForm.coverUrl"
-            alt="商品图片"
-          />
+          <img width="100px" :src="BaseApi + pointProductsForm.coverUrl" alt="商品图片"/>
         </el-form-item>
-        <el-form-item
-          v-if="!confirmVisiable"
-          label="会员账号："
-          prop="memberId">
-          <el-select
-            @change="queryPointProductByMemberId"
-            v-model="pointProductsForm.memberId"
-            placeholder="请选择会员"
-            filterable
-            clearable>
-            <el-option
-              v-for="item in options_members"
-              :key="item.id"
-              :label="item.name"
-              :value="item.id">
+        <el-form-item v-if="!confirmVisiable" label="会员账号：" prop="memberId">
+          <el-select @change="queryPointProductByMemberId" v-model="pointProductsForm.memberId" placeholder="请选择会员"
+                     filterable clearable>
+            <el-option v-for="item in options_members" :key="item.id" :label="item.name" :value="item.id">
             </el-option>
           </el-select>
         </el-form-item>
-        <el-form-item
-          v-if="confirmVisiable"
-          label="会员账号："
-          prop="memberId">
-          <el-select
-            disabled
-            @change="queryPointProductByMemberId"
-            v-model="pointProductsForm.memberId"
-            placeholder="请选择会员"
-            filterable
-            clearable>
-            <el-option
-              v-for="item in options_members"
-              :key="item.id"
-              :label="item.name"
-              :value="item.id">
+        <el-form-item v-if="confirmVisiable" label="会员账号：" prop="memberId">
+          <el-select disabled @change="queryPointProductByMemberId" v-model="pointProductsForm.memberId"
+                     placeholder="请选择会员" filterable clearable>
+            <el-option v-for="item in options_members" :key="item.id" :label="item.name" :value="item.id">
             </el-option>
           </el-select>
         </el-form-item>
-        <el-form-item
-          v-if="!confirmVisiable"
-          label="积分商品："
-          prop="goodsId">
-          <el-select
-            @change="queryPointProductByGoodsId"
-            v-model="pointProductsForm.goodsId"
-            placeholder="请选择积分商品"
-            filterable
-            clearable>
-            <el-option
-              v-for="item in options_pointProducts"
-              :key="item.id"
-              :label="item.name"
-              :value="item.id">
+        <el-form-item v-if="!confirmVisiable" label="积分商品：" prop="goodsId">
+          <el-select @change="queryPointProductByGoodsId" v-model="pointProductsForm.goodsId"
+                     placeholder="请选择积分商品"
+                     filterable clearable>
+            <el-option v-for="item in options_pointProducts" :key="item.id" :label="item.name" :value="item.id">
             </el-option>
           </el-select>
         </el-form-item>
-        <el-form-item
-          v-if="confirmVisiable"
-          label="积分商品："
-          prop="goodsId">
-          <el-select
-            disabled
-            @change="queryPointProductByGoodsId"
-            v-model="pointProductsForm.goodsId"
-            placeholder="请选择积分商品"
-            filterable
-            clearable>
-            <el-option
-              v-for="item in options_pointProducts"
-              :key="item.id"
-              :label="item.name"
-              :value="item.id">
+        <el-form-item v-if="confirmVisiable" label="积分商品：" prop="goodsId">
+          <el-select disabled @change="queryPointProductByGoodsId" v-model="pointProductsForm.goodsId"
+                     placeholder="请选择积分商品" filterable clearable>
+            <el-option v-for="item in options_pointProducts" :key="item.id" :label="item.name" :value="item.id">
             </el-option>
           </el-select>
         </el-form-item>
         <el-form-item v-if="confirmVisiable" label="所需积分：">
-          <el-input
-            disabled
-            type="number"
-            v-model="pointProductsForm.integral"
-            placeholder="所需积分"
-          />
+          <el-input disabled type="number" v-model="pointProductsForm.integral" placeholder="所需积分"/>
         </el-form-item>
         <el-form-item>
-          <el-button
-            v-if="confirmVisiable"
-            type="primary"
-            @click="submitPointProductsForm('pointProductsForm')"
+          <el-button v-if="confirmVisiable" type="primary" @click="submitPointProductsForm('pointProductsForm')"
             style="font-size: 22px">
             <i class="iconfont icon-r-yes" style="font-size: 22px">
             </i>
             确认兑换
           </el-button>
-          <el-button
-            v-if="confirmVisiable"
-            type="info"
-            @click="closePointProductsForm"
-            style="font-size: 22px">
+          <el-button v-if="confirmVisiable" type="info" @click="closePointProductsForm" style="font-size: 22px">
             <i class="iconfont icon-r-no" style="font-size: 22px">
             </i>
             关闭
           </el-button>
-          <el-button
-            type="success"
-            v-if="!confirmVisiable"
-            @click="confirmPointProducts('pointProductsForm')"
+          <el-button type="success" v-if="!confirmVisiable" @click="confirmPointProducts('pointProductsForm')"
             style="font-size: 22px">
             <i class="iconfont icon-r-yes" style="font-size: 22px">
             </i>
             兑换
           </el-button>
-          <el-button
-            v-if="!confirmVisiable"
-            type="info"
-            @click="closeConfirmPointProducts"
-            style="font-size: 22px">
+          <el-button v-if="!confirmVisiable" type="info" @click="closeConfirmPointProducts" style="font-size: 22px">
             <i class="iconfont icon-r-yes" style="font-size: 22px">
             </i>
             关闭
