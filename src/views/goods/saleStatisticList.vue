@@ -83,7 +83,7 @@ export default {
       /*查询商品信息*/
       queryPageByQo(this.searchForm).then((res) => {
 
-        if (res.code == 200) {
+        if (res.code === 200) {
           this.totalSalesVolume = res.data.total;
           this.tableData = res.data.vos.records;
           this.searchForm.total = res.data.vos.total;

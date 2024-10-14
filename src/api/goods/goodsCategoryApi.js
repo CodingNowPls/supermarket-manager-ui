@@ -25,9 +25,7 @@ export function deactivate(sid) {
   return request({
     url: apiPrefix + "/deactivate",
     method: 'post',
-    data: {
-      cid: sid
-    }
+    data: {cid: sid}
   })
 }
 

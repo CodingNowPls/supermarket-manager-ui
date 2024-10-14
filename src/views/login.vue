@@ -118,7 +118,7 @@ export default {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           login(this.loginForm).then((res) => {
-            if (res.code == 200) {
+            if (res.code === 200) {
               Cookies.set("token", res.data.token, {
                 expires: 1 / 48,
               });

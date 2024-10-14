@@ -44,7 +44,7 @@ export function detail(id) {
   return request({
     url: apiPrefix + "/detail",
     method: 'get',
-    data: {uid: id}
+    params: {uid: id}
   })
 }
 
@@ -53,7 +53,7 @@ export function editBtnClick(id) {
   return request({
     url: apiPrefix + "/editbtn",
     method: 'get',
-    data: {uid: id}
+    params: {uid: id}
   })
 }
 

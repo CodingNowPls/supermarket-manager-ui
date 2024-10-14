@@ -76,7 +76,6 @@ service.interceptors.response.use(res => {
     if (res.request.responseType === 'blob' || res.request.responseType === 'arraybuffer') {
       return res.data
     }
-    debugger
     if (code === 401) {
       if (!isRelogin.show) {
         isRelogin.show = true;

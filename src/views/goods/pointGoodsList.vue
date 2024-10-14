@@ -207,7 +207,7 @@ export default {
     queryOptionGoods() {
       queryOptionGoods().then((res) => {
 
-        if (res.code == 200) {
+        if (res.code === 200) {
           this.options_goods = res.data;
         }
       });
@@ -229,7 +229,7 @@ export default {
         if (valid) {
           queryGoodsById({id: this.newForm.goodsId}).then((res) => {
 
-            if (res.code == 200) {
+            if (res.code === 200) {
               this.newForm.coverUrl = res.data.coverUrl;
               this.newForm.goodsName = res.data.name;
               this.selectGoodsVisiable = false;
@@ -242,7 +242,7 @@ export default {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           savePointGoods(this.newForm).then((res) => {
-            if (res.code == 200) {
+            if (res.code === 200) {
               popup("创建成功");
               this.newVisable = false;
               this.selectGoodsVisiable = true;
@@ -257,7 +257,7 @@ export default {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           updatePointGoods(this.editForm).then((res) => {
-            if (res.code == 200) {
+            if (res.code === 200) {
               popup("创建成功");
               this.editVisable = false;
               this.init();
@@ -287,7 +287,7 @@ export default {
       }),
         this.queryOptionGoods();
       queryPageByQo(this.searchForm).then((res) => {
-        if (res.code == 200) {
+        if (res.code === 200) {
           this.tableData = res.data.records;
           this.searchForm.total = res.data.total;
           this.searchForm.pageSize = res.data.size;
@@ -318,7 +318,7 @@ export default {
       })
         .then(() => {
           del({id: cn}).then((res) => {
-            if (res.code == 200) {
+            if (res.code === 200) {
               popup("删除成功");
               this.init();
             }
@@ -334,7 +334,7 @@ export default {
     editBtn(cn) {
       queryPointGoodsById({goodsId: cn}).then((res) => {
 
-        if (res.code == 200) {
+        if (res.code === 200) {
           this.editVisable = true;
           this.editForm.goodsId = res.data.goodsId;
           this.editForm.goodsName = res.data.goodsName;
@@ -347,7 +347,7 @@ export default {
   mounted() {
     this.init();
     selected_goodsAll().then((res) => {
-      if (res.code == 200) {
+      if (res.code === 200) {
         this.options_goods1 = res.data;
       }
     });

@@ -306,7 +306,7 @@ export default {
       }
       queryPageByQoIn(this.searchForm).then((res) => {
 
-        if (res.code == 200) {
+        if (res.code === 200) {
           this.tableData = res.data.records;
           this.searchForm.total = res.data.total;
           this.searchForm.pageSize = res.data.size;
@@ -352,21 +352,21 @@ export default {
     },
     detailStoreGoodsIn_goodsAll() {
       selected_goodsAll().then((res) => {
-        if (res.code == 200) {
+        if (res.code === 200) {
           this.options_goods = res.data;
         }
       });
     },
     detailStoreGoodsIn_suppliers() {
       queryOptionsSuppliers().then((res) => {
-        if (res.code == 200) {
+        if (res.code === 200) {
           this.options_suppliers = res.data;
         }
       });
     },
     detailStoreGoodsIn_storeAll() {
       storeList({state: "0"}).then((res) => {
-        if (res.code == 200) {
+        if (res.code === 200) {
           for (var item of res.data) {
             this.options_store.push({
               id: item.id,
@@ -381,7 +381,7 @@ export default {
         if (valid) {
           queryGoodsById({id: this.selectGoods.goodsId}).then(
             (res) => {
-              if (res.code == 200) {
+              if (res.code === 200) {
                 this.selectGoodsVisable = false;
                 this.newVisable = true;
                 this.newForm.storeId = this.selectGoods.storeId;
@@ -409,7 +409,7 @@ export default {
             return;
           }
           saveIn(this.newForm).then((res) => {
-            if (res.code == 200) {
+            if (res.code === 200) {
               popup("入库成功");
               this.init();
             }
@@ -429,7 +429,7 @@ export default {
         type: "warning",
       }).then(() => {
         delIn({cn: cn}).then((res) => {
-          if (res.code == 200) {
+          if (res.code === 200) {
             popup("操作成功");
             this.searchForm.state1 = "0";
             this.init();

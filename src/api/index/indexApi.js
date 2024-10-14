@@ -13,7 +13,7 @@ export function exit(data) {
   return request({
     url: "/exit",
     method: 'get',
-    data: data
+    params: data
   })
 }
 

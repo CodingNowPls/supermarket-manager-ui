@@ -91,7 +91,7 @@ export default {
           }).then(() => {
             editPwd(this.pwdForm).then(
               (res) => {
-                if (res.code == 200) {
+                if (res.code === 200) {
                   popup("密码修改成功,请重新登录...");
                   this.pwdForm = {
                     username: this.pwdForm.username,

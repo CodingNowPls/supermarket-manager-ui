@@ -136,7 +136,7 @@ export default {
     deptAll() {
       listByQo({}).then((res) => {
 
-        if (res.code == 200) {
+        if (res.code === 200) {
           this.options = res.data;
         }
       });
@@ -144,7 +144,7 @@ export default {
     init() {
       queryInformation().then((res) => {
 
-        if (res.code == 200) {
+        if (res.code === 200) {
           this.informationForm = {...res.data};
           this.imageUrl = this.informationForm.headImg;
         }
@@ -154,7 +154,7 @@ export default {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           update(this.informationForm).then((res) => {
-            if (res.code == 200) {
+            if (res.code === 200) {
               popup("更新成功");
             }
             this.init();

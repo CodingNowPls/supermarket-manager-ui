@@ -144,7 +144,7 @@ export default {
     },
     init() {
       storeList(this.searchForm).then(res => {
-        if (res.code == 200) {
+        if (res.code === 200) {
           this.tableData = res.data
         } else {
           popup(res.msg, "error")
@@ -158,7 +158,7 @@ export default {
     },
     forbidden(sid) {
       deactivate(sid).then(res => {
-        if (res.code == 200) {
+        if (res.code === 200) {
           popup("操作成功")
         }
         this.init()
@@ -166,7 +166,7 @@ export default {
     },
     submitEditForm() {
       update(this.editForm).then(res => {
-        if (res.code == 200) {
+        if (res.code === 200) {
           popup("操作成功")
           this.init()
           this.dialogVisible = false
@@ -182,7 +182,7 @@ export default {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           save(this.newForm).then(res => {
-            if (res.code == 200) {
+            if (res.code === 200) {
               popup("操作成功")
               this.newForm = {}
               this.newVisable = false

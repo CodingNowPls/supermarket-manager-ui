@@ -114,7 +114,7 @@ export default {
         type: "warning",
       }).then(() => {
         exit(this.pwdForm).then((res) => {
-          if (res.code == 200) {
+          if (res.code === 200) {
             clearCookie("employee");
             clearCookie("token");
             this.$router.push("/");
@@ -139,7 +139,7 @@ export default {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           logout({content: this.logoutform.content}).then((res) => {
-            if (res.code == 200) {
+            if (res.code === 200) {
               popup("注销成功");
               clearCookie("employee");
               clearCookie("token");

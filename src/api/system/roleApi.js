@@ -43,7 +43,7 @@ export function checkPermissions(rid) {
   return request({
     url: apiPrefix + "/checkPermissions",
     method: 'get',
-    data: {rid: rid}
+    params: {rid: rid}
   })
 }
 
@@ -73,10 +73,11 @@ export function saveRoleEmp(data) {
 }
 
 export function queryRoleIdsByEid(eid) {
+  debugger
   return request({
     url: apiPrefix + "/queryRoleIdsByEid",
     method: 'get',
-    data: {eid: eid}
+    params: {eid: eid}
   })
 
 }

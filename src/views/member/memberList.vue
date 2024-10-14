@@ -232,7 +232,7 @@ export default {
   methods: {
     init() {
       queryPageByQo(this.searchForm).then((res) => {
-        if (res.code == 200) {
+        if (res.code === 200) {
           console.log(res.data);
           this.tableData = res.data.records;
           this.searchForm.total = res.data.total;
@@ -265,7 +265,7 @@ export default {
         if (valid) {
           save(this.newForm).then((res) => {
 
-            if (res.code == 200) {
+            if (res.code === 200) {
               popup("操作成功");
               this.newForm = {};
               this.newVisable = false;
@@ -278,7 +278,7 @@ export default {
     editBtn(id) {
       queryMemberById({id: id}).then((res) => {
 
-        if (res.code == 200) {
+        if (res.code === 200) {
           this.editForm = {...res.data};
           this.editVisable = true;
         }
@@ -289,7 +289,7 @@ export default {
         if (valid) {
           update(this.editForm).then((res) => {
 
-            if (res.code == 200) {
+            if (res.code === 200) {
               popup("操作成功");
               this.editForm = {};
               this.editVisable = false;
@@ -312,7 +312,7 @@ export default {
       })
         .then(() => {
           delMember({id: id}).then((res) => {
-            if (res.code == 200) {
+            if (res.code === 200) {
               popup("操作成功");
               this.searchForm.state = "0";
               this.init();
@@ -335,7 +335,7 @@ export default {
         integral: "",
       }),
         queryPointProductByMemberId({memberId: id}).then((res) => {
-          if (res.code == 200) {
+          if (res.code === 200) {
             this.options_pointProducts = res.data;
             if (!this.options_pointProducts.length) {
               popup("该会员积分数无法兑换任何商品", "warning");
@@ -352,7 +352,7 @@ export default {
           savePointRedemptionRecords(
             this.pointProductsForm
           ).then((res) => {
-            if (res.code == 200) {
+            if (res.code === 200) {
               popup("兑换成功");
               this.pointProductsForm = {};
               this.pointProductsVisable = false;
@@ -369,7 +369,7 @@ export default {
     },
     queryPointProductByGoodsId(goodsId) {
       queryPointProductByGoodsId({goodsId: goodsId}).then((res) => {
-        if (res.code == 200) {
+        if (res.code === 200) {
           if (!res.data) {
             this.pointProductsForm = {
               memberId: this.pointProductsForm.memberId,

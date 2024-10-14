@@ -197,7 +197,7 @@ export default {
     forbidden(id) {
       forbiddenRole(id).then((res) => {
 
-        if (res.code == 200) {
+        if (res.code === 200) {
           this.roleSearchForm.state = "0";
           this.init();
           popup("操作成功");
@@ -225,7 +225,7 @@ export default {
         return;
       }
       editRole(this.editRoleForm).then((res) => {
-        if (res.code == 200) {
+        if (res.code === 200) {
           popup("操作成功");
           this.editRoleForm = {};
           this.editRoleRow = {};
@@ -245,7 +245,7 @@ export default {
         if (valid) {
           console.log(this.newRoleForm);
           saveRole(this.newRoleForm).then((res) => {
-            if (res.code == 200) {
+            if (res.code === 200) {
               popup("操作成功");
               this.newRoleForm = {};
               this.newRoleVisable = false;
@@ -264,7 +264,7 @@ export default {
       this.distributionFulForm.rid = rid;
       this.default_checked_mid = [];
       checkPermissions(rid).then((res) => {
-        if (res.code == 200) {
+        if (res.code === 200) {
           this.fuloptions = res.data.menus;
           this.default_checked_mid = res.data.menuIds.sort((x, y) => x - y);
           console.log(typeof this.default_checked_mid);
@@ -280,7 +280,7 @@ export default {
       this.distributionFulForm.menuIds = v;
       console.log(this.distributionFulForm.menuIds);
       saveRolePermissions(this.distributionFulForm).then((res) => {
-        if (res.code == 200) {
+        if (res.code === 200) {
           popup("操作成功");
           this.distributionFulVisable = false;
           this.distributionFulForm = {};

@@ -101,7 +101,7 @@ export default {
     queryOptionsMemberPhone() {
       queryOptionsMemberPhone().then((res) => {
 
-        if (res.code == 200) {
+        if (res.code === 200) {
           this.options_memberPhone = res.data;
         } else {
           popup(res.msg, "error");
@@ -114,7 +114,7 @@ export default {
         return;
       }
       queryPageByQoExchangePointProducts(this.searchForm).then((res) => {
-        if (res.code == 200) {
+        if (res.code === 200) {
           this.tableData = res.data.records;
           this.searchForm.total = res.data.total;
           this.searchForm.pageSize = res.data.size;
@@ -130,7 +130,7 @@ export default {
       })
         .then(() => {
           delExchangePointProducts({cn: cn}).then((res) => {
-            if (res.code == 200) {
+            if (res.code === 200) {
               popup("操作成功");
               this.init();
             }

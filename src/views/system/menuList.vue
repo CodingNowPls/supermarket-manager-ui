@@ -99,7 +99,7 @@ export default {
     init() {
       queryPageByQo(this.searchForm).then((res) => {
 
-        if (res.code == 200) {
+        if (res.code === 200) {
           console.log(res.data);
           this.tableData = res.data.records;
           this.searchForm.total = res.data.total;

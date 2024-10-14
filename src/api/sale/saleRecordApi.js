@@ -37,6 +37,6 @@ export function delSaleRecords(data) {
   return request({
     url: apiPrefix + "/delSaleRecords",
     method: 'get',
-    data: data
+    params: data
   })
 }

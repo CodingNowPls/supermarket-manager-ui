@@ -290,7 +290,7 @@ export default {
     changeGoods() {
       this.$forceUpdate();
       changeOutGoods({gid: this.selectGoods.goodsId}).then((res) => {
-        if (res.code == 200) {
+        if (res.code === 200) {
           this.options_store = res.data;
         }
       });
@@ -299,7 +299,7 @@ export default {
       this.$forceUpdate();
       changeOutStore({storeId: this.selectGoods.storeId}).then(
         (res) => {
-          if (res.code == 200) {
+          if (res.code === 200) {
             this.options_goods = res.data;
           }
         }
@@ -307,7 +307,7 @@ export default {
     },
     initOptions() {
       initOutOptions().then((res) => {
-        if (res.code == 200) {
+        if (res.code === 200) {
           this.options_goods = res.data.goods;
           this.options_store = res.data.stores;
         }
@@ -320,7 +320,7 @@ export default {
         return;
       }
       queryPageByQoOut(this.searchForm).then((res) => {
-        if (res.code == 200) {
+        if (res.code === 200) {
           this.tableData = res.data.records;
           this.searchForm.total = res.data.total;
           this.searchForm.pageSize = res.data.size;
@@ -336,7 +336,7 @@ export default {
       })
         .then(() => {
           delOut({cn: cn}).then((res) => {
-            if (res.code == 200) {
+            if (res.code === 200) {
               popup("操作成功");
               this.searchForm.state1 = "0";
               this.init();
@@ -383,7 +383,7 @@ export default {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           queryOutGoods(this.selectGoods).then((res) => {
-            if (res.code == 200) {
+            if (res.code === 200) {
               this.selectGoodsVisable = false;
               this.newVisable = true;
               this.newForm.goodsNum = res.data.goodsNum;
@@ -407,7 +407,7 @@ export default {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           saveOut(this.newForm).then((res) => {
-            if (res.code == 200) {
+            if (res.code === 200) {
               popup("出库成功");
               this.searchForm.state1 = "0";
               this.goodsOutVisable = false;

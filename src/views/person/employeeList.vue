@@ -636,7 +636,7 @@ export default {
     deptAll() {
       listByQo({}).then((res) => {
 
-        if (res.code == 200) {
+        if (res.code === 200) {
           this.options = res.data;
         }
       });
@@ -644,7 +644,7 @@ export default {
     getRoleAll() {
       getAllRole().then((res) => {
 
-        if (res.code == 200) {
+        if (res.code === 200) {
           this.allRoles = res.data;
         }
       });
@@ -652,7 +652,7 @@ export default {
     init() {
       pageByQo(this.searchForm).then((res) => {
 
-        if (res.code == 200) {
+        if (res.code === 200) {
           this.tableData = res.data.records;
           this.searchForm.total = res.data.total;
           this.searchForm.pageSize = res.data.size;
@@ -677,7 +677,7 @@ export default {
     detailBtn(row) {
       detail(row.id).then((res) => {
 
-        if (res.code == 200) {
+        if (res.code === 200) {
           this.detailForm = res.data;
           this.detailForm.deptName = row.deptName;
           this.detailVisable = true;
@@ -710,7 +710,7 @@ export default {
         if (valid) {
           this.newForm.headImg = this.imageUrl;
           save(this.newForm).then((res) => {
-            if (res.code == 200) {
+            if (res.code === 200) {
               popup("操作成功");
               this.newForm = {};
               this.imageUrl = "";
@@ -736,7 +736,7 @@ export default {
     editBtn(id) {
       editBtnClick(id).then((res) => {
 
-        if (res.code == 200) {
+        if (res.code === 200) {
           this.editForm = {...res.data};
           console.log(this.editForm);
           this.imageUrl = this.editForm.headImg;
@@ -750,7 +750,7 @@ export default {
           this.editForm.headImg = this.imageUrl;
           update(this.editForm).then((res) => {
 
-            if (res.code == 200) {
+            if (res.code === 200) {
               popup("操作成功");
               this.editForm = {};
               this.imageUrl = "";
@@ -775,7 +775,7 @@ export default {
           }
           deactivate(row.id).then((res) => {
 
-            if (res.code == 200) {
+            if (res.code === 200) {
               popup("操作成功");
               this.init();
             }
@@ -796,8 +796,7 @@ export default {
       this.empRoleForm.eid = id;
       /*根据员工编号查询角色编号集合*/
       queryRoleIdsByEid(id).then((res) => {
-
-        if (res.code == 200) {
+        if (res.code === 200) {
           this.empRoleForm.empRoleIds = res.data;
           this.hasRoleIds = res.data;
           this.empRoleVisable = true;
@@ -822,7 +821,7 @@ export default {
               this.empRoleForm.empRoleIds.toString();
             saveRoleEmp(this.empRoleForm).then((res) => {
 
-              if (res.code == 200) {
+              if (res.code === 200) {
                 popup("操作成功");
                 this.hasRoleIds = [];
                 this.empRoleForm = {};
@@ -859,7 +858,7 @@ export default {
       })
         .then(() => {
           resetPwd(this.resetPwdForm).then((res) => {
-            if (res.code == 200) {
+            if (res.code === 200) {
               this.resetPwdVisable = false;
               var emp = loginEmp();
               if (emp.id == this.resetPwdForm.eid) {

@@ -72,7 +72,7 @@ export function changeOutGoods(data) {
   return request({
     url: apiPrefix_out + "/changeOutGoods",
     method: 'get',
-    data: data
+    params: data
   })
 }
 
@@ -81,7 +81,7 @@ export function changeOutStore(data) {
   return request({
     url: apiPrefix_out + "/changeOutStore",
     method: 'get',
-    data: data
+    params: data
   })
 }
 

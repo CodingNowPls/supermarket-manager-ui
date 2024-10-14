@@ -442,7 +442,7 @@ export default {
             goodsId: this.pointProductsForm.goodsId,
           }).then((res) => {
 
-            if (res.code == 200) {
+            if (res.code === 200) {
               if (!res.data) {
                 this.pointProductsForm = {
                   memberId: this.pointProductsForm.memberId,
@@ -477,7 +477,7 @@ export default {
         memberId: this.pointProductsForm.memberId,
       }).then((res) => {
 
-        if (res.code == 200) {
+        if (res.code === 200) {
           this.options_pointProducts = res.data;
           if (!this.options_pointProducts.length) {
             popup("该会员积分数无法兑换任何商品", "warning");
@@ -491,7 +491,7 @@ export default {
     },
     queryPointProductByGoodsId() {
       queryMemberByGoodsId({goodsId: this.pointProductsForm.goodsId,}).then((res) => {
-        if (res.code == 200) {
+        if (res.code === 200) {
           this.options_members = res.data;
           if (!this.options_members.length) {
             popup("该商品没有会员符合条件进行兑换", "warning");
@@ -503,7 +503,7 @@ export default {
     },
     queryOptionsPointProducts() {
       queryOptionsPointProducts().then((res) => {
-        if (res.code == 200) {
+        if (res.code === 200) {
           this.options_pointProducts = res.data;
         }
       });
@@ -511,7 +511,7 @@ export default {
     queryOptionsMember() {
       queryOptionsMember().then((res) => {
 
-        if (res.code == 200) {
+        if (res.code === 200) {
           this.options_members = res.data;
         }
       });
@@ -523,7 +523,7 @@ export default {
             this.pointProductsForm
           ).then((res) => {
 
-            if (res.code == 200) {
+            if (res.code === 200) {
               popup("兑换成功");
               this.pointProductsForm = {};
               this.pointProductsForm = {
@@ -566,7 +566,7 @@ export default {
             return;
           }
           saveSaleRecords(this.newForm).then((res) => {
-            if (res.code == 200) {
+            if (res.code === 200) {
               this.newForm = {...res.data};
               console.log(this.newForm);
               popup("支付成功");
@@ -631,7 +631,7 @@ export default {
     },
     addGoodsNum(row) {
       queryGoodsById({id: row.goodsId}).then((res) => {
-        if (res.code == 200) {
+        if (res.code === 200) {
           if (row.goodsNum >= res.data.residueNum) {
             popup(
               "货架商品数量没这么多，请联系仓库管理者",
@@ -679,7 +679,7 @@ export default {
     },
     initOptionSaleRecordsAddGoodsAll() {
       getOptionSaleRecordsGoods().then((res) => {
-        if (res.code == 200) {
+        if (res.code === 200) {
           this.options_saleRecordsAddGoods = res.data;
           if (this.options_saleRecordsAddGoods.length > 0) {
             this.addGoodsVisable = true;
@@ -732,7 +732,7 @@ export default {
     },
     saleBtn() {
       getCn().then((res) => {
-        if (res.code == 200) {
+        if (res.code === 200) {
           this.newForm.cn = res.data;
           this.newVisable = true;
         }
@@ -741,7 +741,7 @@ export default {
     selectedAddGoods() {
       queryGoodsById({id: this.detailSaleRecords.goodsId}).then(
         (res) => {
-          if (res.code == 200) {
+          if (res.code === 200) {
             this.detailSaleRecords.goodsPrice =
               res.data.purchashPrice;
             this.detailSaleRecords.goodsName = res.data.name;

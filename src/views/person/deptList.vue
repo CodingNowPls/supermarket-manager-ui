@@ -132,7 +132,7 @@ export default {
   methods: {
     init() {
       listByQo(this.searchForm).then(res => {
-        if (res.code == 200) {
+        if (res.code === 200) {
           this.tableData = res.data
         } else {
           popup(res.msg, "error")
@@ -142,7 +142,7 @@ export default {
     },
     forbidden(id) {
       deactivate(id).then(res => {
-        if (res.code == 200) {
+        if (res.code === 200) {
           popup("操作成功")
         } else {
           popup(res.msg, "error")
@@ -163,7 +163,7 @@ export default {
     /*对接后端修改接口*/
     submitEditForm() {
       update(this.editForm).then(res => {
-        if (res.code == 200) {
+        if (res.code === 200) {
           popup("操作成功")
           this.dialogVisible = false
           this.init()
@@ -181,7 +181,7 @@ export default {
         if (valid) {
           console.log(this.newForm)
           save(this.newForm).then(res => {
-            if (res.code == 200) {
+            if (res.code === 200) {
               popup("操作成功")
               this.newVisable = false
               this.newForm = {}

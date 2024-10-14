@@ -7,7 +7,7 @@ export function queryPointProductByMemberId(data) {
   return request({
     url: apiPrefix + "/queryPointProductByMemberId",
     method: 'get',
-    data: data
+    params: data
   })
 }
 
@@ -15,7 +15,7 @@ export function queryMemberByGoodsId(data) {
   return request({
     url: apiPrefix + "/queryMemberByGoodsId",
     method: 'get',
-    data: data
+    params: data
   })
 }
 
@@ -23,7 +23,7 @@ export function queryPointProductByGoodsId(data) {
   return request({
     url: apiPrefix + "/queryPointProductByGoodsId",
     method: 'get',
-    data: data
+    params: data
   })
 }
 
@@ -56,7 +56,7 @@ export function delExchangePointProducts(data) {
   return request({
     url: apiPrefix + "/delExchangePointProducts",
     method: 'get',
-    data: data
+    params: data
   })
 }
 
