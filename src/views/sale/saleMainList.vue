@@ -361,7 +361,7 @@ import {
   queryOptionsMember,
   queryOptionsPointProducts,
   queryPointProductByGoodsId,
-  queryPointProductBymemberId,
+  queryPointProductByMemberId,
   savePointRedemptionRecords,
 } from "@/api/sale/pointRedemptionApi";
 
@@ -473,7 +473,7 @@ export default {
       };
     },
     queryPointProductByMemberId() {
-      queryPointProductBymemberId({
+      queryPointProductByMemberId({
         memberId: this.pointProductsForm.memberId,
       }).then((res) => {
 

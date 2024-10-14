@@ -174,7 +174,7 @@ import {
 } from "@/api/member/memberApi";
 import {
   queryPointProductByGoodsId,
-  queryPointProductBymemberId,
+  queryPointProductByMemberId,
   savePointRedemptionRecords,
 } from "@/api/sale/pointRedemptionApi";
 
@@ -334,7 +334,7 @@ export default {
         coverUrl: "",
         integral: "",
       }),
-        queryPointProductBymemberId({memberId: id}).then((res) => {
+        queryPointProductByMemberId({memberId: id}).then((res) => {
           if (res.code == 200) {
             this.options_pointProducts = res.data;
             if (!this.options_pointProducts.length) {

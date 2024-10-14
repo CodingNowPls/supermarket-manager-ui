@@ -3,9 +3,9 @@ import request from "@/utils/request";
 // 积分兑换历史记录
 const apiPrefix = '/sale/pointRedemption'
 
-export function queryPointProductBymemberId(data) {
+export function queryPointProductByMemberId(data) {
   return request({
-    url: apiPrefix + "/queryPointProductBymemberId",
+    url: apiPrefix + "/queryPointProductByMemberId",
     method: 'get',
     data: data
   })
