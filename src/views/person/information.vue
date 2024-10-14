@@ -14,7 +14,7 @@
         <el-col :span="12">
           <el-form-item style="width: 40%">
             <el-upload class="avatar-uploader"
-                       action="http://sun.ipyingshe.com:9291/personnel_management/employee/uploadImg"
+                       action="{{BaseApi}}/person/employee/uploadImg"
                        :show-file-list="false"
                        :on-success="handleAvatarSuccess" :before-upload="beforeAvatarUpload">
               <img v-if="imageUrl" :src="BaseApi + imageUrl" class="avatar"/>

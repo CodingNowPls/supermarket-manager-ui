@@ -5,6 +5,8 @@ function resolve(dir) {
     return path.join(__dirname, dir)
 }
 
+const apiBaseUrl = 'http://localhost:9291';
+
 const CompressionPlugin = require('compression-webpack-plugin')
 
 const name = process.env.VUE_APP_TITLE || '超市管理系统' // 网页标题
@@ -33,8 +35,8 @@ module.exports = {
         open: true,
         proxy: {
             [process.env.VUE_APP_BASE_API]: {
-              target: `http://localhost:9291`,  //测试环境
-                changeOrigin: true,
+              target: process.env.VUE_APP_API_BASE_URL,
+              changeOrigin: true,
                 pathRewrite: {
                     ['^' + process.env.VUE_APP_BASE_API]: ''
                 }
